@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://eit30frmp6kp"]
+
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="1_iuv2h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t3iou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iuv2h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enemy1" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t3iou")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -33.0
+offset_top = -86.0
+offset_right = 30.0
+offset_bottom = -63.0
+text = "WORD"
+horizontal_alignment = 1

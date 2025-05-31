@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://do2p23ai45wr1"]
+
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="1_qrhv6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1ddt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qrhv6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Castle" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i1ddt")

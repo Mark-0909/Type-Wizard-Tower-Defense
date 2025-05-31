@@ -17,3 +17,6 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yulx4")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -66)
