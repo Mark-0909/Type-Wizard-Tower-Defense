@@ -6,15 +6,16 @@
 [node name="main" type="Node2D"]
 position = Vector2(-4, 0)
 
-[node name="Castle" parent="." instance=ExtResource("1_v1n8b")]
-position = Vector2(1, 372)
-scale = Vector2(11.1837, 0.916667)
-
-[node name="Wizard" parent="." instance=ExtResource("2_25rbu")]
-position = Vector2(0, 326)
-
 [node name="spawn area" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(5.20855, -3.41952)
 zoom = Vector2(0.385, 0.385)
+
+[node name="Castle" parent="." instance=ExtResource("1_v1n8b")]
+position = Vector2(5, 700)
+scale = Vector2(22.3475, 1.09717)
+
+[node name="Wizard" parent="." instance=ExtResource("2_25rbu")]
+position = Vector2(4, 532)
+scale = Vector2(2.08486, 1.97713)
