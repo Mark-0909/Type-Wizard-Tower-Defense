@@ -1,13 +1,10 @@
 extends Node2D
 
-
 var word: String = ""
-
+var velocity: float = 100.0  # Pixels per second
 
 func _ready() -> void:
 	$word.text = word
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	position.y += velocity * delta
