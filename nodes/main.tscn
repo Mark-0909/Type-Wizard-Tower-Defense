@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://c7mav1xrwribp"]
+[gd_scene load_steps=3 format=3 uid="uid://c7mav1xrwribp"]
+
+[ext_resource type="PackedScene" uid="uid://do2p23ai45wr1" path="res://nodes/castle.tscn" id="1_v1n8b"]
+[ext_resource type="PackedScene" uid="uid://b161m70ojgujg" path="res://nodes/wizard.tscn" id="2_25rbu"]
 
 [node name="main" type="Node2D"]
+position = Vector2(-4, 0)
+
+[node name="Castle" parent="." instance=ExtResource("1_v1n8b")]
+position = Vector2(1, 372)
+scale = Vector2(11.1837, 0.916667)
+
+[node name="Wizard" parent="." instance=ExtResource("2_25rbu")]
+position = Vector2(0, 326)
+
+[node name="spawn area" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(5.20855, -3.41952)
+zoom = Vector2(0.385, 0.385)
