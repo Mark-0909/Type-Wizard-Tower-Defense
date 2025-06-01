@@ -13,10 +13,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="A" type="TextureRect"]
+[node name="A" type="Node2D"]
 scale = Vector2(0.037, 0.037)
-expand_mode = 1
-stretch_mode = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.57913, 1.57335)

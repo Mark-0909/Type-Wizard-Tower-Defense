@@ -13,6 +13,10 @@ extends Node2D
 
 var spawn_areas: Array[Marker2D] = []
 
+var letter_offset := 0  # Start at 0 and increment for each new letter
+var letter_spacing := 30  # Space between letters (adjust as needed)
+var letter_scale := Vector2(1, 1)  # Adjust to your desired size
+
 # Enemies
 const ENEMY_1 = preload("res://nodes/enemy1.tscn")
 
@@ -123,4 +127,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		var key = event.keycode
 		if letter_scenes.has(key):
 			var letter_instance = letter_scenes[key].instantiate()
-			typing_container.add_child(letter_instance)
+
+			# Set manual scale (to prevent big letters)
+			letter_instance.scale = letter_scale
+
+			# Remove from auto layouting if any (for example if using VBoxContainer/HBoxContainer)
+			if typing_container is Container:
+				typing_container.remove_child(letter_instance)
+				add_child(letter_instance)
+
+			# Position letter manually
+			letter_instance.position = typing_container.global_position + Vector2(letter_offset, 0)
+			add_child(letter_instance)
+
+			# Update spacing
+			letter_offset += letter_spacing

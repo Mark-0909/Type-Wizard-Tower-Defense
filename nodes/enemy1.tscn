@@ -28,3 +28,7 @@ offset_right = 30.0
 offset_bottom = -63.0
 text = "WORD"
 horizontal_alignment = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 63.4477)
+target_position = Vector2(0, 23.2794)
