@@ -17,7 +17,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg6s2"]
 size = Vector2(128.512, 147.436)
 
-[node name="enemy1" type="CharacterBody2D"]
+[node name="enemy1" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_b4256")
 

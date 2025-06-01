@@ -111,6 +111,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			typed_letters.append({"node": letter_instance, "char": letter_char})
 
 			_print_typed_letters()
+			check_enemy_matches()
 
 
 func _print_typed_letters() -> void:
@@ -118,3 +119,23 @@ func _print_typed_letters() -> void:
 	for letter_dict in typed_letters:
 		typed_text += letter_dict.char
 	print("Typed: ", typed_text)
+
+func check_enemy_matches() -> void:
+	var typed_text := ""
+	for letter_dict in typed_letters:
+		typed_text += letter_dict.char
+
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		if enemy.has_method("get_word"):
+			if enemy.get_word().to_upper() == typed_text:
+				print("Matched enemy with word:", enemy.get_word())
+
+				# Example response:
+				enemy.queue_free()  # Remove enemy
+				clear_typed_letters()
+
+func clear_typed_letters():
+	for letter_dict in typed_letters:
+		letter_dict.node.queue_free()
+	typed_letters.clear()
+	letter_offset = 0

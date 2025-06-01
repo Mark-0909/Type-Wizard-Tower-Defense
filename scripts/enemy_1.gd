@@ -23,3 +23,6 @@ func _process(delta: float) -> void:
 				# play idle
 		else:
 			is_moving = true
+
+func get_word() -> String:
+	return word.to_upper()
