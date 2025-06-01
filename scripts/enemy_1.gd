@@ -15,4 +15,5 @@ func _process(delta: float) -> void:
 		if $RayCast2D.is_colliding():
 			var collider = $RayCast2D.get_collider()
 			if collider is Node and collider.is_in_group("castle"):
-				is_moving = false  # Stop movement
+				is_moving = false 
+				print("Collide with castle")
