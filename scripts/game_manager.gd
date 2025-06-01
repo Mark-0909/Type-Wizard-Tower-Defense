@@ -58,13 +58,56 @@ const A = preload("res://nodes/a.tscn")
 const B = preload("res://nodes/b.tscn")
 const C = preload("res://nodes/c.tscn")
 const D = preload("res://nodes/d.tscn")
-
+const E = preload("res://nodes/e.tscn")
+const F = preload("res://nodes/f.tscn")
+const G = preload("res://nodes/g.tscn")
+const H = preload("res://nodes/h.tscn")
+const I = preload("res://nodes/i.tscn")
+const J = preload("res://nodes/j.tscn")
+const K = preload("res://nodes/k.tscn")
+const L = preload("res://nodes/l.tscn")
+const M = preload("res://nodes/m.tscn")
+const N = preload("res://nodes/n.tscn")
+const O = preload("res://nodes/o.tscn")
+const P = preload("res://nodes/p.tscn")
+const Q = preload("res://nodes/q.tscn")
+const R = preload("res://nodes/r.tscn")
+const S = preload("res://nodes/s.tscn")
+const T = preload("res://nodes/t.tscn")
+const U = preload("res://nodes/u.tscn")
+const V = preload("res://nodes/v.tscn")
+const W = preload("res://nodes/w.tscn")
+const X = preload("res://nodes/x.tscn")
+const Y = preload("res://nodes/y.tscn")
+const Z = preload("res://nodes/z.tscn")
 
 var letter_scenes = {
 	KEY_A: A,
 	KEY_B: B,
 	KEY_C: C,
-	KEY_D: D
+	KEY_D: D,
+	KEY_E: E,
+	KEY_F: F,
+	KEY_G: G,
+	KEY_H: H,
+	KEY_I: I,
+	KEY_J: J,
+	KEY_K: K,
+	KEY_L: L,
+	KEY_M: M,
+	KEY_N: N,
+	KEY_O: O,
+	KEY_P: P,
+	KEY_Q: Q,
+	KEY_R: R,
+	KEY_S: S,
+	KEY_T: T,
+	KEY_U: U,
+	KEY_V: V,
+	KEY_W: W,
+	KEY_X: X,
+	KEY_Y: Y,
+	KEY_Z: Z
 }
 
 func _ready() -> void:
