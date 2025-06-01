@@ -17,6 +17,13 @@ var spawn_areas: Array[Marker2D] = []
 const ENEMY_1 = preload("res://nodes/enemy1.tscn")
 
 @onready var game_manager: Node = $GameManager
+@onready var typing_container: Control = $TypingContainer
+
+# Letters
+const A = preload("res://nodes/a.tscn")
+const B = preload("res://nodes/b.tscn")
+const C = preload("res://nodes/c.tscn")
+const D = preload("res://nodes/d.tscn")
 
 # Spawn settings
 var spawn_timer := 0.0
@@ -77,6 +84,14 @@ var word_pool = {
 	]
 }
 
+var letter_scenes = {
+	KEY_A: A,
+	KEY_B: B,
+	KEY_C: C,
+	KEY_D: D
+}
+
+
 func _ready() -> void:
 	spawn_areas = [
 		spawn_area_1, spawn_area_2, spawn_area_3,
@@ -102,3 +117,10 @@ func spawn_enemy() -> void:
 		enemy.word = word_list.pick_random()
 
 	add_child(enemy)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		var key = event.keycode
+		if letter_scenes.has(key):
+			var letter_instance = letter_scenes[key].instantiate()
+			typing_container.add_child(letter_instance)

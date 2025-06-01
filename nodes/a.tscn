@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckmjp8gg2wvw6"]
+
+[ext_resource type="Texture2D" uid="uid://c5kpnkarvhfia" path="res://assets/letters/a.png" id="1_lnaic"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebksr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lnaic")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="A" type="TextureRect"]
+scale = Vector2(0.037, 0.037)
+expand_mode = 1
+stretch_mode = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.57913, 1.57335)
+sprite_frames = SubResource("SpriteFrames_ebksr")

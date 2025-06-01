@@ -52,3 +52,10 @@ scale = Vector2(2.08486, 1.97713)
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("3_j75sh")
+
+[node name="TypingContainer" type="HBoxContainer" parent="."]
+offset_left = -963.0
+offset_top = 610.0
+offset_right = -923.0
+offset_bottom = 650.0
+scale = Vector2(48.7839, 4.48313)
