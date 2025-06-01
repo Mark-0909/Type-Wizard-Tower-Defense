@@ -1,5 +1,6 @@
 extends Node
 
+
 var word_pool = {
 	4: [
 		"fire", "wind", "dark", "gate", "mist", "soul", "burn", "claw", "doom", "howl",
@@ -50,6 +51,20 @@ var word_pool = {
 		"blackforge", "firemancer", "deathangel", "rottinggod", "chaosdrain", "stormreign", "deathflame", "doomshadow", "dreadburst", "ghoulhunter",
 		"voidmaster", "riftwalker", "bloodweaver", "chaosreign", "soulbreaker", "darkseeker", "spellhunter", "phantasmic", "infernight", "voidscream"
 	]
+}
+
+# Letters
+const A = preload("res://nodes/a.tscn")
+const B = preload("res://nodes/b.tscn")
+const C = preload("res://nodes/c.tscn")
+const D = preload("res://nodes/d.tscn")
+
+
+var letter_scenes = {
+	KEY_A: A,
+	KEY_B: B,
+	KEY_C: C,
+	KEY_D: D
 }
 
 func _ready() -> void:

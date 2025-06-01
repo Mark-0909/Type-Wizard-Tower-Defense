@@ -12,88 +12,25 @@ extends Node2D
 @onready var spawn_area_9: Marker2D = $"spawn area/Marker2D9"
 
 var spawn_areas: Array[Marker2D] = []
+var typed_letters: Array = []
 
 var letter_offset := 0  # Start at 0 and increment for each new letter
-var letter_spacing := 30  # Space between letters (adjust as needed)
+var letter_spacing := 150  # Space between letters (adjust as needed)
 var letter_scale := Vector2(1, 1)  # Adjust to your desired size
+
+var last_spawn_position = 0
 
 # Enemies
 const ENEMY_1 = preload("res://nodes/enemy1.tscn")
 
 @onready var game_manager: Node = $GameManager
-@onready var typing_container: Control = $TypingContainer
-
-# Letters
-const A = preload("res://nodes/a.tscn")
-const B = preload("res://nodes/b.tscn")
-const C = preload("res://nodes/c.tscn")
-const D = preload("res://nodes/d.tscn")
+@onready var typing_container: Control = $Typingcontainer
 
 # Spawn settings
 var spawn_timer := 0.0
 var spawn_interval := 3.0
 var min_spawn_interval := 0.8
 var spawn_acceleration := 0.01
-
-# Word pool
-var word_pool = {
-	4: [
-		"fire", "wind", "dark", "gate", "mist", "soul", "burn", "claw", "doom", "howl",
-		"bane", "dust", "fear", "void", "icey", "toad", "rock", "heat", "coal", "bolt",
-		"fume", "scar", "bark", "haze", "grip", "snap", "gnaw", "fang", "sing", "drip",
-		"evil", "ash", "spit", "trap", "flux", "flip", "grow", "inch", "pain", "ache",
-		"glow", "fuel", "hurt", "kick", "push", "spin", "dive", "lock", "sink", "jump"
-	],
-	5: [
-		"flame", "curse", "ghost", "magic", "grave", "shock", "cloud", "storm", "chill", "haunt",
-		"venom", "spell", "toxic", "blast", "blood", "night", "frost", "demon", "ghoul", "dread",
-		"amber", "witch", "guard", "sting", "snake", "swamp", "crack", "flare", "blaze", "smite",
-		"razor", "sloth", "swarm", "blink", "quake", "flint", "briar", "fable", "hatch", "latch",
-		"singe", "creep", "coven", "shade", "grasp", "rotor", "thorn", "wound", "spear", "vapor"
-	],
-	6: [
-		"poison", "shadow", "spirit", "dagger", "terror", "hammer", "wizard", "monster", "silence", "cursed",
-		"ashes", "frozen", "hunter", "mirror", "energy", "triton", "knight", "abyss", "frenzy", "blight",
-		"socket", "phantom", "locked", "struck", "tangle", "spider", "attack", "musket", "anchor", "hollow",
-		"riddle", "target", "temple", "vanish", "flicks", "scream", "burrow", "serpent", "snakes", "warden",
-		"savage", "sickle", "ignite", "summon", "spells", "ravage", "strike", "glitch", "drench", "bottle"
-	],
-	7: [
-		"eruption", "haunting", "thunder", "barrier", "binding", "trident", "phantom", "cyclone", "draining", "rapture",
-		"twisted", "revenge", "choking", "torment", "flicker", "grapple", "casting", "blaster", "crawler", "scorched",
-		"stormer", "darkens", "rupture", "fracture", "venomous", "cursedly", "chilling", "deepcut", "grimace", "fiendish",
-		"creeping", "rotters", "floaten", "stormed", "inflict", "grinder", "smother", "prowler", "clatter", "lurking",
-		"voiding", "trouble", "revenge", "rattler", "stalker", "mystery", "grumble", "soulsap", "flaming", "grinder"
-	],
-	8: [
-		"skeleton", "nightmare", "wildfire", "obsidian", "tormentor", "freezing", "collapse", "blizzard", "infernal", "trapdoor",
-		"suffering", "mortality", "fractures", "oblivion", "grimness", "outbreak", "deadzone", "watchers", "darkness", "backlash",
-		"shockwave", "slowburns", "soulbinds", "horrorize", "smoulder", "catapult", "fleshrot", "spellsaw", "frostbite", "ravaging",
-		"sabotage", "betrayed", "lockstep", "fearborn", "combuster", "icequake", "cloudfog", "dreadfog", "necrokey", "deepmire",
-		"soulseal", "grindbone", "stormfog", "boneyard", "netherly", "coldmist", "hellfire", "grimfade", "ghastful", "shadowed"
-	],
-	9: [
-		"summoning", "necromancy", "possession", "incanting", "devastator", "withering", "resurrect", "corruption", "obliterate", "soulstrike",
-		"blackmist", "dreamfire", "bonecrusher", "deathtrap", "stormgate", "fireblast", "spellbind", "wrathbone", "mindshock", "fearbound",
-		"overthrow", "starbound", "forcecast", "gravefire", "deathbind", "chaospath", "godstrike", "darkshock", "burnforce", "mindtouch",
-		"doomspell", "warcaller", "voidbeast", "ghostfire", "frostzone", "zombifier", "soulstorm", "grimdeath", "voidlight", "thundersky",
-		"witchborn", "hellshade", "dreadpath", "soulmourn", "soulreign", "nethergem", "riftweaver", "voidtouch", "ghostborn", "hexcaster"
-	],
-	10: [
-		"apocalypse", "cataclysm", "thunderous", "soulburning", "incinerator", "obliterator", "reanimation", "exterminator", "devastation", "shadowveil",
-		"demonology", "ruinbringer", "hellstrike", "commandant", "deadbreaker", "stormdriven", "curseblade", "blightbane", "grimreaper", "spellcraft",
-		"nightshade", "deathwatch", "soulreaver", "hellforged", "dreamshock", "voidcaster", "spellmancer", "nightmarez", "doomblaster", "netherborn",
-		"blackforge", "firemancer", "deathangel", "rottinggod", "chaosdrain", "stormreign", "deathflame", "doomshadow", "dreadburst", "ghoulhunter",
-		"voidmaster", "riftwalker", "bloodweaver", "chaosreign", "soulbreaker", "darkseeker", "spellhunter", "phantasmic", "infernight", "voidscream"
-	]
-}
-
-var letter_scenes = {
-	KEY_A: A,
-	KEY_B: B,
-	KEY_C: C,
-	KEY_D: D
-}
 
 
 func _ready() -> void:
@@ -103,6 +40,7 @@ func _ready() -> void:
 		spawn_area_7, spawn_area_8, spawn_area_9
 	]
 
+
 func _process(delta: float) -> void:
 	spawn_timer -= delta
 	if spawn_timer <= 0:
@@ -110,35 +48,73 @@ func _process(delta: float) -> void:
 		spawn_interval = max(min_spawn_interval, spawn_interval - spawn_acceleration)
 		spawn_timer = spawn_interval
 
+
 func spawn_enemy() -> void:
 	var enemy = ENEMY_1.instantiate()
-	var area = spawn_areas.pick_random()
+
+	var index := randi() % spawn_areas.size()
+
+	# Prevent spawning twice in a row in the same spot
+	while index == last_spawn_position and spawn_areas.size() > 1:
+		index = randi() % spawn_areas.size()
+
+	var area = spawn_areas[index]
+	last_spawn_position = index
+
 	enemy.global_position = area.global_position
 
 	var word_length = randi_range(4, 10)
-	var word_list = word_pool.get(word_length, [])
+	var word_list = game_manager.word_pool.get(word_length, [])
 	if word_list.size() > 0:
 		enemy.word = word_list.pick_random()
 
 	add_child(enemy)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key = event.keycode
-		if letter_scenes.has(key):
-			var letter_instance = letter_scenes[key].instantiate()
 
-			# Set manual scale (to prevent big letters)
+		# Backspace support (removes the last letter)
+		if key == KEY_BACKSPACE and typed_letters.size() > 0:
+			var last_letter_dict = typed_letters.pop_back()
+			last_letter_dict.node.queue_free()
+			letter_offset -= letter_spacing
+			_print_typed_letters()
+			return
+
+		# Add letter if valid
+		if game_manager.letter_scenes.has(key):
+			var letter_scene = game_manager.letter_scenes[key]
+			var letter_instance = letter_scene.instantiate()
 			letter_instance.scale = letter_scale
+			get_tree().current_scene.add_child(letter_instance)
 
-			# Remove from auto layouting if any (for example if using VBoxContainer/HBoxContainer)
-			if typing_container is Container:
-				typing_container.remove_child(letter_instance)
-				add_child(letter_instance)
+			var letter_size = Vector2.ZERO
+			if letter_instance.has_node("Sprite2D"):
+				var sprite = letter_instance.get_node("Sprite2D")
+				letter_size = sprite.texture.get_size() * sprite.scale * letter_instance.scale
+			elif letter_instance.has_node("Label"):
+				var label = letter_instance.get_node("Label")
+				letter_size = label.get_minimum_size() * letter_instance.scale
 
-			# Position letter manually
-			letter_instance.position = typing_container.global_position + Vector2(letter_offset, 0)
-			add_child(letter_instance)
+			# Center the letter in the typing container
+			var container_center = typing_container.global_position + typing_container.size / 2.0
+			letter_instance.position = container_center - letter_size / 2.0 + Vector2(letter_offset, 0)
 
-			# Update spacing
 			letter_offset += letter_spacing
+
+			# Extract letter from the scene's filename (like 'a' from 'a.tscn')
+			var path = letter_scene.resource_path
+			var letter_char = path.get_file().get_basename().to_upper()
+
+			typed_letters.append({"node": letter_instance, "char": letter_char})
+
+			_print_typed_letters()
+
+
+func _print_typed_letters() -> void:
+	var typed_text := ""
+	for letter_dict in typed_letters:
+		typed_text += letter_dict.char
+	print("Typed: ", typed_text)

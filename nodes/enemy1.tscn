@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://eit30frmp6kp"]
+[gd_scene load_steps=5 format=3 uid="uid://eit30frmp6kp"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_b4256"]
 [ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="1_iuv2h"]
@@ -14,7 +14,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="enemy1" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg6s2"]
+size = Vector2(128.512, 147.436)
+
+[node name="enemy1" type="CharacterBody2D"]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_b4256")
 
@@ -32,3 +35,7 @@ horizontal_alignment = 1
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 63.4477)
 target_position = Vector2(-0.435635, 6.84688)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.217816, -10.2703)
+shape = SubResource("RectangleShape2D_kg6s2")

@@ -17,3 +17,9 @@ func _process(delta: float) -> void:
 			if collider is Node and collider.is_in_group("castle"):
 				is_moving = false 
 				print("Collide with castle")
+				# play attack animation
+			else:
+				is_moving = false 
+				# play idle
+		else:
+			is_moving = true
