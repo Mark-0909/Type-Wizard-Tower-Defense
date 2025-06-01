@@ -130,8 +130,7 @@ func check_enemy_matches() -> void:
 			if enemy.get_word().to_upper() == typed_text:
 				print("Matched enemy with word:", enemy.get_word())
 
-				# Example response:
-				enemy.queue_free()  # Remove enemy
+				enemy.queue_free() 
 				clear_typed_letters()
 
 func clear_typed_letters():
