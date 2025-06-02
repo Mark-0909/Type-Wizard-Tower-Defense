@@ -20,6 +20,8 @@ var letter_scale := Vector2(1, 1)  # Adjust to your desired size
 
 var last_spawn_position = 0
 
+var velocity:float = 100.0
+
 # Enemies
 const ENEMY_1 = preload("res://nodes/enemy1.tscn")
 
@@ -67,7 +69,7 @@ func spawn_enemy() -> void:
 	var word_list = game_manager.word_pool.get(word_length, [])
 	if word_list.size() > 0:
 		enemy.word = word_list.pick_random()
-
+	enemy.velocity = velocity
 	add_child(enemy)
 
 
@@ -138,3 +140,7 @@ func clear_typed_letters():
 		letter_dict.node.queue_free()
 	typed_letters.clear()
 	letter_offset = 0
+
+
+func _on_timer_timeout() -> void:
+	velocity += 50.0
