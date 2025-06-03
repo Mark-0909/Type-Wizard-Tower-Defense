@@ -28,3 +28,4 @@ func _set_animation(state: State) -> void:
 			$AnimatedSprite2D.play("charging")
 		State.FIRE:
 			$AnimatedSprite2D.play("fire")
+			await get_tree().create_timer(0.5).timeout

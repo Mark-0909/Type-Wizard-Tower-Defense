@@ -138,7 +138,7 @@ func check_enemy_matches() -> void:
 		if enemy.has_method("get_word"):
 			if enemy.get_word().to_upper() == typed_text:
 				print("Matched enemy with word:", enemy.get_word())
-
+				$Castle/Wizard._change_state($Castle/Wizard.State.FIRE)
 				enemy.queue_free() 
 				clear_typed_letters()
 	
