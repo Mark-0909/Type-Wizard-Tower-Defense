@@ -1,11 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://b161m70ojgujg"]
+[gd_scene load_steps=8 format=3 uid="uid://b161m70ojgujg"]
 
 [ext_resource type="Script" path="res://scripts/wizard.gd" id="1_4c5rx"]
 [ext_resource type="Texture2D" uid="uid://d3061lgpllpje" path="res://assets/wizard/stand1.png" id="1_d2fyb"]
 [ext_resource type="Texture2D" uid="uid://dqag08xoig2fo" path="res://assets/wizard/stand2.png" id="2_fdr4c"]
+[ext_resource type="Texture2D" uid="uid://62x5x43v4mb0" path="res://assets/wizard/charge1.png" id="2_q41d7"]
+[ext_resource type="Texture2D" uid="uid://gtf2m0uu1ao1" path="res://assets/wizard/charge2.png" id="3_2fqna"]
+[ext_resource type="Texture2D" uid="uid://b8s4j54hmlkgh" path="res://assets/wizard/charge3.png" id="4_illqg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yulx4"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q41d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2fqna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_illqg")
+}],
+"loop": true,
+"name": &"charging",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_d2fyb")
@@ -16,6 +33,11 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 7.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
 }]
 
 [node name="Wizard" type="Node2D"]
@@ -23,7 +45,8 @@ script = ExtResource("1_4c5rx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yulx4")
-frame_progress = 0.1572
+animation = &"charging"
+frame_progress = 0.570645
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -66)
