@@ -1,22 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://b161m70ojgujg"]
+[gd_scene load_steps=5 format=3 uid="uid://b161m70ojgujg"]
 
-[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="1_5mxpn"]
+[ext_resource type="Script" path="res://scripts/wizard.gd" id="1_4c5rx"]
+[ext_resource type="Texture2D" uid="uid://d3061lgpllpje" path="res://assets/wizard/stand1.png" id="1_d2fyb"]
+[ext_resource type="Texture2D" uid="uid://dqag08xoig2fo" path="res://assets/wizard/stand2.png" id="2_fdr4c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yulx4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_5mxpn")
+"texture": ExtResource("1_d2fyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fdr4c")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [node name="Wizard" type="Node2D"]
+script = ExtResource("1_4c5rx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yulx4")
+frame_progress = 0.1572
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -66)
