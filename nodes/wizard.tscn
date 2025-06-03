@@ -46,7 +46,7 @@ script = ExtResource("1_4c5rx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yulx4")
 animation = &"charging"
-frame_progress = 0.570645
+frame_progress = 0.40739
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -66)

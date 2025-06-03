@@ -17,10 +17,6 @@ offset_bottom = 633.0
 scale = Vector2(29.0595, 3.79588)
 alignment = 1
 
-[node name="Wizard" parent="." instance=ExtResource("2_25rbu")]
-position = Vector2(4, 532)
-scale = Vector2(2.08486, 1.97713)
-
 [node name="spawn area" type="Node" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="spawn area"]
@@ -57,6 +53,10 @@ zoom = Vector2(0.385, 0.385)
 [node name="Castle" parent="." instance=ExtResource("1_v1n8b")]
 position = Vector2(5, 700)
 scale = Vector2(22.3475, 1.09717)
+
+[node name="Wizard" parent="Castle" instance=ExtResource("2_25rbu")]
+position = Vector2(-0.0447477, -153.121)
+scale = Vector2(0.0932928, 1.80203)
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("3_j75sh")

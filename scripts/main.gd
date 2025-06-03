@@ -50,6 +50,12 @@ func _process(delta: float) -> void:
 		spawn_interval = max(min_spawn_interval, spawn_interval - spawn_acceleration)
 		spawn_timer = spawn_interval
 
+	if typed_letters.size() > 0:
+		$Castle/Wizard._change_state($Castle/Wizard.State.CHARGING)
+	else: 
+		$Castle/Wizard._change_state($Castle/Wizard.State.IDLE)
+	
+
 
 func spawn_enemy() -> void:
 	var enemy = ENEMY_1.instantiate()
@@ -114,6 +120,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 			_print_typed_letters()
 			check_enemy_matches()
+	
 
 
 func _print_typed_letters() -> void:
@@ -134,6 +141,8 @@ func check_enemy_matches() -> void:
 
 				enemy.queue_free() 
 				clear_typed_letters()
+	
+
 
 func clear_typed_letters():
 	for letter_dict in typed_letters:
