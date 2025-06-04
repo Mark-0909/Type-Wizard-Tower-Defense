@@ -138,11 +138,14 @@ func check_enemy_matches() -> void:
 		if enemy.has_method("get_word"):
 			if enemy.get_word().to_upper() == typed_text:
 				print("Matched enemy with word:", enemy.get_word())
-				$Castle/Wizard._change_state($Castle/Wizard.State.FIRE)
+				$Castle/Wizard.get_node("AnimatedSprite2D").play("attack")
+				await get_tree().create_timer(0.5).timeout
 				enemy.queue_free() 
 				clear_typed_letters()
 	
 
+func Wizard_fire():
+	pass
 
 func clear_typed_letters():
 	for letter_dict in typed_letters:
