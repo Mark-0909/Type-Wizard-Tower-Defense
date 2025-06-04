@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://b0gx2emfmg7vy"]
+[gd_scene load_steps=5 format=3 uid="uid://b0gx2emfmg7vy"]
 
-[node name="fireball" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="1_gj5hb"]
+[ext_resource type="Script" path="res://nodes/fireball.gd" id="1_p76eb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ros1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gj5hb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3h5e6"]
+
+[node name="Fireball" type="Area2D"]
+scale = Vector2(0.256002, 0.246881)
+script = ExtResource("1_p76eb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.38419e-07, -2)
+scale = Vector2(0.609375, 0.59375)
+sprite_frames = SubResource("SpriteFrames_ros1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.76169, 3.64632)
+shape = SubResource("CircleShape2D_3h5e6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

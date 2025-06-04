@@ -60,4 +60,4 @@ sprite_frames = SubResource("SpriteFrames_yulx4")
 animation = &"attack"
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -66)
+position = Vector2(32, -45)
