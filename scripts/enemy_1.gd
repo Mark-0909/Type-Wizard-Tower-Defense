@@ -29,7 +29,9 @@ func _process(delta: float) -> void:
 func get_word() -> String:
 	return word.to_upper()
 
-
 func Dead():
-	# play dead
+	is_moving = false
+	velocity = 0.0  # Correct type
+	$AnimatedSprite2D.play("death")
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
