@@ -4,9 +4,14 @@ var word: String = ""
 var velocity: float = 100.0
 var is_moving: bool = true
 
+var _is_on_aim: bool = false
+
 func _ready() -> void:
 	$word.text = word.to_upper()
 	$RayCast2D.enabled = true
+
+func is_on_aim() -> bool:
+	return _is_on_aim
 
 func _process(delta: float) -> void:
 	if $RayCast2D.is_colliding():
@@ -23,3 +28,8 @@ func _process(delta: float) -> void:
 
 func get_word() -> String:
 	return word.to_upper()
+
+
+func Dead():
+	# play dead
+	queue_free()

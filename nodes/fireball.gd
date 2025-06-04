@@ -1,9 +1,12 @@
 extends Area2D
 
-@export var speed: float = 200.0
+@export var speed: float = 100.0
 var target: Node2D = null
 
-# Optional: define a method for safe assignment
+func _ready() -> void:
+	$AnimatedSprite2D.play("default")
+
+
 func set_target(enemy: Node2D) -> void:
 	target = enemy
 
@@ -17,5 +20,5 @@ func _on_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(.5).timeout
 	
 	if body == target:
-		body.queue_free()
+		body.Dead()
 		queue_free()

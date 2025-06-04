@@ -135,15 +135,17 @@ func check_enemy_matches() -> void:
 		typed_text += letter_dict.char
 
 	for enemy in get_tree().get_nodes_in_group("enemy"):
-		if enemy.has_method("get_word"):
+		if enemy.has_method("get_word") and not enemy.is_on_aim():
+			
 			if enemy.get_word().to_upper() == typed_text:
 				print("Matched enemy with word:", enemy.get_word())
 				if $Castle/Wizard.has_method("Fire"):
 					$Castle/Wizard.get_node("AnimatedSprite2D").play("attack")
-					await get_tree().create_timer(0.3).timeout
+					await get_tree().create_timer(0.2).timeout
 					$Castle/Wizard.Fire(enemy)
-				
+					
 				clear_typed_letters()
+				enemy._is_on_aim = true
 	
 
 

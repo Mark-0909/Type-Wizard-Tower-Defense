@@ -14,8 +14,6 @@ var current_state: State = State.IDLE
 func _ready() -> void:
 	_set_animation(current_state)
 
-func _process(delta: float) -> void:
-	pass
 
 func _change_state(new_state: State) -> void:
 	if current_state != new_state:
@@ -38,11 +36,12 @@ func Fire(enemy: Node2D):
 	if fireball.has_method("set_target"):
 		fireball.set_target(enemy)
 	else:
-		fireball.target = enemy  # Assuming 'target' is a public variable in fireball.gd
+		fireball.target = enemy  
 
 	get_parent().add_child(fireball)
+	fireball.scale = Vector2(.4,5)
+	fireball.z_index = 1000
 	fireball.global_position = marker_2d.global_position
-	print("Fireball spawned at:", fireball.global_position)
 
 	await get_tree().create_timer(1.0).timeout
 
