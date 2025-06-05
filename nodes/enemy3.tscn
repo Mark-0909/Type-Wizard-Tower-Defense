@@ -189,7 +189,7 @@ scale = Vector2(6.64583, 6.52184)
 sprite_frames = SubResource("SpriteFrames_t3iou")
 animation = &"death"
 autoplay = "default"
-frame_progress = 0.383172
+frame_progress = 0.603217
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 63.4477)
@@ -200,18 +200,18 @@ position = Vector2(0.217816, -10.2703)
 shape = SubResource("CircleShape2D_hg4es")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -62.2958
-offset_top = -99.0515
-offset_right = -22.2958
-offset_bottom = -59.0515
+offset_left = -64.0383
+offset_top = -98.1386
+offset_right = -24.0383
+offset_bottom = -58.1386
 scale = Vector2(3.12561, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="."]
-offset_left = -42.4022
-offset_top = -89.9223
-offset_right = 25.5978
-offset_bottom = -66.9223
+offset_left = -44.1448
+offset_top = -89.0094
+offset_right = 23.8552
+offset_bottom = -66.0094
 scale = Vector2(1.29446, 1.20944)
 text = "WORDSS"
 horizontal_alignment = 1
