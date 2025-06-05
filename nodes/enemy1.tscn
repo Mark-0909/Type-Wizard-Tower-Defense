@@ -156,7 +156,7 @@ scale = Vector2(4.65585, 3.87276)
 sprite_frames = SubResource("SpriteFrames_t3iou")
 animation = &"death"
 autoplay = "default"
-frame_progress = 0.543751
+frame_progress = 0.587868
 
 [node name="word" type="Label" parent="."]
 offset_left = -33.0

@@ -33,5 +33,5 @@ func Dead():
 	is_moving = false
 	velocity = 0.0  # Correct type
 	$AnimatedSprite2D.play("death")
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1).timeout
 	queue_free()

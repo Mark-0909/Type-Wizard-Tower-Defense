@@ -55,6 +55,8 @@ func _process(delta: float) -> void:
 	else: 
 		$Castle/Wizard._change_state($Castle/Wizard.State.IDLE)
 	
+	if Input.is_action_just_pressed("Clear"):
+		clear_typed_letters()
 
 
 func spawn_enemy() -> void:
