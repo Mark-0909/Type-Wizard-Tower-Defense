@@ -23,7 +23,7 @@ var last_spawn_position = 0
 var velocity:float = 100.0
 
 # Enemies
-const ENEMY_1 = preload("res://nodes/enemy4.tscn")
+const ENEMY_1 = preload("res://nodes/enemy5.tscn")
 
 @onready var game_manager: Node = $GameManager
 @onready var typing_container: Control = $Typingcontainer
