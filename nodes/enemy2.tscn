@@ -114,6 +114,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_7ire4")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0k64q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ire4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k64q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ire4")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_t20pi")
 }],
 "loop": true,
@@ -162,7 +174,7 @@ radius = 51.5261
 atlas = ExtResource("6_q6nta")
 region = Rect2(176, 0, 16, 16)
 
-[node name="enemy2" type="CharacterBody2D" groups=["enemy"]]
+[node name="beettle" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_efkvo")
 
@@ -170,8 +182,9 @@ script = ExtResource("1_efkvo")
 position = Vector2(0, -3.19521)
 scale = Vector2(4.62445, 5.54011)
 sprite_frames = SubResource("SpriteFrames_t3iou")
+animation = &"death"
 autoplay = "default"
-frame_progress = 0.584573
+frame_progress = 0.99523
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 63.4477)

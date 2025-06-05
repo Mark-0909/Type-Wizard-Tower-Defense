@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://eit30frmp6kp"]
+[gd_scene load_steps=42 format=3 uid="uid://eit30frmp6kp"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_b4256"]
 [ext_resource type="Texture2D" uid="uid://b0ixe0rndbyr2" path="res://assets/enemy/slime1/Slime1_Death_full with fire.png" id="2_ndip2"]
@@ -59,10 +59,6 @@ region = Rect2(64, 0, 64, 64)
 atlas = ExtResource("2_ndip2")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jtvx"]
-atlas = ExtResource("2_ndip2")
-region = Rect2(192, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_rps1s"]
 atlas = ExtResource("2_ndip2")
 region = Rect2(256, 0, 64, 64)
@@ -70,10 +66,6 @@ region = Rect2(256, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hs0jc"]
 atlas = ExtResource("2_ndip2")
 region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwgpv"]
-atlas = ExtResource("2_ndip2")
-region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5lpvh"]
 atlas = ExtResource("2_ndip2")
@@ -191,16 +183,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_g2xi1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6jtvx")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_rps1s")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hs0jc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dwgpv")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5lpvh")
@@ -275,7 +261,7 @@ radius = 51.5261
 atlas = ExtResource("6_ak1ml")
 region = Rect2(176, 0, 16, 16)
 
-[node name="enemy1" type="CharacterBody2D" groups=["enemy"]]
+[node name="slime" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_b4256")
 
@@ -283,9 +269,9 @@ script = ExtResource("1_b4256")
 position = Vector2(7.62939e-06, -9.35741)
 scale = Vector2(4.65585, 3.87276)
 sprite_frames = SubResource("SpriteFrames_t3iou")
-animation = &"attack"
+animation = &"death"
 autoplay = "default"
-frame_progress = 0.709697
+frame_progress = 0.772445
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 63.4477)
@@ -304,23 +290,6 @@ scale = Vector2(2.66203, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="TextureRect"]
-offset_left = 4.58213
-offset_top = 7.9154
-offset_right = 67.5821
-offset_bottom = 30.9154
-scale = Vector2(0.481177, 1.04531)
-text = "WORD"
-horizontal_alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = -56.6325
-offset_top = -98.1386
-offset_right = -16.6325
-offset_bottom = -58.1386
-scale = Vector2(2.66203, 1.09567)
-texture = SubResource("AtlasTexture_nr2my")
-
-[node name="word" type="Label" parent="TextureRect2"]
 offset_left = 4.58213
 offset_top = 7.9154
 offset_right = 67.5821

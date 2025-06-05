@@ -7,7 +7,7 @@ var is_moving: bool = true
 var _is_on_aim: bool = false
 
 func _ready() -> void:
-	var label = $TextureRect/word
+	var label = $word
 	label.text = word.to_upper()
 	$RayCast2D.enabled = true
 	
@@ -20,6 +20,10 @@ func _process(delta: float) -> void:
 		var collider = $RayCast2D.get_collider()
 		if collider and (collider.is_in_group("castle") or collider.is_in_group("enemy")):
 			is_moving = false
+			if collider and collider.is_in_group("castle"):
+				attack()
+			else:
+				$AnimatedSprite2D.play("idle")
 		else:
 			is_moving = true  # Not a valid blocker, keep moving
 	else:
@@ -35,5 +39,10 @@ func Dead():
 	is_moving = false
 	velocity = 0.0  # Correct type
 	$AnimatedSprite2D.play("death")
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(.8).timeout
 	queue_free()
+
+
+func attack():
+	$AnimatedSprite2D.play("attack")
+	
