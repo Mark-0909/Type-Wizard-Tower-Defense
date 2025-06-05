@@ -7,8 +7,10 @@ var is_moving: bool = true
 var _is_on_aim: bool = false
 
 func _ready() -> void:
-	$word.text = word.to_upper()
+	var label = $TextureRect/word
+	label.text = word.to_upper()
 	$RayCast2D.enabled = true
+	
 
 func is_on_aim() -> bool:
 	return _is_on_aim

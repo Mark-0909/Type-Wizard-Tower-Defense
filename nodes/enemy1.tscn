@@ -1,8 +1,51 @@
-[gd_scene load_steps=24 format=3 uid="uid://eit30frmp6kp"]
+[gd_scene load_steps=44 format=3 uid="uid://eit30frmp6kp"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_b4256"]
 [ext_resource type="Texture2D" uid="uid://b0ixe0rndbyr2" path="res://assets/enemy/slime1/Slime1_Death_full with fire.png" id="2_ndip2"]
+[ext_resource type="Texture2D" uid="uid://chkvakwe08xle" path="res://assets/enemy/slime1/Slime1_Attack_full.png" id="2_u6tlb"]
 [ext_resource type="Texture2D" uid="uid://brmqg4w5s8irl" path="res://assets/enemy/slime1/Slime1_Run_full.png" id="3_mel7l"]
+[ext_resource type="Texture2D" uid="uid://cc62i5jos0t6i" path="res://assets/enemy/slime1/Slime1_Idle_full.png" id="5_2ihxl"]
+[ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="6_ak1ml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sy23"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8cgu"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x534u"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85sya"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b0da"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1xse"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oy30"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7bg8"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axuee"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq012"]
+atlas = ExtResource("2_u6tlb")
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tq6jd"]
 atlas = ExtResource("2_ndip2")
@@ -76,8 +119,67 @@ region = Rect2(384, 0, 64, 64)
 atlas = ExtResource("3_mel7l")
 region = Rect2(448, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m3sv"]
+atlas = ExtResource("5_2ihxl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6wd5"]
+atlas = ExtResource("5_2ihxl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp1jr"]
+atlas = ExtResource("5_2ihxl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpdue"]
+atlas = ExtResource("5_2ihxl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p3pp"]
+atlas = ExtResource("5_2ihxl")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o4dg"]
+atlas = ExtResource("5_2ihxl")
+region = Rect2(320, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_t3iou"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sy23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8cgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x534u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85sya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b0da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1xse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oy30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7bg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axuee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq012")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 9.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tq6jd")
@@ -141,10 +243,37 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m3sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6wd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp1jr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpdue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p3pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o4dg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
 radius = 51.5261
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr2my"]
+atlas = ExtResource("6_ak1ml")
+region = Rect2(176, 0, 16, 16)
 
 [node name="enemy1" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(2.2955, 2.19078)
@@ -154,17 +283,9 @@ script = ExtResource("1_b4256")
 position = Vector2(7.62939e-06, -9.35741)
 scale = Vector2(4.65585, 3.87276)
 sprite_frames = SubResource("SpriteFrames_t3iou")
-animation = &"death"
+animation = &"attack"
 autoplay = "default"
-frame_progress = 0.587868
-
-[node name="word" type="Label" parent="."]
-offset_left = -33.0
-offset_top = -86.0
-offset_right = 30.0
-offset_bottom = -63.0
-text = "WORD"
-horizontal_alignment = 1
+frame_progress = 0.709697
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 63.4477)
@@ -173,3 +294,37 @@ target_position = Vector2(-0.435635, 6.84688)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.217816, -10.2703)
 shape = SubResource("CircleShape2D_hg4es")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -56.6325
+offset_top = -98.1386
+offset_right = -16.6325
+offset_bottom = -58.1386
+scale = Vector2(2.66203, 1.09567)
+texture = SubResource("AtlasTexture_nr2my")
+
+[node name="word" type="Label" parent="TextureRect"]
+offset_left = 4.58213
+offset_top = 7.9154
+offset_right = 67.5821
+offset_bottom = 30.9154
+scale = Vector2(0.481177, 1.04531)
+text = "WORD"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = -56.6325
+offset_top = -98.1386
+offset_right = -16.6325
+offset_bottom = -58.1386
+scale = Vector2(2.66203, 1.09567)
+texture = SubResource("AtlasTexture_nr2my")
+
+[node name="word" type="Label" parent="TextureRect2"]
+offset_left = 4.58213
+offset_top = 7.9154
+offset_right = 67.5821
+offset_bottom = 30.9154
+scale = Vector2(0.481177, 1.04531)
+text = "WORD"
+horizontal_alignment = 1
