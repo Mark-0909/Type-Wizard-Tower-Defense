@@ -200,18 +200,18 @@ position = Vector2(0.217816, -10.2703)
 shape = SubResource("CircleShape2D_hg4es")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -64.0383
-offset_top = -98.1386
-offset_right = -24.0383
-offset_bottom = -58.1386
-scale = Vector2(3.12561, 1.09567)
+offset_left = -68.8303
+offset_top = -97.6821
+offset_right = -28.8303
+offset_bottom = -57.6821
+scale = Vector2(3.36957, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="."]
-offset_left = -44.1448
-offset_top = -89.0094
-offset_right = 23.8552
-offset_bottom = -66.0094
+offset_left = -61.4245
+offset_top = -89.9223
+offset_right = 31.5755
+offset_bottom = -66.9223
 scale = Vector2(1.29446, 1.20944)
-text = "WORDSS"
+text = "VENOMOUS"
 horizontal_alignment = 1

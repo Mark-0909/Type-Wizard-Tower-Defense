@@ -62,7 +62,7 @@ scale = Vector2(0.0932928, 1.80203)
 script = ExtResource("3_j75sh")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 30.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

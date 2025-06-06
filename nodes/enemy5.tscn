@@ -246,18 +246,18 @@ position = Vector2(0.217816, -10.2703)
 shape = SubResource("CircleShape2D_hg4es")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -67.959
+offset_left = -72.3153
 offset_top = -96.7692
-offset_right = -27.959
+offset_right = -32.3153
 offset_bottom = -56.7692
-scale = Vector2(3.30676, 1.09567)
+scale = Vector2(3.56814, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="."]
-offset_left = -49.2267
+offset_left = -64.0383
 offset_top = -90.8352
-offset_right = 35.7733
+offset_right = 47.9617
 offset_bottom = -67.8352
 scale = Vector2(1.10938, 1.3589)
-text = "WORDSSSS"
+text = "NECROMANCY"
 horizontal_alignment = 1

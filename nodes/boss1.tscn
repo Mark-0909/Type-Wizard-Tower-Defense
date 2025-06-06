@@ -1,6 +1,5 @@
-[gd_scene load_steps=22 format=3 uid="uid://65h3bsbpbnd5"]
+[gd_scene load_steps=21 format=3 uid="uid://65h3bsbpbnd5"]
 
-[ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_nwmym"]
 [ext_resource type="Texture2D" uid="uid://b0ykneklgyop7" path="res://assets/enemy/mantis/MantisMove.png" id="2_o2ud6"]
 [ext_resource type="Texture2D" uid="uid://bbq337nnigb3f" path="res://assets/enemy/mantis/MantisAttack2.png" id="2_o3kad"]
 [ext_resource type="Texture2D" uid="uid://c1r1jvto2papo" path="res://assets/enemy/mantis/MantisMove2.png" id="3_ibf3j"]
@@ -139,9 +138,8 @@ radius = 51.5261
 atlas = ExtResource("6_yf8p8")
 region = Rect2(176, 0, 16, 16)
 
-[node name="golem" type="CharacterBody2D" groups=["enemy"]]
+[node name="mantis" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(2.2955, 2.19078)
-script = ExtResource("1_nwmym")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3.69925, -12.9154)
@@ -149,7 +147,7 @@ scale = Vector2(4.10611, 3.40829)
 sprite_frames = SubResource("SpriteFrames_t3iou")
 animation = &"attack"
 autoplay = "default"
-frame_progress = 0.116451
+frame_progress = 0.690764
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 63.4477)

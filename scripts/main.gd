@@ -14,16 +14,31 @@ extends Node2D
 var spawn_areas: Array[Marker2D] = []
 var typed_letters: Array = []
 
-var letter_offset := 0  # Start at 0 and increment for each new letter
-var letter_spacing := 150  # Space between letters (adjust as needed)
-var letter_scale := Vector2(1, 1)  # Adjust to your desired size
-
+var letter_offset := 0
+var letter_spacing := 150
+var letter_scale := Vector2(1, 1)
 var last_spawn_position = 0
-
-var velocity:float = 100.0
+var velocity: float = 100.0
 
 # Enemies
-const ENEMY_1 = preload("res://nodes/boss1.tscn")
+const ENEMY_1 = preload("res://nodes/enemy1.tscn")
+const ENEMY_2 = preload("res://nodes/enemy2.tscn")
+const ENEMY_3 = preload("res://nodes/enemy3.tscn")
+const ENEMY_4 = preload("res://nodes/enemy4.tscn")
+const ENEMY_5 = preload("res://nodes/enemy5.tscn")
+const ENEMY_6 = preload("res://nodes/enemy6.tscn")
+const ENEMY_7 = preload("res://nodes/enemy7.tscn")
+
+var enemy_types_by_length := {
+	4: ENEMY_1,
+	5: ENEMY_2,
+	6: ENEMY_2,
+	7: ENEMY_3,
+	8: ENEMY_4,
+	9: ENEMY_5,
+	10: ENEMY_6,
+	11: ENEMY_7  
+}
 
 @onready var game_manager: Node = $GameManager
 @onready var typing_container: Control = $Typingcontainer
@@ -34,14 +49,12 @@ var spawn_interval := 3.0
 var min_spawn_interval := 0.8
 var spawn_acceleration := 0.01
 
-
 func _ready() -> void:
 	spawn_areas = [
 		spawn_area_1, spawn_area_2, spawn_area_3,
 		spawn_area_4, spawn_area_5, spawn_area_6,
 		spawn_area_7, spawn_area_8, spawn_area_9
 	]
-
 
 func _process(delta: float) -> void:
 	spawn_timer -= delta
@@ -58,34 +71,33 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Clear"):
 		clear_typed_letters()
 
-
 func spawn_enemy() -> void:
-	var enemy = ENEMY_1.instantiate()
+	var word_length = randi_range(4, 11)
+	var word_list = game_manager.word_pool.get(word_length, [])
+	if word_list.size() == 0:
+		return
+
+	var word = word_list.pick_random()
+	var enemy_scene = enemy_types_by_length.get(word_length, ENEMY_1)
+	var enemy = enemy_scene.instantiate()
+	enemy.word = word
+	enemy.velocity = velocity
 
 	var index := randi() % spawn_areas.size()
-
-	# Prevent spawning twice in a row in the same spot
 	while index == last_spawn_position and spawn_areas.size() > 1:
 		index = randi() % spawn_areas.size()
-
 	var area = spawn_areas[index]
 	last_spawn_position = index
-
 	enemy.global_position = area.global_position
 
-	var word_length = randi_range(4, 10)
-	var word_list = game_manager.word_pool.get(word_length, [])
-	if word_list.size() > 0:
-		enemy.word = word_list.pick_random()
-	enemy.velocity = velocity
 	add_child(enemy)
 
+	# ✅ Removed spawn_interval adjustment based on word length
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key = event.keycode
 
-		# Backspace support (removes the last letter)
 		if key == KEY_BACKSPACE and typed_letters.size() > 0:
 			var last_letter_dict = typed_letters.pop_back()
 			last_letter_dict.node.queue_free()
@@ -93,7 +105,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			_print_typed_letters()
 			return
 
-		# Add letter if valid
 		if game_manager.letter_scenes.has(key):
 			var letter_scene = game_manager.letter_scenes[key]
 			var letter_instance = letter_scene.instantiate()
@@ -108,22 +119,16 @@ func _unhandled_input(event: InputEvent) -> void:
 				var label = letter_instance.get_node("Label")
 				letter_size = label.get_minimum_size() * letter_instance.scale
 
-			# Center the letter in the typing container
 			var container_center = typing_container.global_position + typing_container.size / 2.0
 			letter_instance.position = container_center - letter_size / 2.0 + Vector2(letter_offset, 0)
-
 			letter_offset += letter_spacing
 
-			# Extract letter from the scene's filename (like 'a' from 'a.tscn')
 			var path = letter_scene.resource_path
 			var letter_char = path.get_file().get_basename().to_upper()
-
 			typed_letters.append({"node": letter_instance, "char": letter_char})
 
 			_print_typed_letters()
 			check_enemy_matches()
-	
-
 
 func _print_typed_letters() -> void:
 	var typed_text := ""
@@ -138,26 +143,20 @@ func check_enemy_matches() -> void:
 
 	for enemy in get_tree().get_nodes_in_group("enemy"):
 		if enemy.has_method("get_word") and not enemy.is_on_aim():
-			
 			if enemy.get_word().to_upper() == typed_text:
 				print("Matched enemy with word:", enemy.get_word())
 				if $Castle/Wizard.has_method("Fire"):
 					$Castle/Wizard.get_node("AnimatedSprite2D").play("attack")
 					await get_tree().create_timer(0.2).timeout
 					$Castle/Wizard.Fire(enemy)
-					
 				clear_typed_letters()
 				enemy._is_on_aim = true
-	
-
-
 
 func clear_typed_letters():
 	for letter_dict in typed_letters:
 		letter_dict.node.queue_free()
 	typed_letters.clear()
 	letter_offset = 0
-
 
 func _on_timer_timeout() -> void:
 	velocity += 50.0

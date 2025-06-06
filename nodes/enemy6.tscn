@@ -296,10 +296,10 @@ scale = Vector2(3.95665, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="."]
-offset_left = -53.5831
-offset_top = -90.8352
-offset_right = 40.4169
-offset_bottom = -67.8352
+offset_left = -66.2165
+offset_top = -92.2046
+offset_right = 53.7835
+offset_bottom = -69.2046
 scale = Vector2(1.10938, 1.3589)
-text = "WORDSSSSS"
+text = "COMMANDANT"
 horizontal_alignment = 1
