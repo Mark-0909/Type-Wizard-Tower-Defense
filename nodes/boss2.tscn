@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://deirhnqx4fede"]
+[gd_scene load_steps=29 format=3 uid="uid://deirhnqx4fede"]
 
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_46def"]
 [ext_resource type="Texture2D" uid="uid://b8lgy4rbd0kol" path="res://assets/enemy/plant3/Plant3_Attack_full.png" id="1_a3iim"]
 [ext_resource type="Texture2D" uid="uid://df5xgnlwjrqs" path="res://assets/enemy/plant3/Plant3_Death_full.png" id="2_cylnh"]
 [ext_resource type="Texture2D" uid="uid://pd1o7yjh6ts3" path="res://assets/enemy/plant3/Plant3_Run_full.png" id="3_63v2d"]
@@ -177,6 +178,7 @@ region = Rect2(176, 0, 16, 16)
 
 [node name="plantboss" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(2.2955, 2.19078)
+script = ExtResource("1_46def")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3.69925, -12.9154)

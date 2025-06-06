@@ -1,5 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://csptvurjy3oq8"]
+[gd_scene load_steps=32 format=3 uid="uid://csptvurjy3oq8"]
 
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_56p21"]
 [ext_resource type="Texture2D" uid="uid://gfhiijuwffeb" path="res://assets/enemy/vampire3/Vampires3_Attack_full.png" id="1_n0dum"]
 [ext_resource type="Texture2D" uid="uid://dn7u0sn32mv8u" path="res://assets/enemy/vampire3/Vampires3_Death_full.png" id="2_mopq4"]
 [ext_resource type="Texture2D" uid="uid://j3340wo1e7rg" path="res://assets/enemy/vampire3/Vampires3_Run_full.png" id="3_hr2ty"]
@@ -198,6 +199,7 @@ region = Rect2(176, 0, 16, 16)
 
 [node name="vampireboass" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(2.2955, 2.19078)
+script = ExtResource("1_56p21")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3.69925, -12.9154)

@@ -26,5 +26,8 @@ func _on_body_entered(body: Node2D) -> void:
 		is_gone = true
 		$AnimatedSprite2D.play("gone")
 		await get_tree().create_timer(0.3).timeout
-		body.Dead()
+		if body.has_method("Dead"):
+			body.Dead()
+		else:
+			pass
 		queue_free()

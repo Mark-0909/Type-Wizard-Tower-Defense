@@ -5,7 +5,7 @@ extends Node2D
 @onready var spawn_area_2: Marker2D = $"spawn area/Marker2D2"
 @onready var spawn_area_3: Marker2D = $"spawn area/Marker2D3"
 @onready var spawn_area_4: Marker2D = $"spawn area/Marker2D4"
-@onready var spawn_area_5: Marker2D = $"spawn area/Marker2D5"
+@onready var spawn_area_5: Marker2D = $"spawn area/Marker2D5" # Boss area
 @onready var spawn_area_6: Marker2D = $"spawn area/Marker2D6"
 @onready var spawn_area_7: Marker2D = $"spawn area/Marker2D7"
 @onready var spawn_area_8: Marker2D = $"spawn area/Marker2D8"
@@ -13,7 +13,6 @@ extends Node2D
 
 var spawn_areas: Array[Marker2D] = []
 var typed_letters: Array = []
-
 var letter_offset := 0
 var letter_spacing := 150
 var letter_scale := Vector2(1, 1)
@@ -34,26 +33,20 @@ const BOSS_1 = preload("res://nodes/boss1.tscn")
 const BOSS_2 = preload("res://nodes/boss2.tscn")
 const BOSS_3 = preload("res://nodes/boss3.tscn")
 const BOSS_4 = preload("res://nodes/boss4.tscn")
-
-var enemy_types_by_length := {
-	4: ENEMY_1,
-	5: ENEMY_2,
-	6: ENEMY_2,
-	7: ENEMY_3,
-	8: ENEMY_4,
-	9: ENEMY_5,
-	10: ENEMY_6,
-	11: ENEMY_7  
-}
-
-@onready var game_manager: Node = $GameManager
-@onready var typing_container: Control = $Typingcontainer
+var boss_list = [BOSS_1, BOSS_2, BOSS_3, BOSS_4]
+var boss_spawned := false
+var boss_killed := true
+var current_boss = null
 
 # Spawn settings
 var spawn_timer := 0.0
 var spawn_interval := 3.0
 var min_spawn_interval := 0.8
 var spawn_acceleration := 0.01
+var stop_spawning := false
+
+@onready var game_manager: Node = $GameManager
+@onready var typing_container: Control = $Typingcontainer
 
 func _ready() -> void:
 	spawn_areas = [
@@ -61,19 +54,21 @@ func _ready() -> void:
 		spawn_area_4, spawn_area_5, spawn_area_6,
 		spawn_area_7, spawn_area_8, spawn_area_9
 	]
+	start_boss_cycle()
 
 func _process(delta: float) -> void:
-	spawn_timer -= delta
-	if spawn_timer <= 0:
-		spawn_enemy()
-		spawn_interval = max(min_spawn_interval, spawn_interval - spawn_acceleration)
-		spawn_timer = spawn_interval
+	if not stop_spawning:
+		spawn_timer -= delta
+		if spawn_timer <= 0:
+			spawn_enemy()
+			spawn_interval = max(min_spawn_interval, spawn_interval - spawn_acceleration)
+			spawn_timer = spawn_interval
 
 	if typed_letters.size() > 0:
 		$Castle/Wizard._change_state($Castle/Wizard.State.CHARGING)
-	else: 
+	else:
 		$Castle/Wizard._change_state($Castle/Wizard.State.IDLE)
-	
+
 	if Input.is_action_just_pressed("Clear"):
 		clear_typed_letters()
 
@@ -89,21 +84,27 @@ func spawn_enemy() -> void:
 	enemy.word = word
 	enemy.velocity = velocity
 
-	var index := randi() % spawn_areas.size()
-	while index == last_spawn_position and spawn_areas.size() > 1:
-		index = randi() % spawn_areas.size()
-	var area = spawn_areas[index]
+	var available_areas = get_valid_spawn_areas()
+	if available_areas.is_empty():
+		return
+
+	var index := randi() % available_areas.size()
+	var area = available_areas[index]
 	last_spawn_position = index
 	enemy.global_position = area.global_position
-
 	add_child(enemy)
 
-	# ✅ Removed spawn_interval adjustment based on word length
+func get_valid_spawn_areas() -> Array:
+	var areas = spawn_areas.duplicate()
+	if boss_spawned:
+		areas.erase(spawn_area_4)
+		areas.erase(spawn_area_5)
+		areas.erase(spawn_area_6)
+	return areas
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key = event.keycode
-
 		if key == KEY_BACKSPACE and typed_letters.size() > 0:
 			var last_letter_dict = typed_letters.pop_back()
 			last_letter_dict.node.queue_free()
@@ -148,15 +149,36 @@ func check_enemy_matches() -> void:
 		typed_text += letter_dict.char
 
 	for enemy in get_tree().get_nodes_in_group("enemy"):
-		if enemy.has_method("get_word") and not enemy.is_on_aim():
-			if enemy.get_word().to_upper() == typed_text:
-				print("Matched enemy with word:", enemy.get_word())
-				if $Castle/Wizard.has_method("Fire"):
-					$Castle/Wizard.get_node("AnimatedSprite2D").play("attack")
-					await get_tree().create_timer(0.2).timeout
-					$Castle/Wizard.Fire(enemy)
-				clear_typed_letters()
-				enemy._is_on_aim = true
+		if not is_instance_valid(enemy):
+			continue
+		if not enemy.has_method("get_word") or enemy.is_on_aim():
+			continue
+
+		if enemy.get_word().to_upper() == typed_text:
+			print("Matched enemy with word:", enemy.get_word())
+
+			var can_fire := true
+
+			if enemy.is_in_group("boss"):
+				# Check if this word is the FINAL word
+				if not enemy.has_method("is_final_phase") or not enemy.is_final_phase():
+					can_fire = false
+					print("⛔ Boss not in final phase, cannot fire.")
+				else:
+					print("🔥 Boss in final phase, fire allowed.")
+
+			if can_fire and $Castle/Wizard.has_method("Fire"):
+				$Castle/Wizard.get_node("AnimatedSprite2D").play("attack")
+				await get_tree().create_timer(0.2).timeout
+				$Castle/Wizard.Fire(enemy)  # Fireball logic handles damage & die()
+
+			clear_typed_letters()
+
+			if enemy.has_method("next_phase"):
+				enemy.next_phase()  # Move boss to next phase if not dead
+			else:
+				enemy._is_on_aim = true  # Prevent double targeting
+
 
 func clear_typed_letters():
 	for letter_dict in typed_letters:
@@ -166,3 +188,55 @@ func clear_typed_letters():
 
 func _on_timer_timeout() -> void:
 	velocity += 50.0
+
+func start_boss_cycle() -> void:
+	await get_tree().create_timer(15).timeout
+	spawn_boss()
+
+func spawn_boss() -> void:
+	if boss_spawned:
+		return
+
+	var boss_scene = boss_list.pick_random()
+	current_boss = boss_scene.instantiate()
+
+	var chosen_words: Array[String] = []
+	while chosen_words.size() < 4:
+		var length = randi_range(4, 11)
+		var word_list = game_manager.word_pool.get(length, [])
+		if word_list.size() == 0:
+			continue
+		var word = word_list.pick_random()
+		if word not in chosen_words:
+			chosen_words.append(word)
+
+	current_boss.words = chosen_words
+	current_boss.global_position = spawn_area_5.global_position
+	current_boss.boss_died.connect(_on_boss_died)
+	add_child(current_boss)
+	boss_spawned = true
+	boss_killed = false
+	print("⚠️ Boss has spawned with words: ", chosen_words)
+
+	await get_tree().create_timer(15).timeout
+	stop_spawning = true
+
+func _on_boss_died() -> void:
+	print("✅ Boss defeated. Resuming enemy spawn.")
+	stop_spawning = false
+	boss_killed = true
+	boss_spawned = false
+	current_boss = null
+	await get_tree().create_timer(15).timeout
+	spawn_boss()
+
+var enemy_types_by_length := {
+	4: ENEMY_1,
+	5: ENEMY_2,
+	6: ENEMY_2,
+	7: ENEMY_3,
+	8: ENEMY_4,
+	9: ENEMY_5,
+	10: ENEMY_6,
+	11: ENEMY_7
+}
