@@ -282,9 +282,8 @@ script = ExtResource("1_baubp")
 position = Vector2(-3.69925, -12.9154)
 scale = Vector2(2.67518, 2.13545)
 sprite_frames = SubResource("SpriteFrames_t3iou")
-animation = &"death"
+animation = &"idle"
 autoplay = "default"
-frame_progress = 0.258915
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 63.4477)

@@ -290,6 +290,7 @@ scale = Vector2(2.66203, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="TextureRect"]
+layout_mode = 0
 offset_left = 4.58213
 offset_top = 7.9154
 offset_right = 67.5821
