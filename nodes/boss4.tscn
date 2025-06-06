@@ -1,0 +1,219 @@
+[gd_scene load_steps=29 format=3 uid="uid://cpq8a33prinbc"]
+
+[ext_resource type="Texture2D" uid="uid://i0vm4rwu4g5t" path="res://assets/enemy/lavaslime/Slime3_Attack_full.png" id="1_p6h84"]
+[ext_resource type="Texture2D" uid="uid://cstys4ha7n37w" path="res://assets/enemy/lavaslime/Slime3_Death_full.png" id="2_fi8pl"]
+[ext_resource type="Texture2D" uid="uid://7yc1uxhelnt7" path="res://assets/enemy/lavaslime/Slime3_Run_full.png" id="3_gvt2u"]
+[ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="4_5gpxh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xq5f"]
+atlas = ExtResource("1_p6h84")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p827"]
+atlas = ExtResource("1_p6h84")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftbhe"]
+atlas = ExtResource("1_p6h84")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eo5j"]
+atlas = ExtResource("1_p6h84")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60m7h"]
+atlas = ExtResource("1_p6h84")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nokm8"]
+atlas = ExtResource("2_fi8pl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0b85"]
+atlas = ExtResource("2_fi8pl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u326"]
+atlas = ExtResource("2_fi8pl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olet6"]
+atlas = ExtResource("2_fi8pl")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmw0u"]
+atlas = ExtResource("2_fi8pl")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m4a5"]
+atlas = ExtResource("2_fi8pl")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m573"]
+atlas = ExtResource("2_fi8pl")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ibn3"]
+atlas = ExtResource("2_fi8pl")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv0np"]
+atlas = ExtResource("3_gvt2u")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlqui"]
+atlas = ExtResource("3_gvt2u")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phjew"]
+atlas = ExtResource("3_gvt2u")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvwn0"]
+atlas = ExtResource("3_gvt2u")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_movho"]
+atlas = ExtResource("3_gvt2u")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx7pu"]
+atlas = ExtResource("3_gvt2u")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp334"]
+atlas = ExtResource("3_gvt2u")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx4ut"]
+atlas = ExtResource("3_gvt2u")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t3iou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xq5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p827")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftbhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eo5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60m7h")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nokm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0b85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u326")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olet6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmw0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m4a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m573")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ibn3")
+}],
+"loop": true,
+"name": &"death",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv0np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlqui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phjew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvwn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_movho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx7pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp334")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx4ut")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
+radius = 51.5261
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr2my"]
+atlas = ExtResource("4_5gpxh")
+region = Rect2(176, 0, 16, 16)
+
+[node name="slimeboss" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(2.2955, 2.19078)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.69925, -12.9154)
+scale = Vector2(4.10611, 3.40829)
+sprite_frames = SubResource("SpriteFrames_t3iou")
+animation = &"attack"
+autoplay = "default"
+frame_progress = 0.43056
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 63.4477)
+target_position = Vector2(-0.435635, 6.84688)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.39235, -5.15559)
+shape = SubResource("CircleShape2D_hg4es")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -84.5132
+offset_top = -98.1386
+offset_right = -44.5132
+offset_bottom = -58.1386
+scale = Vector2(4.20061, 1.09567)
+texture = SubResource("AtlasTexture_nr2my")
+
+[node name="word" type="Label" parent="."]
+offset_left = -58.3751
+offset_top = -90.8352
+offset_right = 44.6249
+offset_bottom = -67.8352
+scale = Vector2(1.10938, 1.3589)
+text = "WORDSSSSSS"
+horizontal_alignment = 1

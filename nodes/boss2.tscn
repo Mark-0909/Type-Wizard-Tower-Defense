@@ -1,0 +1,212 @@
+[gd_scene load_steps=28 format=3 uid="uid://deirhnqx4fede"]
+
+[ext_resource type="Texture2D" uid="uid://b8lgy4rbd0kol" path="res://assets/enemy/plant3/Plant3_Attack_full.png" id="1_a3iim"]
+[ext_resource type="Texture2D" uid="uid://df5xgnlwjrqs" path="res://assets/enemy/plant3/Plant3_Death_full.png" id="2_cylnh"]
+[ext_resource type="Texture2D" uid="uid://pd1o7yjh6ts3" path="res://assets/enemy/plant3/Plant3_Run_full.png" id="3_63v2d"]
+[ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="4_r123n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuju7"]
+atlas = ExtResource("1_a3iim")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v38ma"]
+atlas = ExtResource("1_a3iim")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eydib"]
+atlas = ExtResource("1_a3iim")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulhfm"]
+atlas = ExtResource("1_a3iim")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qobi8"]
+atlas = ExtResource("2_cylnh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bwxc"]
+atlas = ExtResource("2_cylnh")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aegfb"]
+atlas = ExtResource("2_cylnh")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k84r"]
+atlas = ExtResource("2_cylnh")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chyh0"]
+atlas = ExtResource("2_cylnh")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl1bp"]
+atlas = ExtResource("2_cylnh")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gij0d"]
+atlas = ExtResource("2_cylnh")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r6yy"]
+atlas = ExtResource("2_cylnh")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j600r"]
+atlas = ExtResource("3_63v2d")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjdt4"]
+atlas = ExtResource("3_63v2d")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iphnh"]
+atlas = ExtResource("3_63v2d")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pr21"]
+atlas = ExtResource("3_63v2d")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1hrp"]
+atlas = ExtResource("3_63v2d")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrvb"]
+atlas = ExtResource("3_63v2d")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0f1e"]
+atlas = ExtResource("3_63v2d")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c460c"]
+atlas = ExtResource("3_63v2d")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t3iou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuju7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v38ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eydib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulhfm")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qobi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bwxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aegfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k84r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chyh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl1bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gij0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r6yy")
+}],
+"loop": true,
+"name": &"death",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j600r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjdt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iphnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pr21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1hrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0f1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c460c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
+radius = 51.5261
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr2my"]
+atlas = ExtResource("4_r123n")
+region = Rect2(176, 0, 16, 16)
+
+[node name="plantboss" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(2.2955, 2.19078)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.69925, -12.9154)
+scale = Vector2(4.10611, 3.40829)
+sprite_frames = SubResource("SpriteFrames_t3iou")
+animation = &"attack"
+autoplay = "default"
+frame_progress = 0.64352
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 63.4477)
+target_position = Vector2(-0.435635, 6.84688)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.39235, -5.15559)
+shape = SubResource("CircleShape2D_hg4es")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -84.5132
+offset_top = -98.1386
+offset_right = -44.5132
+offset_bottom = -58.1386
+scale = Vector2(4.20061, 1.09567)
+texture = SubResource("AtlasTexture_nr2my")
+
+[node name="word" type="Label" parent="."]
+offset_left = -58.3751
+offset_top = -90.8352
+offset_right = 44.6249
+offset_bottom = -67.8352
+scale = Vector2(1.10938, 1.3589)
+text = "WORDSSSSSS"
+horizontal_alignment = 1
