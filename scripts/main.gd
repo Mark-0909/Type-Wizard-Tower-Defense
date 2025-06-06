@@ -29,6 +29,12 @@ const ENEMY_5 = preload("res://nodes/enemy5.tscn")
 const ENEMY_6 = preload("res://nodes/enemy6.tscn")
 const ENEMY_7 = preload("res://nodes/enemy7.tscn")
 
+# Bosses
+const BOSS_1 = preload("res://nodes/boss1.tscn")
+const BOSS_2 = preload("res://nodes/boss2.tscn")
+const BOSS_3 = preload("res://nodes/boss3.tscn")
+const BOSS_4 = preload("res://nodes/boss4.tscn")
+
 var enemy_types_by_length := {
 	4: ENEMY_1,
 	5: ENEMY_2,

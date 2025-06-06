@@ -289,18 +289,18 @@ position = Vector2(0.217816, -10.2703)
 shape = SubResource("CircleShape2D_hg4es")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -63.6027
+offset_left = -64.4739
 offset_top = -98.1386
-offset_right = -23.6027
+offset_right = -24.4739
 offset_bottom = -58.1386
-scale = Vector2(3.09766, 1.09567)
+scale = Vector2(3.13109, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="."]
-offset_left = -50.5337
-offset_top = -91.7482
-offset_right = 36.4663
-offset_bottom = -68.7482
+offset_left = -57.0682
+offset_top = -92.2046
+offset_right = 43.9318
+offset_bottom = -69.2046
 scale = Vector2(1.10938, 1.3589)
-text = "TRAPDOOR"
+text = "TORMENTOR"
 horizontal_alignment = 1

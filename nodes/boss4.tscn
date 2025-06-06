@@ -191,7 +191,7 @@ scale = Vector2(4.10611, 3.40829)
 sprite_frames = SubResource("SpriteFrames_t3iou")
 animation = &"attack"
 autoplay = "default"
-frame_progress = 0.43056
+frame_progress = 0.989267
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 63.4477)
