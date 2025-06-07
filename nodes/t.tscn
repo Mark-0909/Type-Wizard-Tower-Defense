@@ -16,6 +16,6 @@ animations = [{
 [node name="A" type="Node2D"]
 scale = Vector2(0.037, 0.037)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["letter"]]
 scale = Vector2(1.57913, 1.57335)
 sprite_frames = SubResource("SpriteFrames_ebksr")

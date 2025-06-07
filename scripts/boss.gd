@@ -68,14 +68,22 @@ func next_phase() -> void:
 	if current_word_index >= words.size():
 		die()
 	else:
+		modulate = Color(1, 0.5, 0.5)
+		await get_tree().create_timer(.2).timeout
+		modulate = Color(1, 1, 1)
+		await get_tree().create_timer(.2).timeout
+		modulate = Color(1, 0.5, 0.5)
+		await get_tree().create_timer(.2).timeout
+		modulate = Color(1, 1, 1)
 		print("Boss hit! Lives left: ", words.size() - current_word_index)
 		sprite.play("hurt")
 		_is_on_aim = false
 		is_moving = false  # Boss stops moving permanently
 		# optionally remove _set_word_label() if boss no longer changes label
-		attack()  # Play attack animation forever
-
+		attack()  
+		
 		_set_word_label()
+		
 
 func die() -> void:
 	_is_dead = true
@@ -133,10 +141,25 @@ func Boss1(is_in_effect: bool):
 		
 
 func Boss2(is_in_effect: bool):
-	if is_in_effect:
-		print("plant in effect")
-	else:
-		pass
+	print("Boss2 (Plant) effect in effect:", is_in_effect)
+	var DIRTY = preload("res://assets/dirty.png")
+	
+	for node in get_tree().get_nodes_in_group("letter"):
+		if is_instance_valid(node):
+			# First, check if a dirty overlay already exists on the node
+			var existing_overlay = node.get_node_or_null("DirtyOverlay")
+			
+			if is_in_effect:
+				if existing_overlay == null:
+					var overlay = Sprite2D.new()
+					overlay.name = "DirtyOverlay"
+					overlay.texture = DIRTY
+					overlay.modulate = Color(1, 1, 1, 0.6)  # semi-transparent
+					overlay.z_index = 100  # Ensure it's on top
+					node.add_child(overlay)
+			else:
+				if existing_overlay:
+					existing_overlay.queue_free()
 
 
 func Boss3(is_in_effect: bool):
