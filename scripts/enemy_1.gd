@@ -4,7 +4,14 @@ var word: String = ""
 var velocity: float = 100.0
 var is_moving: bool = true
 var _is_on_aim: bool = false
-var _is_dead: bool = false  # Flag to prevent animation conflicts
+var _is_dead: bool = false  
+
+var boss1_applied = false
+var fade_loop_active = false
+var tween: Tween
+
+var boss3_applied = false
+var boss4_applied = false
 
 func _ready() -> void:
 	$word.text = word.to_upper()
@@ -51,3 +58,57 @@ func attack():
 	if _is_dead:
 		return  # Don’t attack if dead
 	$AnimatedSprite2D.play("attack")
+
+# BOSS EFFECTS
+
+func Boss_1():
+	if not boss1_applied:
+		boss1_applied = true
+		fade_loop_active = true
+		start_fade_loop()
+
+func start_fade_loop() -> void:
+	if not is_instance_valid(self):
+		return
+
+	tween = create_tween()
+	tween.set_loops()  # Infinite looping tween
+
+	while fade_loop_active:
+		tween.tween_property(self, "modulate:a", 0.0, 0.5)  # Fade out
+		tween.tween_interval(1.0)  # Stay invisible
+		tween.tween_property(self, "modulate:a", 1.0, 0.5)  # Fade in
+		await tween.finished  # Wait before looping
+
+
+func Boss1_End():
+	boss1_applied = false
+	fade_loop_active = false
+	if tween:
+		tween.kill()
+	modulate.a = 1.0  # Reset to fully visiblese 
+
+func Boss_3():
+	if not boss3_applied:
+		velocity += 100.0
+		modulate = Color(1, 0.5, 0.5)
+		boss3_applied = true  
+func Boss3_End():
+	if boss3_applied:
+		velocity -= 100.0
+		modulate = Color(1, 1, 1)
+		boss3_applied = false 
+
+func Boss_4():
+	if not boss4_applied:
+		var should_apply = randi() % 2 
+		if should_apply == 0:
+			print("Applying blur effect (passed 50% check)")
+			$word.modulate = Color(1, 1, 1, 0.2) 
+			boss4_applied = true
+
+func Boss4_End():
+	if boss4_applied:
+		print("Removing Boss4 blur effect")
+		$word.modulate = Color(1, 1, 1, 1)
+		boss4_applied = false

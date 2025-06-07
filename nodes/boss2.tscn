@@ -176,7 +176,7 @@ radius = 51.5261
 atlas = ExtResource("4_r123n")
 region = Rect2(176, 0, 16, 16)
 
-[node name="plantboss" type="CharacterBody2D" groups=["enemy"]]
+[node name="plantboss" type="CharacterBody2D" groups=["boss2", "enemy"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_46def")
 

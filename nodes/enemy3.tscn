@@ -179,7 +179,7 @@ radius = 51.5261
 atlas = ExtResource("5_rbw5i")
 region = Rect2(176, 0, 16, 16)
 
-[node name="maggot" type="CharacterBody2D" groups=["enemy"]]
+[node name="maggot" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_vktu3")
 

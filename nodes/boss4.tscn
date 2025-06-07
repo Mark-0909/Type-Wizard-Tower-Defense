@@ -183,7 +183,7 @@ radius = 51.5261
 atlas = ExtResource("4_5gpxh")
 region = Rect2(176, 0, 16, 16)
 
-[node name="slimeboss" type="CharacterBody2D" groups=["enemy"]]
+[node name="slimeboss" type="CharacterBody2D" groups=["boss4", "enemy"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_ougir")
 

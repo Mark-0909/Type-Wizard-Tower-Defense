@@ -274,7 +274,7 @@ radius = 51.5261
 atlas = ExtResource("6_s13o2")
 region = Rect2(176, 0, 16, 16)
 
-[node name="golem" type="CharacterBody2D" groups=["enemy"]]
+[node name="golem" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_baubp")
 
