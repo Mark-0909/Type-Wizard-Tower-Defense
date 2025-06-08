@@ -26,21 +26,27 @@ func _ready() -> void:
 
 func spawn_booster() -> void:
 	var chance = randi() % 100
-	if chance >= 25:
-		return  # 75% chance to skip spawning
-	
-	# Proceed with 25% chance
+	if chance >= 10:
+		return  # 90% chance to skip spawning, 25% chance to proceed
+
 	var word_length = 4
 	var word_list = game_manager.word_pool.get(word_length, [])
 	if word_list.size() == 0:
 		return
 
 	var word = word_list.pick_random()
-	var booster_scene = booster_list.pick_random()
+
+	# Pick a random booster and determine its type
+	var booster_index = randi() % booster_list.size()
+	var booster_scene = booster_list[booster_index]
 	var booster = booster_scene.instantiate()
+
 	booster.word = word
-	get_parent().add_child(booster)  # You might want to spawn it in world space instead
-	booster.global_position = global_position  # Set booster position to enemy's position
+	booster.game_manager = game_manager
+	booster.booster_type = booster_index + 1  # index 0 = type 1, index 1 = type 2, etc.
+
+	get_parent().add_child(booster)  # Adds booster to the world scene
+	booster.global_position = global_position  # Spawns at enemy's position
 
 
 func is_on_aim() -> bool:

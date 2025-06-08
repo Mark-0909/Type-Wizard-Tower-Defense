@@ -142,12 +142,33 @@ func _unhandled_input(event: InputEvent) -> void:
 
 			_print_typed_letters()
 			check_enemy_matches()
+			check_booster_matches()
 
 func _print_typed_letters() -> void:
 	var typed_text := ""
 	for letter_dict in typed_letters:
 		typed_text += letter_dict.char
 	print("Typed: ", typed_text)
+
+
+func check_booster_matches() -> void:
+	var typed_text := ""
+	for letter_dict in typed_letters:
+		if "char" in letter_dict:
+			typed_text += str(letter_dict.char)
+
+	for booster in get_tree().get_nodes_in_group("booster"):
+		if not is_instance_valid(booster):
+			continue
+		if not booster.has_method("get_word") or not booster.has_method("Match"):
+			continue
+
+		if booster.get_word().to_upper() == typed_text.to_upper():
+			print("Matched booster with word:", booster.get_word())
+			clear_typed_letters()
+			booster.Match()
+
+
 
 func check_enemy_matches() -> void:
 	var typed_text := ""

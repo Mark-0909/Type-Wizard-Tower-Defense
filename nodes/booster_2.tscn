@@ -34,7 +34,8 @@ animations = [{
 atlas = ExtResource("3_3ia15")
 region = Rect2(176, 0, 16, 16)
 
-[node name="Booster1" type="Node2D"]
+[node name="Booster1" type="Node2D" groups=["booster"]]
+scale = Vector2(2.19813, 2.05123)
 script = ExtResource("1_1s36d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
