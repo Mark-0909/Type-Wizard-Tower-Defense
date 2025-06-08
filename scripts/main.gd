@@ -238,6 +238,7 @@ func spawn_boss() -> void:
 			chosen_words.append(word)
 
 	current_boss.words = chosen_words
+	current_boss.game_manager = game_manager
 	current_boss.global_position = spawn_area_5.global_position
 	current_boss.boss_died.connect(_on_boss_died)
 	add_child(current_boss)

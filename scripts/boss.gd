@@ -9,12 +9,16 @@ var _is_on_aim: bool = false
 var _is_dead: bool = false
 var _is_attacking = false
 
-
+@export var game_manager: Node = null
 # Node references
 @onready var label = $word
 @onready var raycast = $RayCast2D
 @onready var sprite = $AnimatedSprite2D
 
+const BOOSTER_1 = preload("res://nodes/booster_1.tscn")
+const BOOSTER_2 = preload("res://nodes/booster_2.tscn")
+const BOOSTER_3 = preload("res://nodes/booster_3.tscn")
+var booster_list = [BOOSTER_1, BOOSTER_2, BOOSTER_3]
 # Signal emitted when boss dies
 signal boss_died
 
@@ -106,6 +110,32 @@ func die() -> void:
 		Boss3(false)
 	elif "boss4" in boss_type:
 		Boss4(false)
+	spawn_booster()
+	
+func spawn_booster() -> void:
+	
+	var chance = randi() % 100
+	if chance >= 50:
+		return  # 90% chance to skip spawning, 25% chance to proceed
+	
+	var word_length = 4
+	var word_list = game_manager.word_pool.get(word_length, [])
+	if word_list.size() == 0:
+		return
+
+	var word = word_list.pick_random()
+
+	# Pick a random booster and determine its type
+	var booster_index = randi() % booster_list.size()
+	var booster_scene = booster_list[booster_index]
+	var booster = booster_scene.instantiate()
+
+	booster.word = word
+	booster.game_manager = game_manager
+	booster.booster_type = booster_index + 1  # index 0 = type 1, index 1 = type 2, etc.
+
+	get_parent().add_child(booster)  # Adds booster to the world scene
+	booster.global_position = global_position  # Spawns at enemy's position
 
 func is_on_aim() -> bool:
 	return _is_on_aim

@@ -122,10 +122,13 @@ func _ready() -> void:
 func Add_Booster(type: int) -> void:
 	if type == 1:
 		Booster_1_Count += 1
+		print("Booster1: ", Booster_1_Count)
 	elif type == 2:
 		Booster_2_Count += 1
+		print("Booster1: ", Booster_2_Count)
 	elif type == 3:
 		Booster_3_Count += 1
+		print("Booster1: ", Booster_3_Count)
 
 func Minus_Booster(type: int) -> void:
 	if type == 1:
