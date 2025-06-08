@@ -4,11 +4,18 @@ var word: String = ""
 var velocity: float = 100.0
 var is_moving: bool = true
 var _is_on_aim: bool = false
-var _is_dead: bool = false  
+var _is_dead: bool = false 
+@export var game_manager: Node = null
+ 
 
 var boss1_applied = false
 var fade_loop_active = false
 var tween: Tween
+
+const BOOSTER_1 = preload("res://nodes/booster_1.tscn")
+const BOOSTER_2 = preload("res://nodes/booster_2.tscn")
+const BOOSTER_3 = preload("res://nodes/booster_3.tscn")
+var booster_list = [BOOSTER_1, BOOSTER_2, BOOSTER_3]
 
 var boss3_applied = false
 var boss4_applied = false
@@ -16,6 +23,25 @@ var boss4_applied = false
 func _ready() -> void:
 	$word.text = word.to_upper()
 	$RayCast2D.enabled = true
+
+func spawn_booster() -> void:
+	var chance = randi() % 100
+	if chance >= 25:
+		return  # 75% chance to skip spawning
+	
+	# Proceed with 25% chance
+	var word_length = 4
+	var word_list = game_manager.word_pool.get(word_length, [])
+	if word_list.size() == 0:
+		return
+
+	var word = word_list.pick_random()
+	var booster_scene = booster_list.pick_random()
+	var booster = booster_scene.instantiate()
+	booster.word = word
+	get_parent().add_child(booster)  # You might want to spawn it in world space instead
+	booster.global_position = global_position  # Set booster position to enemy's position
+
 
 func is_on_aim() -> bool:
 	return _is_on_aim
@@ -53,6 +79,7 @@ func Dead():
 	$AnimatedSprite2D.play("death")
 	await get_tree().create_timer(0.8).timeout
 	queue_free()
+	spawn_booster()
 
 func attack():
 	if _is_dead:

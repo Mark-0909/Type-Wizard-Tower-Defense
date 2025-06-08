@@ -28,6 +28,9 @@ const ENEMY_5 = preload("res://nodes/enemy5.tscn")
 const ENEMY_6 = preload("res://nodes/enemy6.tscn")
 const ENEMY_7 = preload("res://nodes/enemy7.tscn")
 
+# Booster 
+
+
 # Bosses
 const BOSS_1 = preload("res://nodes/boss1.tscn")
 const BOSS_2 = preload("res://nodes/boss2.tscn")
@@ -82,6 +85,7 @@ func spawn_enemy() -> void:
 	var enemy_scene = enemy_types_by_length.get(word_length, ENEMY_1)
 	var enemy = enemy_scene.instantiate()
 	enemy.word = word
+	enemy.game_manager = game_manager
 	enemy.velocity = velocity
 
 	var available_areas = get_valid_spawn_areas()
@@ -93,6 +97,8 @@ func spawn_enemy() -> void:
 	last_spawn_position = index
 	enemy.global_position = area.global_position
 	add_child(enemy)
+
+
 
 func get_valid_spawn_areas() -> Array:
 	var areas = spawn_areas.duplicate()

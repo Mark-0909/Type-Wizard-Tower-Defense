@@ -1,5 +1,10 @@
 extends Node
 
+var Health_Points = 100
+
+var Booster_1_Count = 0
+var Booster_2_Count = 0
+var Booster_3_Count = 0
 
 var word_pool = {
 	4: [
@@ -113,8 +118,38 @@ var letter_scenes = {
 func _ready() -> void:
 	pass # Replace with function body.
 
+# Adding number of booster
+func Add_Booster(type: int) -> void:
+	if type == 1:
+		Booster_1_Count += 1
+	elif type == 2:
+		Booster_2_Count += 1
+	elif type == 3:
+		Booster_3_Count += 1
 
+func Minus_Booster(type: int) -> void:
+	if type == 1:
+		Booster_1_Count -= 1
+		if Booster_1_Count <= 0:
+			Booster_1_Count = 0
+	elif type == 2:
+		Booster_2_Count -= 1
+		if Booster_2_Count <= 0:
+			Booster_2_Count = 0
+	elif type == 3:
+		Booster_3_Count -= 1
+		if Booster_3_Count <= 0:
+			Booster_3_Count = 0
 
-	
+func Add_Health() -> void:
+	Health_Points += 10
+	if Health_Points > 100:
+		Health_Points = 100
+func Minus_Health(point: int) -> void:
+	Health_Points -= point
+	if Health_Points <= 0:
+		pass   # this one should die
+		
+		
 func get_random_word(length: int) -> String:
 	return word_pool[length].pick_random()
