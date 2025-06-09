@@ -1,6 +1,6 @@
 extends Node
 
-var Health_Points = 100
+var Health_Points = 2
 
 var Booster_1_Count = 1
 var Booster_2_Count = 1
@@ -157,8 +157,15 @@ func Add_Health() -> void:
 		Health_Points = 100
 func Minus_Health(point: int) -> void:
 	Health_Points -= point
+
 	if Health_Points <= 0:
-		pass   # this one should die
+		# Delay the reload to prevent issues for other scripts still running
+		call_deferred("_reload_scene")
+
+func _reload_scene():
+	await get_tree().create_timer(0.1).timeout  # small delay
+	get_tree().reload_current_scene()
+
 
  # booster 1 = add castle health
  # booster 2 = freeze

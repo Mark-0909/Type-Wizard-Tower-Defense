@@ -1056,10 +1056,10 @@ offset_bottom = 40.0
 
 [node name="health_indicator" type="Label" parent="Infos"]
 layout_mode = 0
-offset_left = -1443.0
-offset_top = -818.0
-offset_right = -1403.0
-offset_bottom = -795.0
+offset_left = -1101.13
+offset_top = -565.005
+offset_right = -1061.13
+offset_bottom = -542.005
 scale = Vector2(4.98479, 5.17406)
 text = "100"
 
