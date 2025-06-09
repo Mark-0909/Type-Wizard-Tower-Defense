@@ -74,7 +74,13 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("Clear"):
 		clear_typed_letters()
-
+	
+	if Input.is_action_just_pressed("explosion"):
+		game_manager.booster3()
+	if Input.is_action_just_pressed("frozen"):
+		game_manager.booster2()
+	if Input.is_action_just_pressed("health"):
+		game_manager.booster1()
 func spawn_enemy() -> void:
 	var word_length = randi_range(4, 11)
 	var word_list = game_manager.word_pool.get(word_length, [])

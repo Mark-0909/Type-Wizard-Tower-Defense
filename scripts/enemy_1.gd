@@ -2,11 +2,13 @@ extends Node2D
 
 var word: String = ""
 var velocity: float = 100.0
+var delta_data: float = 0.0
 var is_moving: bool = true
 var _is_on_aim: bool = false
-var _is_dead: bool = false 
+var _is_dead: bool = false
+var _is_frozen: bool = false
+
 @export var game_manager: Node = null
- 
 
 var boss1_applied = false
 var fade_loop_active = false
@@ -23,38 +25,13 @@ var boss4_applied = false
 func _ready() -> void:
 	$word.text = word.to_upper()
 	$RayCast2D.enabled = true
-
-func spawn_booster() -> void:
-	var chance = randi() % 100
-	if chance >= 10:
-		return  # 90% chance to skip spawning, 25% chance to proceed
-
-	var word_length = 4
-	var word_list = game_manager.word_pool.get(word_length, [])
-	if word_list.size() == 0:
-		return
-
-	var word = word_list.pick_random()
-
-	# Pick a random booster and determine its type
-	var booster_index = randi() % booster_list.size()
-	var booster_scene = booster_list[booster_index]
-	var booster = booster_scene.instantiate()
-
-	booster.word = word
-	booster.game_manager = game_manager
-	booster.booster_type = booster_index + 1  # index 0 = type 1, index 1 = type 2, etc.
-
-	get_parent().add_child(booster)  # Adds booster to the world scene
-	booster.global_position = global_position  # Spawns at enemy's position
-
-
-func is_on_aim() -> bool:
-	return _is_on_aim
+	$frozen.modulate = Color(1, 1, 1, 0)  # Initially hidden
 
 func _process(delta: float) -> void:
-	if _is_dead:
-		return  # Skip movement and collision if already dead
+	delta_data = delta
+
+	if _is_dead or _is_frozen:
+		return  # Skip movement during death or frozen
 
 	if $RayCast2D.is_colliding():
 		var collider = $RayCast2D.get_collider()
@@ -77,7 +54,7 @@ func get_word() -> String:
 
 func Dead():
 	if _is_dead:
-		return  # Already dying
+		return
 	_is_dead = true
 	is_moving = false
 	velocity = 0.0
@@ -89,56 +66,110 @@ func Dead():
 
 func attack():
 	if _is_dead:
-		return  # Don’t attack if dead
+		return
 	$AnimatedSprite2D.play("attack")
 
-# BOSS EFFECTS
+func is_on_aim() -> bool:
+	return _is_on_aim
 
+# === Booster Spawn ===
+func spawn_booster() -> void:
+	var chance = randi() % 100
+	if chance >= 10:
+		return
+
+	var word_length = 4
+	var word_list = game_manager.word_pool.get(word_length, [])
+	if word_list.is_empty():
+		return
+
+	var word = word_list.pick_random()
+	var booster_index = randi() % booster_list.size()
+	var booster_scene = booster_list[booster_index]
+	var booster = booster_scene.instantiate()
+
+	booster.word = word
+	booster.game_manager = game_manager
+	booster.booster_type = booster_index + 1
+
+	get_parent().add_child(booster)
+	booster.global_position = global_position
+
+# === Frozen Effect ===
+func frozen_apply() -> void:
+	if _is_frozen:
+		return
+
+	_is_frozen = true
+	is_moving = false
+
+	$AnimatedSprite2D.play("idle")
+	$AnimatedSprite2D.modulate = Color(0.5, 0.8, 1.2, 1)
+
+	$frozen.modulate = Color(1, 1, 1, 1)  
+	$frozen.play("freeze")
+
+	await get_tree().create_timer(5).timeout
+	frozen_remove()
+
+func frozen_remove() -> void:
+	_is_frozen = false
+	is_moving = true
+
+	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	$frozen.play("default")  # Stop freeze animation
+	$frozen.modulate = Color(1, 1, 1, 0)  # Hide frozen overlay
+
+# === Boss Effects ===
 func Boss_1():
-	if not boss1_applied:
-		boss1_applied = true
-		fade_loop_active = true
-		start_fade_loop()
+	if boss1_applied:
+		return
+	boss1_applied = true
+	fade_loop_active = true
+	start_fade_loop()
 
 func start_fade_loop() -> void:
 	if not is_instance_valid(self):
 		return
 
 	tween = create_tween()
-	tween.set_loops()  # Infinite looping tween
+	tween.set_loops()
 
 	while fade_loop_active:
-		tween.tween_property(self, "modulate:a", 0.0, 0.5)  # Fade out
-		tween.tween_interval(1.0)  # Stay invisible
-		tween.tween_property(self, "modulate:a", 1.0, 0.5)  # Fade in
-		await tween.finished  # Wait before looping
-
+		tween.tween_property(self, "modulate:a", 0.0, 0.5)
+		tween.tween_interval(1.0)
+		tween.tween_property(self, "modulate:a", 1.0, 0.5)
+		await tween.finished
 
 func Boss1_End():
 	boss1_applied = false
 	fade_loop_active = false
 	if tween:
 		tween.kill()
-	modulate.a = 1.0  # Reset to fully visiblese 
+	modulate.a = 1.0
 
 func Boss_3():
-	if not boss3_applied:
-		velocity += 100.0
-		modulate = Color(1, 0.5, 0.5)
-		boss3_applied = true  
-func Boss3_End():
 	if boss3_applied:
-		velocity -= 100.0
-		modulate = Color(1, 1, 1)
-		boss3_applied = false 
+		return
+	velocity += 100.0
+	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)
+	boss3_applied = true
+
+func Boss3_End():
+	if not boss3_applied:
+		return
+	velocity -= 100.0
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
+	boss3_applied = false
 
 func Boss_4():
-	if not boss4_applied:
-		var should_apply = randi() % 2 
-		if should_apply == 0:
-			print("Applying blur effect (passed 50% check)")
-			$word.modulate = Color(1, 1, 1, 0.2) 
-			boss4_applied = true
+	if boss4_applied:
+		return
+	if randi() % 2 == 0:
+		print("Applying blur effect (passed 50% check)")
+		$word.modulate = Color(1, 1, 1, 0.2)
+		boss4_applied = true
 
 func Boss4_End():
 	if boss4_applied:

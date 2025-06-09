@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cpxunmqwoa0rp"]
+[gd_scene load_steps=45 format=3 uid="uid://cpxunmqwoa0rp"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_4dlym"]
 [ext_resource type="Texture2D" uid="uid://468pmctuduqb" path="res://assets/enemy/vampire1/Vampires1_Attack_full.png" id="2_jcgks"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://xd67otuvv8a6" path="res://assets/enemy/vampire1/Vampires1_Run_full.png" id="4_ryo8a"]
 [ext_resource type="Texture2D" uid="uid://bacdhlcg5n8ar" path="res://assets/enemy/vampire1/Vampires1_Idle_full.png" id="5_qwwpg"]
 [ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="6_6veac"]
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="7_8fpsy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5e128"]
 atlas = ExtResource("2_jcgks")
@@ -268,6 +269,22 @@ radius = 51.5261
 atlas = ExtResource("6_6veac")
 region = Rect2(176, 0, 16, 16)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjgv2"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8fpsy")
+}],
+"loop": true,
+"name": &"freeze",
+"speed": 5.0
+}]
+
 [node name="vampire1" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_4dlym")
@@ -303,3 +320,10 @@ offset_bottom = -69.2046
 scale = Vector2(1.10938, 1.3589)
 text = "COMMANDANT"
 horizontal_alignment = 1
+
+[node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
+position = Vector2(0.435635, 25.1052)
+scale = Vector2(0.312963, 0.253566)
+sprite_frames = SubResource("SpriteFrames_vjgv2")
+animation = &"freeze"
+autoplay = "default"

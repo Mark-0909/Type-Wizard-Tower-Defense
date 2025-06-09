@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://den61ywd5qa03"]
+[gd_scene load_steps=46 format=3 uid="uid://den61ywd5qa03"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_baubp"]
 [ext_resource type="Texture2D" uid="uid://bj4p2s3uoyiat" path="res://assets/enemy/golem/BossEnemy_swipe.png" id="2_nq31j"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cbm27y54vkb8v" path="res://assets/enemy/golem/BossEnemy_walk.png" id="4_ne7at"]
 [ext_resource type="Texture2D" uid="uid://dpaoilasvbfv5" path="res://assets/enemy/golem/BossEnemy_idle.png" id="5_siebg"]
 [ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="6_s13o2"]
+[ext_resource type="Texture2D" uid="uid://cpqkj52eqr03y" path="res://assets/empty.png" id="7_5j846"]
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="7_mciaq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5p8rl"]
 atlas = ExtResource("2_nq31j")
@@ -274,6 +276,25 @@ radius = 51.5261
 atlas = ExtResource("6_s13o2")
 region = Rect2(176, 0, 16, 16)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vic6j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5j846")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_mciaq")
+}],
+"loop": true,
+"name": &"freeze",
+"speed": 5.0
+}]
+
 [node name="golem" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_baubp")
@@ -309,3 +330,9 @@ offset_bottom = -68.7481
 scale = Vector2(1.10938, 1.3589)
 text = "BLOODWEAVER"
 horizontal_alignment = 1
+
+[node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
+position = Vector2(0.435635, 25.1052)
+scale = Vector2(0.312963, 0.253566)
+sprite_frames = SubResource("SpriteFrames_vic6j")
+autoplay = "default"

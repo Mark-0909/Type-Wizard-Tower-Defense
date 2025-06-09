@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://eit30frmp6kp"]
+[gd_scene load_steps=44 format=3 uid="uid://eit30frmp6kp"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_b4256"]
 [ext_resource type="Texture2D" uid="uid://b0ixe0rndbyr2" path="res://assets/enemy/slime1/Slime1_Death_full with fire.png" id="2_ndip2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brmqg4w5s8irl" path="res://assets/enemy/slime1/Slime1_Run_full.png" id="3_mel7l"]
 [ext_resource type="Texture2D" uid="uid://cc62i5jos0t6i" path="res://assets/enemy/slime1/Slime1_Idle_full.png" id="5_2ihxl"]
 [ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="6_ak1ml"]
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="7_p8iyw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5sy23"]
 atlas = ExtResource("2_u6tlb")
@@ -261,6 +262,22 @@ radius = 51.5261
 atlas = ExtResource("6_ak1ml")
 region = Rect2(176, 0, 16, 16)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecyk5"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_p8iyw")
+}],
+"loop": true,
+"name": &"freeze",
+"speed": 5.0
+}]
+
 [node name="slime" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_b4256")
@@ -297,3 +314,10 @@ offset_bottom = -66.9223
 scale = Vector2(1.22348, 1.28785)
 text = "WORD"
 horizontal_alignment = 1
+
+[node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
+position = Vector2(0.435635, 25.1052)
+scale = Vector2(0.312963, 0.253566)
+sprite_frames = SubResource("SpriteFrames_ecyk5")
+animation = &"freeze"
+autoplay = "default"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjwoi5u4w4ld8"]
+[gd_scene load_steps=31 format=3 uid="uid://bjwoi5u4w4ld8"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_vktu3"]
 [ext_resource type="Texture2D" uid="uid://c7mrsc88uvnjk" path="res://assets/enemy/maggot/MaggotSpit.png" id="2_kh3qg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cqeo5afwa2ft0" path="res://assets/enemy/beetle/Beetledeath.png" id="3_8bd3p"]
 [ext_resource type="Texture2D" uid="uid://dfd2opqjarom8" path="res://assets/enemy/maggot/MaggotWalk.png" id="4_wg3qu"]
 [ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="5_rbw5i"]
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="7_uh2bl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xojvw"]
 atlas = ExtResource("2_kh3qg")
@@ -179,6 +180,22 @@ radius = 51.5261
 atlas = ExtResource("5_rbw5i")
 region = Rect2(176, 0, 16, 16)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_uw26p"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_uh2bl")
+}],
+"loop": true,
+"name": &"freeze",
+"speed": 5.0
+}]
+
 [node name="maggot" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_vktu3")
@@ -215,3 +232,10 @@ offset_bottom = -66.9223
 scale = Vector2(1.29446, 1.20944)
 text = "VENOMOUS"
 horizontal_alignment = 1
+
+[node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
+position = Vector2(0.435635, 25.1052)
+scale = Vector2(0.312963, 0.253566)
+sprite_frames = SubResource("SpriteFrames_uw26p")
+animation = &"freeze"
+autoplay = "default"

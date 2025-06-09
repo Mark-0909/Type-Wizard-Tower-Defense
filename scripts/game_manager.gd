@@ -2,9 +2,9 @@ extends Node
 
 var Health_Points = 100
 
-var Booster_1_Count = 0
-var Booster_2_Count = 0
-var Booster_3_Count = 0
+var Booster_1_Count = 1
+var Booster_2_Count = 1
+var Booster_3_Count = 1
 
 var word_pool = {
 	4: [
@@ -118,6 +118,7 @@ var letter_scenes = {
 func _ready() -> void:
 	pass # Replace with function body.
 
+
 # Adding number of booster
 func Add_Booster(type: int) -> void:
 	if type == 1:
@@ -152,7 +153,49 @@ func Minus_Health(point: int) -> void:
 	Health_Points -= point
 	if Health_Points <= 0:
 		pass   # this one should die
-		
-		
+
+ # booster 1 = add castle health
+ # booster 2 = freeze
+ # booster 3 = explosion
+func booster1() -> void:
+	if Booster_1_Count <= 0:
+		return
+	Add_Health()
+	# effects
+	Booster_1_Count -= 1
+
+func booster2() -> void:
+	if Booster_2_Count <= 0:
+		return
+
+	var enemies = get_tree().get_nodes_in_group("enemy") + get_tree().get_nodes_in_group("smallmobs")
+	for enemy in enemies:
+		if not is_instance_valid(enemy):
+			continue
+		if enemy.has_method("frozen_apply"):
+			enemy.frozen_apply()
+
+	Booster_2_Count -= 1
+
+
+func booster3() -> void:
+	if Booster_3_Count <= 0:
+		return
+	
+	# animation effect of explosion
+	var enemies = get_tree().get_nodes_in_group("enemy") + get_tree().get_nodes_in_group("smallmobs")
+	for enemy in enemies:
+		if not is_instance_valid(enemy):
+			continue
+		if enemy.has_method("Dead"):
+			enemy.Dead()
+		await get_tree().create_timer(0.2).timeout
+	Booster_3_Count -= 1
+	
+
 func get_random_word(length: int) -> String:
 	return word_pool[length].pick_random()
+	
+	
+	
+	

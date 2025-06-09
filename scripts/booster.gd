@@ -1,6 +1,6 @@
 extends Node2D
 
- # booster 1 - add castle health
+ # booster 1 = add castle health
  # booster 2 = freeze
  # booster 3 = explosion
 @export var game_manager: Node = null

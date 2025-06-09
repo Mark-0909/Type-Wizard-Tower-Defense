@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://br2uv1wsp3w5k"]
+[gd_scene load_steps=39 format=3 uid="uid://br2uv1wsp3w5k"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_o7lcx"]
 [ext_resource type="Texture2D" uid="uid://bopxuqvcxfgs5" path="res://assets/enemy/plant1/Plant1_Attack_full.png" id="2_wj2v3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0ut54bucjspm" path="res://assets/enemy/plant1/Plant1_Run_full.png" id="4_0p8mf"]
 [ext_resource type="Texture2D" uid="uid://c14361ji0kjwh" path="res://assets/enemy/plant1/Plant1_Idle_full.png" id="5_4ohyw"]
 [ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="6_vws0s"]
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="7_ftpwy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3swqk"]
 atlas = ExtResource("2_wj2v3")
@@ -226,6 +227,22 @@ radius = 51.5261
 atlas = ExtResource("6_vws0s")
 region = Rect2(176, 0, 16, 16)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_myr13"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ftpwy")
+}],
+"loop": true,
+"name": &"freeze",
+"speed": 5.0
+}]
+
 [node name="plant1" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_o7lcx")
@@ -261,3 +278,10 @@ offset_bottom = -67.8352
 scale = Vector2(1.10938, 1.3589)
 text = "NECROMANCY"
 horizontal_alignment = 1
+
+[node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
+position = Vector2(0.435635, 25.1052)
+scale = Vector2(0.312963, 0.253566)
+sprite_frames = SubResource("SpriteFrames_myr13")
+animation = &"freeze"
+autoplay = "default"
