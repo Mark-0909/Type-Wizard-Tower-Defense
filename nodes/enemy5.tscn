@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://br2uv1wsp3w5k"]
+[gd_scene load_steps=58 format=3 uid="uid://br2uv1wsp3w5k"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_o7lcx"]
 [ext_resource type="Texture2D" uid="uid://bopxuqvcxfgs5" path="res://assets/enemy/plant1/Plant1_Attack_full.png" id="2_wj2v3"]
@@ -6,7 +6,26 @@
 [ext_resource type="Texture2D" uid="uid://0ut54bucjspm" path="res://assets/enemy/plant1/Plant1_Run_full.png" id="4_0p8mf"]
 [ext_resource type="Texture2D" uid="uid://c14361ji0kjwh" path="res://assets/enemy/plant1/Plant1_Idle_full.png" id="5_4ohyw"]
 [ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="6_vws0s"]
-[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="7_ftpwy"]
+[ext_resource type="Texture2D" uid="uid://dmax2mo81btdy" path="res://assets/icespike/ice1.png" id="7_dkpp1"]
+[ext_resource type="Texture2D" uid="uid://cm0byunvvm5e4" path="res://assets/icespike/ice2.png" id="8_rd6gj"]
+[ext_resource type="Texture2D" uid="uid://c4sv324e4j0d1" path="res://assets/icespike/ice3.png" id="9_valmh"]
+[ext_resource type="Texture2D" uid="uid://cm8yma702fdcq" path="res://assets/icespike/ice4.png" id="10_b7unv"]
+[ext_resource type="Texture2D" uid="uid://blqqu3li3xv2r" path="res://assets/icespike/ice5.png" id="11_e86he"]
+[ext_resource type="Texture2D" uid="uid://bbh5oaeh8wxjq" path="res://assets/icespike/ice11.png" id="12_cmisn"]
+[ext_resource type="Texture2D" uid="uid://c3xnd6aiwhea0" path="res://assets/icespike/ice22.png" id="13_gw1ms"]
+[ext_resource type="Texture2D" uid="uid://bsbtjfjcg3kf3" path="res://assets/icespike/ice33.png" id="14_lo3hc"]
+[ext_resource type="Texture2D" uid="uid://btc07rde7j8nf" path="res://assets/icespike/ice44.png" id="15_0fhbv"]
+[ext_resource type="Texture2D" uid="uid://bnbotolkd50ge" path="res://assets/icespike/ice55.png" id="16_xqw7a"]
+[ext_resource type="Texture2D" uid="uid://bks3bj0sxrw1b" path="res://assets/icespike/ice111.png" id="17_dyogn"]
+[ext_resource type="Texture2D" uid="uid://bgp7gw45cpej4" path="res://assets/icespike/ice222.png" id="18_c20my"]
+[ext_resource type="Texture2D" uid="uid://dnyupqlonrtc7" path="res://assets/icespike/ice333.png" id="19_cxcgx"]
+[ext_resource type="Texture2D" uid="uid://bsj1123bu1s11" path="res://assets/icespike/ice444.png" id="20_xd3rc"]
+[ext_resource type="Texture2D" uid="uid://b3vo6typckmcy" path="res://assets/icespike/ice555.png" id="21_dqyo1"]
+[ext_resource type="Texture2D" uid="uid://c3nhkjmlnchk0" path="res://assets/icespike/ice1111.png" id="22_4iq8i"]
+[ext_resource type="Texture2D" uid="uid://v04u3yg88yj4" path="res://assets/icespike/ice2222.png" id="23_bqfo4"]
+[ext_resource type="Texture2D" uid="uid://jdbc0vemi40d" path="res://assets/icespike/ice3333.png" id="24_gfy3p"]
+[ext_resource type="Texture2D" uid="uid://dbq366l1607la" path="res://assets/icespike/ice4444.png" id="25_t047v"]
+[ext_resource type="Texture2D" uid="uid://cmn7bb3sgvboj" path="res://assets/icespike/ice5555.png" id="26_bes3f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3swqk"]
 atlas = ExtResource("2_wj2v3")
@@ -227,19 +246,123 @@ radius = 51.5261
 atlas = ExtResource("6_vws0s")
 region = Rect2(176, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_myr13"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_aclii"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_dkpp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rd6gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_valmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b7unv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_e86he")
+}],
 "loop": true,
-"name": &"default",
+"name": &"1",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_ftpwy")
+"texture": ExtResource("11_e86he")
 }],
 "loop": true,
-"name": &"freeze",
+"name": &"11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_cmisn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gw1ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lo3hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0fhbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xqw7a")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_xqw7a")
+}],
+"loop": true,
+"name": &"22",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_dyogn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_c20my")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_cxcgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xd3rc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_dqyo1")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_dqyo1")
+}],
+"loop": true,
+"name": &"33",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_4iq8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_bqfo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_gfy3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_t047v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_bes3f")
+}],
+"loop": true,
+"name": &"4",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_bes3f")
+}],
+"loop": true,
+"name": &"44",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -280,8 +403,8 @@ text = "NECROMANCY"
 horizontal_alignment = 1
 
 [node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
-position = Vector2(0.435635, 25.1052)
-scale = Vector2(0.312963, 0.253566)
-sprite_frames = SubResource("SpriteFrames_myr13")
-animation = &"freeze"
+position = Vector2(-0.435635, 18.2583)
+scale = Vector2(1.31756, 0.923592)
+sprite_frames = SubResource("SpriteFrames_aclii")
+animation = &"22"
 autoplay = "default"

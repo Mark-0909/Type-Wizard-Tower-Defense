@@ -29,7 +29,7 @@ var boss4_applied = false
 func _ready() -> void:
 	$word.text = word.to_upper()
 	$RayCast2D.enabled = true
-	$frozen.modulate = Color(1, 1, 1, 0)  # Initially hidden
+	$frozen.modulate = Color(1, 1, 1, 0)  
 
 func _process(delta: float) -> void:
 	delta_data = delta
@@ -121,11 +121,18 @@ func frozen_apply() -> void:
 	$AnimatedSprite2D.play("idle")
 	$AnimatedSprite2D.modulate = Color(0.5, 0.8, 1.2, 1)
 
-	$frozen.modulate = Color(1, 1, 1, 1)  
-	$frozen.play("freeze")
+	$frozen.modulate = Color(1, 1, 1, 1)
 
+	# Randomly pick from 1 to 4
+	var anim_id := str(randi() % 4 + 1)
+	var steady_id := anim_id + anim_id  # e.g. "1" => "11"
+
+	$frozen.play(anim_id)
+	await get_tree().create_timer(0.5).timeout
+	$frozen.play(steady_id)
 	await get_tree().create_timer(5).timeout
 	frozen_remove()
+
 
 func frozen_remove() -> void:
 	_is_frozen = false

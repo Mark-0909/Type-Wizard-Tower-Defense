@@ -1,6 +1,6 @@
 extends Node
 
-var Health_Points = 2
+var Health_Points = 100
 
 var Booster_1_Count = 1
 var Booster_2_Count = 1

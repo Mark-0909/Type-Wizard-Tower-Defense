@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bjwoi5u4w4ld8"]
+[gd_scene load_steps=50 format=3 uid="uid://bjwoi5u4w4ld8"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_vktu3"]
 [ext_resource type="Texture2D" uid="uid://c7mrsc88uvnjk" path="res://assets/enemy/maggot/MaggotSpit.png" id="2_kh3qg"]
@@ -6,7 +6,26 @@
 [ext_resource type="Texture2D" uid="uid://cqeo5afwa2ft0" path="res://assets/enemy/beetle/Beetledeath.png" id="3_8bd3p"]
 [ext_resource type="Texture2D" uid="uid://dfd2opqjarom8" path="res://assets/enemy/maggot/MaggotWalk.png" id="4_wg3qu"]
 [ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="5_rbw5i"]
-[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="7_uh2bl"]
+[ext_resource type="Texture2D" uid="uid://dmax2mo81btdy" path="res://assets/icespike/ice1.png" id="7_jngfn"]
+[ext_resource type="Texture2D" uid="uid://cm0byunvvm5e4" path="res://assets/icespike/ice2.png" id="8_xungl"]
+[ext_resource type="Texture2D" uid="uid://c4sv324e4j0d1" path="res://assets/icespike/ice3.png" id="9_k2kf5"]
+[ext_resource type="Texture2D" uid="uid://cm8yma702fdcq" path="res://assets/icespike/ice4.png" id="10_drqhh"]
+[ext_resource type="Texture2D" uid="uid://blqqu3li3xv2r" path="res://assets/icespike/ice5.png" id="11_7gc36"]
+[ext_resource type="Texture2D" uid="uid://bbh5oaeh8wxjq" path="res://assets/icespike/ice11.png" id="12_ds5gk"]
+[ext_resource type="Texture2D" uid="uid://c3xnd6aiwhea0" path="res://assets/icespike/ice22.png" id="13_mo3vq"]
+[ext_resource type="Texture2D" uid="uid://bsbtjfjcg3kf3" path="res://assets/icespike/ice33.png" id="14_nvytv"]
+[ext_resource type="Texture2D" uid="uid://btc07rde7j8nf" path="res://assets/icespike/ice44.png" id="15_yrqdv"]
+[ext_resource type="Texture2D" uid="uid://bnbotolkd50ge" path="res://assets/icespike/ice55.png" id="16_4n8x2"]
+[ext_resource type="Texture2D" uid="uid://bks3bj0sxrw1b" path="res://assets/icespike/ice111.png" id="17_hkx15"]
+[ext_resource type="Texture2D" uid="uid://bgp7gw45cpej4" path="res://assets/icespike/ice222.png" id="18_mb852"]
+[ext_resource type="Texture2D" uid="uid://dnyupqlonrtc7" path="res://assets/icespike/ice333.png" id="19_10h5y"]
+[ext_resource type="Texture2D" uid="uid://bsj1123bu1s11" path="res://assets/icespike/ice444.png" id="20_7f1mv"]
+[ext_resource type="Texture2D" uid="uid://b3vo6typckmcy" path="res://assets/icespike/ice555.png" id="21_ur563"]
+[ext_resource type="Texture2D" uid="uid://c3nhkjmlnchk0" path="res://assets/icespike/ice1111.png" id="22_a72ra"]
+[ext_resource type="Texture2D" uid="uid://v04u3yg88yj4" path="res://assets/icespike/ice2222.png" id="23_ombr1"]
+[ext_resource type="Texture2D" uid="uid://jdbc0vemi40d" path="res://assets/icespike/ice3333.png" id="24_5tu81"]
+[ext_resource type="Texture2D" uid="uid://dbq366l1607la" path="res://assets/icespike/ice4444.png" id="25_o15i4"]
+[ext_resource type="Texture2D" uid="uid://cmn7bb3sgvboj" path="res://assets/icespike/ice5555.png" id="26_vegpb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xojvw"]
 atlas = ExtResource("2_kh3qg")
@@ -180,19 +199,123 @@ radius = 51.5261
 atlas = ExtResource("5_rbw5i")
 region = Rect2(176, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uw26p"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_a057k"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_jngfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xungl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_k2kf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_drqhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7gc36")
+}],
 "loop": true,
-"name": &"default",
+"name": &"1",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_uh2bl")
+"texture": ExtResource("11_7gc36")
 }],
 "loop": true,
-"name": &"freeze",
+"name": &"11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ds5gk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mo3vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_nvytv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_yrqdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_4n8x2")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_4n8x2")
+}],
+"loop": true,
+"name": &"22",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_hkx15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_mb852")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_10h5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7f1mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ur563")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_ur563")
+}],
+"loop": true,
+"name": &"33",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_a72ra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ombr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_5tu81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_o15i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_vegpb")
+}],
+"loop": true,
+"name": &"4",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_vegpb")
+}],
+"loop": true,
+"name": &"44",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -234,8 +357,8 @@ text = "VENOMOUS"
 horizontal_alignment = 1
 
 [node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
-position = Vector2(0.435635, 25.1052)
-scale = Vector2(0.312963, 0.253566)
-sprite_frames = SubResource("SpriteFrames_uw26p")
-animation = &"freeze"
+position = Vector2(12.1978, 4.56458)
+scale = Vector2(1.70552, 1.11703)
+sprite_frames = SubResource("SpriteFrames_a057k")
+animation = &"22"
 autoplay = "default"
