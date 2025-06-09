@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://5j1xsgx4xuey"]
+
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="1_153aq"]
+[ext_resource type="Script" path="res://scripts/booster.gd" id="1_cqc5t"]
+[ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="3_606a7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xg588"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_153aq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqm6x"]
+atlas = ExtResource("3_606a7")
+region = Rect2(176, 0, 16, 16)
+
+[node name="Booster1" type="Node2D" groups=["booster"]]
+scale = Vector2(2.8426, 2.7081)
+script = ExtResource("1_cqc5t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7.62939e-06, -9.35741)
+scale = Vector2(0.628943, 0.611414)
+sprite_frames = SubResource("SpriteFrames_xg588")
+autoplay = "default"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -56.6325
+offset_top = -98.1386
+offset_right = -16.6325
+offset_bottom = -58.1386
+scale = Vector2(2.66203, 1.09567)
+texture = SubResource("AtlasTexture_rqm6x")
+
+[node name="word" type="Label" parent="."]
+offset_left = -42.2566
+offset_top = -89.9223
+offset_right = 20.7434
+offset_bottom = -66.9223
+scale = Vector2(1.22348, 1.28785)
+text = "WORD"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -52.0
+offset_right = 27.0
+offset_bottom = -29.0
+text = "Health
+"

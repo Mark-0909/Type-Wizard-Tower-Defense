@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: float = 1000.0
+@export var speed: float = 1500.0
 var target: Node2D = null
 var is_gone: bool = false
 
@@ -8,6 +8,7 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("create")
 	await get_tree().create_timer(0.3).timeout
 	$AnimatedSprite2D.play("default")
+	
 
 func set_target(enemy: Node2D) -> void:
 	target = enemy

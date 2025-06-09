@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://do2p23ai45wr1"]
+
+[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="1_qrhv6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1ddt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qrhv6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq1bk"]
+size = Vector2(127, 128)
+
+[node name="Castle" type="CharacterBody2D" groups=["castle"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i1ddt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_vq1bk")

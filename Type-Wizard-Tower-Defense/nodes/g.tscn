@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://duxb34066am07"]
+
+[ext_resource type="Texture2D" uid="uid://ckp0ywky1qvsh" path="res://assets/letters/g.png" id="1_1bwcf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebksr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1bwcf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="A" type="Node2D"]
+scale = Vector2(0.037, 0.037)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["letter"]]
+scale = Vector2(1.57913, 1.57335)
+sprite_frames = SubResource("SpriteFrames_ebksr")

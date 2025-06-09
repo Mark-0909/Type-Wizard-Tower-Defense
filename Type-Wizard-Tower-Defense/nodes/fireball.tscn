@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0gx2emfmg7vy"]
+
+[ext_resource type="Script" path="res://nodes/fireball.gd" id="1_p76eb"]
+[ext_resource type="Texture2D" uid="uid://cokk4mlnthq3m" path="res://assets/enemy/dust.png" id="2_1kiqw"]
+[ext_resource type="Texture2D" uid="uid://7kk1hd3fxa0" path="res://assets/wizard/fireball1.png" id="2_fb5lx"]
+[ext_resource type="Texture2D" uid="uid://cky7kl3qr1gwo" path="res://assets/wizard/fireballgone3.png" id="2_gv462"]
+[ext_resource type="Texture2D" uid="uid://ca50bevfdv3tg" path="res://assets/wizard/fireballgone2.png" id="3_fkesf"]
+[ext_resource type="Texture2D" uid="uid://bl1l35gxe33if" path="res://assets/wizard/fireball2.png" id="3_mn42y"]
+[ext_resource type="Texture2D" uid="uid://byaemgqmhhthi" path="res://assets/wizard/fireball3.png" id="4_2qc6o"]
+[ext_resource type="Texture2D" uid="uid://n0041ndjprib" path="res://assets/wizard/fireballgone1.png" id="4_y0bwu"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ygrwo"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 0.0
+scale_max = 2.0
+scale_over_velocity_max = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ros1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gv462")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fkesf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y0bwu")
+}],
+"loop": true,
+"name": &"create",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fb5lx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mn42y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2qc6o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y0bwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fkesf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gv462")
+}],
+"loop": true,
+"name": &"gone",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3h5e6"]
+radius = 4.29966
+
+[node name="Fireball" type="Area2D"]
+scale = Vector2(0.17713, 0.182292)
+script = ExtResource("1_p76eb")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+scale = Vector2(0.135, 0.135)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_ygrwo")
+texture = ExtResource("2_1kiqw")
+visibility_rect = Rect2(-100, -100, 194.87, 198.15)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.38419e-07, -2)
+scale = Vector2(0.609375, 0.59375)
+sprite_frames = SubResource("SpriteFrames_ros1a")
+animation = &"gone"
+autoplay = "default"
+frame_progress = 0.763053
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.05053)
+scale = Vector2(3.76169, 3.64632)
+shape = SubResource("CircleShape2D_3h5e6")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -5.4857)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

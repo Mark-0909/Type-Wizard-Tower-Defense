@@ -58,6 +58,7 @@ func _ready() -> void:
 		spawn_area_7, spawn_area_8, spawn_area_9
 	]
 	start_boss_cycle()
+	$Castle.modulate = Color(1,1,1,0)
 
 func _process(delta: float) -> void:
 	if not stop_spawning:
@@ -68,9 +69,9 @@ func _process(delta: float) -> void:
 			spawn_timer = spawn_interval
 
 	if typed_letters.size() > 0:
-		$Castle/Wizard._change_state($Castle/Wizard.State.CHARGING)
+		$Wizard._change_state($Wizard.State.CHARGING)
 	else:
-		$Castle/Wizard._change_state($Castle/Wizard.State.IDLE)
+		$Wizard._change_state($Wizard.State.IDLE)
 
 	if Input.is_action_just_pressed("Clear"):
 		clear_typed_letters()
@@ -200,10 +201,10 @@ func check_enemy_matches() -> void:
 				else:
 					print("🔥 Boss in final phase, fire allowed.")
 
-			if can_fire and $Castle/Wizard.has_method("Fire"):
-				$Castle/Wizard.get_node("AnimatedSprite2D").play("attack")
+			if can_fire and $Wizard.has_method("Fire"):
+				$Wizard.get_node("AnimatedSprite2D").play("attack")
 				await get_tree().create_timer(0.2).timeout
-				$Castle/Wizard.Fire(enemy)  # Fireball logic handles damage & die()
+				$Wizard.Fire(enemy) 
 
 			clear_typed_letters()
 

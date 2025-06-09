@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7mav1xrwribp"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_k30ce"]
+[ext_resource type="PackedScene" uid="uid://do2p23ai45wr1" path="res://nodes/castle.tscn" id="1_v1n8b"]
+[ext_resource type="PackedScene" uid="uid://b161m70ojgujg" path="res://nodes/wizard.tscn" id="2_25rbu"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="3_j75sh"]
+
+[node name="main" type="Node2D"]
+position = Vector2(-4, 0)
+scale = Vector2(1.90086, 2.33673)
+script = ExtResource("1_k30ce")
+
+[node name="Typingcontainer" type="HBoxContainer" parent="."]
+offset_left = -585.0
+offset_top = 593.0
+offset_right = -545.0
+offset_bottom = 633.0
+scale = Vector2(29.0595, 3.79588)
+alignment = 1
+
+[node name="spawn area" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="spawn area"]
+position = Vector2(-1212, -953)
+
+[node name="Marker2D2" type="Marker2D" parent="spawn area"]
+position = Vector2(-909, -953)
+
+[node name="Marker2D3" type="Marker2D" parent="spawn area"]
+position = Vector2(-606, -951)
+
+[node name="Marker2D4" type="Marker2D" parent="spawn area"]
+position = Vector2(-304, -943)
+
+[node name="Marker2D5" type="Marker2D" parent="spawn area"]
+position = Vector2(-1, -942)
+
+[node name="Marker2D6" type="Marker2D" parent="spawn area"]
+position = Vector2(302, -951)
+
+[node name="Marker2D7" type="Marker2D" parent="spawn area"]
+position = Vector2(605, -950)
+
+[node name="Marker2D8" type="Marker2D" parent="spawn area"]
+position = Vector2(908, -954)
+
+[node name="Marker2D9" type="Marker2D" parent="spawn area"]
+position = Vector2(1211, -960)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(5.20855, -3.41952)
+zoom = Vector2(0.385, 0.385)
+
+[node name="Castle" parent="." instance=ExtResource("1_v1n8b")]
+position = Vector2(5, 700)
+scale = Vector2(22.3475, 1.09717)
+
+[node name="Wizard" parent="Castle" instance=ExtResource("2_25rbu")]
+position = Vector2(-0.0447477, -153.121)
+scale = Vector2(0.0932928, 1.80203)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("3_j75sh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="Infos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="health_indicator" type="Label" parent="Infos"]
+layout_mode = 0
+offset_left = -1443.0
+offset_top = -818.0
+offset_right = -1403.0
+offset_bottom = -795.0
+scale = Vector2(4.98479, 5.17406)
+text = "100"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

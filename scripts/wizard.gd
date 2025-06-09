@@ -39,7 +39,7 @@ func Fire(enemy: Node2D):
 		fireball.target = enemy  
 
 	get_parent().add_child(fireball)
-	fireball.scale = Vector2(.2,3)
+	fireball.scale = Vector2(3,3)
 	
 	fireball.z_index = 1000
 	fireball.global_position = marker_2d.global_position
