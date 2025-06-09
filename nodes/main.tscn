@@ -65,4 +65,19 @@ script = ExtResource("3_j75sh")
 wait_time = 30.0
 autostart = true
 
+[node name="Infos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="health_indicator" type="Label" parent="Infos"]
+layout_mode = 0
+offset_left = -1443.0
+offset_top = -818.0
+offset_right = -1403.0
+offset_bottom = -795.0
+scale = Vector2(4.98479, 5.17406)
+text = "100"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

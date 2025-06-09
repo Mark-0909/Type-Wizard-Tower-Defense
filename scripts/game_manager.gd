@@ -6,6 +6,7 @@ var Booster_1_Count = 1
 var Booster_2_Count = 1
 var Booster_3_Count = 1
 
+
 var word_pool = {
 	4: [
 		"fire", "wind", "dark", "gate", "mist", "soul", "burn", "claw", "doom", "howl",
@@ -117,6 +118,11 @@ var letter_scenes = {
 
 func _ready() -> void:
 	pass # Replace with function body.
+
+func _process(delta: float) -> void:
+	$"../Infos/health_indicator".text = str(Health_Points)
+
+
 
 
 # Adding number of booster

@@ -8,6 +8,10 @@ var _is_on_aim: bool = false
 var _is_dead: bool = false
 var _is_frozen: bool = false
 
+var _can_attack: bool = true
+@export var attack_cooldown: float = 1.5  # cooldown in seconds
+
+
 @export var game_manager: Node = null
 
 var boss1_applied = false
@@ -39,6 +43,7 @@ func _process(delta: float) -> void:
 			is_moving = false
 			if collider.is_in_group("castle"):
 				attack()
+				await get_tree().create_timer(1).timeout
 			else:
 				$AnimatedSprite2D.play("idle")
 		else:
@@ -65,9 +70,19 @@ func Dead():
 	spawn_booster()
 
 func attack():
-	if _is_dead:
+	if _is_dead or not _can_attack:
 		return
+
 	$AnimatedSprite2D.play("attack")
+	game_manager.Minus_Health(2)
+	_can_attack = false
+	attack_cooldown_timer()
+
+func attack_cooldown_timer():
+	await get_tree().create_timer(attack_cooldown).timeout
+	_can_attack = true
+
+	
 
 func is_on_aim() -> bool:
 	return _is_on_aim
