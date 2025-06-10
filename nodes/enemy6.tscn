@@ -281,14 +281,11 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
-radius = 51.5261
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_nr2my"]
 atlas = ExtResource("6_6veac")
 region = Rect2(176, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4rij6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycpfc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -408,6 +405,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
+radius = 51.5261
+
 [node name="vampire1" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_4dlym")
@@ -423,30 +423,31 @@ autoplay = "default"
 position = Vector2(0, 63.4477)
 target_position = Vector2(-0.435635, 6.84688)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.87127, 15.0631)
-shape = SubResource("CircleShape2D_hg4es")
-
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -79.7212
-offset_top = -98.1386
-offset_right = -39.7212
-offset_bottom = -58.1386
+offset_left = -75.8005
+offset_top = -76.2286
+offset_right = -35.8005
+offset_bottom = -36.2286
 scale = Vector2(3.95665, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="."]
-offset_left = -66.2165
-offset_top = -92.2046
-offset_right = 53.7835
-offset_bottom = -69.2046
+offset_left = -62.2958
+offset_top = -70.2946
+offset_right = 57.7042
+offset_bottom = -47.2946
 scale = Vector2(1.10938, 1.3589)
 text = "COMMANDANT"
 horizontal_alignment = 1
 
 [node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
-position = Vector2(0.87127, 38.799)
-scale = Vector2(1.31756, 0.923592)
-sprite_frames = SubResource("SpriteFrames_4rij6")
-animation = &"22"
+position = Vector2(-0.87127, 41.0813)
+scale = Vector2(1.148, 0.692655)
+sprite_frames = SubResource("SpriteFrames_ycpfc")
+animation = &"33"
 autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.456457)
+scale = Vector2(0.811225, 1.4206)
+shape = SubResource("CircleShape2D_hg4es")

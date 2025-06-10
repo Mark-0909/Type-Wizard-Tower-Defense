@@ -192,14 +192,11 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
-radius = 51.5261
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_nr2my"]
 atlas = ExtResource("5_rbw5i")
 region = Rect2(176, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a057k"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6dexm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -319,46 +316,48 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
+radius = 51.5261
+
 [node name="maggot" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_vktu3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(9.58397, -64.3606)
-scale = Vector2(6.64583, 6.52184)
+position = Vector2(6.53452, -58.8831)
+scale = Vector2(4.67993, 5.31406)
 sprite_frames = SubResource("SpriteFrames_t3iou")
-animation = &"death"
 autoplay = "default"
-frame_progress = 0.603217
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 63.4477)
 target_position = Vector2(-0.435635, 6.84688)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.217816, -10.2703)
-shape = SubResource("CircleShape2D_hg4es")
-
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -68.8303
-offset_top = -97.6821
-offset_right = -28.8303
-offset_bottom = -57.6821
+offset_left = -64.9096
+offset_top = -91.7481
+offset_right = -24.9096
+offset_bottom = -51.7481
 scale = Vector2(3.36957, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="."]
-offset_left = -61.4245
-offset_top = -89.9223
-offset_right = 31.5755
-offset_bottom = -66.9223
+offset_left = -57.5038
+offset_top = -83.9883
+offset_right = 35.4962
+offset_bottom = -60.9883
 scale = Vector2(1.29446, 1.20944)
 text = "VENOMOUS"
 horizontal_alignment = 1
 
 [node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
-position = Vector2(12.1978, 4.56458)
-scale = Vector2(1.70552, 1.11703)
-sprite_frames = SubResource("SpriteFrames_a057k")
-animation = &"22"
+position = Vector2(0.435638, 9.58563)
+scale = Vector2(1.148, 0.692655)
+sprite_frames = SubResource("SpriteFrames_6dexm")
+animation = &"33"
 autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.87127, -33.7779)
+scale = Vector2(0.692991, 1.10242)
+shape = SubResource("CircleShape2D_hg4es")

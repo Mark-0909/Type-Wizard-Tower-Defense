@@ -407,7 +407,7 @@ script = ExtResource("1_b4256")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.62939e-06, -9.35741)
-scale = Vector2(4.65585, 3.87276)
+scale = Vector2(3.406, 2.833)
 sprite_frames = SubResource("SpriteFrames_t3iou")
 animation = &"death"
 autoplay = "default"
@@ -440,8 +440,8 @@ horizontal_alignment = 1
 
 [node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
 position = Vector2(0.435638, 9.58563)
-scale = Vector2(1.31756, 0.923592)
+scale = Vector2(1.148, 0.692655)
 sprite_frames = SubResource("SpriteFrames_ecyk5")
 animation = &"4"
 autoplay = "default"
-frame_progress = 0.964703
+frame_progress = 0.989936

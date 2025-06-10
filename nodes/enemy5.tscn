@@ -239,14 +239,11 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
-radius = 51.5261
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_nr2my"]
 atlas = ExtResource("6_vws0s")
 region = Rect2(176, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_aclii"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dh8k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -366,13 +363,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
+radius = 51.5261
+
 [node name="plant1" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
 scale = Vector2(2.2955, 2.19078)
 script = ExtResource("1_o7lcx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(7.62939e-06, -9.35741)
-scale = Vector2(4.65585, 3.87276)
+position = Vector2(-1.74254, -1.82583)
+scale = Vector2(2.77992, 2.69121)
 sprite_frames = SubResource("SpriteFrames_t3iou")
 autoplay = "default"
 frame_progress = 0.06292
@@ -381,30 +381,31 @@ frame_progress = 0.06292
 position = Vector2(0, 63.4477)
 target_position = Vector2(-0.435635, 6.84688)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.217816, -10.2703)
-shape = SubResource("CircleShape2D_hg4es")
-
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -72.3153
-offset_top = -96.7692
-offset_right = -32.3153
-offset_bottom = -56.7692
+offset_left = -72.3154
+offset_top = -84.4448
+offset_right = -32.3154
+offset_bottom = -44.4448
 scale = Vector2(3.56814, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="."]
-offset_left = -64.0383
-offset_top = -90.8352
-offset_right = 47.9617
-offset_bottom = -67.8352
+offset_left = -64.0384
+offset_top = -78.5108
+offset_right = 47.9616
+offset_bottom = -55.5108
 scale = Vector2(1.10938, 1.3589)
 text = "NECROMANCY"
 horizontal_alignment = 1
 
 [node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
-position = Vector2(-0.435635, 18.2583)
-scale = Vector2(1.31756, 0.923592)
-sprite_frames = SubResource("SpriteFrames_aclii")
+position = Vector2(-1.3069, 26.0181)
+scale = Vector2(1.148, 0.692655)
+sprite_frames = SubResource("SpriteFrames_7dh8k")
 animation = &"22"
 autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.04944, -12.7808)
+scale = Vector2(0.792793, 1.32718)
+shape = SubResource("CircleShape2D_hg4es")
