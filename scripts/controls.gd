@@ -23,4 +23,3 @@ func _on_closebtn_pressed() -> void:
 	for i in range(15):
 		modulate.a = lerp(1.0, 0.0, i / 15.0)
 		await get_tree().create_timer(0.02).timeout
-	queue_free()

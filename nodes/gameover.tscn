@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://i2a6tsmi37hw"]
+
+[ext_resource type="Texture2D" uid="uid://dbxpkuu7xfw4y" path="res://assets/UI/LargeBackground.png" id="1_t4s6g"]
+[ext_resource type="Texture2D" uid="uid://b0fmsjqjd8lvd" path="res://assets/UI/RedTitle.png" id="2_8c6ef"]
+[ext_resource type="FontFile" uid="uid://c4jm3r4ebenno" path="res://PermanentMarker-Regular.ttf" id="3_t74k8"]
+[ext_resource type="Texture2D" uid="uid://coilopg4dqxnn" path="res://assets/UI/RedButton.png" id="4_aq13m"]
+[ext_resource type="Texture2D" uid="uid://ipdjtcclaavd" path="res://assets/UI/BlueButton.png" id="5_i5ql8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox14c"]
+atlas = ExtResource("4_aq13m")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvx2n"]
+atlas = ExtResource("5_i5ql8")
+
+[node name="Gameover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LargeBackground" type="Sprite2D" parent="."]
+position = Vector2(1113, 646)
+scale = Vector2(0.35877, 0.656242)
+texture = ExtResource("1_t4s6g")
+
+[node name="DialogueTitle" type="Sprite2D" parent="."]
+position = Vector2(1116, 254)
+scale = Vector2(0.744754, 1.09143)
+texture = ExtResource("2_8c6ef")
+
+[node name="pause" type="Label" parent="."]
+offset_left = 949.0
+offset_top = 198.0
+offset_right = 1040.0
+offset_bottom = 224.0
+rotation = -0.113497
+scale = Vector2(3.50947, 6.28084)
+theme_override_fonts/font = ExtResource("3_t74k8")
+theme_override_font_sizes/font_size = 17
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="closebtn" type="TextureButton" parent="."]
+offset_left = 912.0
+offset_top = 806.0
+offset_right = 1172.0
+offset_bottom = 982.0
+scale = Vector2(1.52681, 1.05821)
+texture_normal = SubResource("AtlasTexture_ox14c")
+
+[node name="Label" type="Label" parent="closebtn"]
+layout_mode = 0
+offset_left = 40.7888
+offset_top = 23.2128
+offset_right = 125.789
+offset_bottom = 47.2128
+scale = Vector2(2.16362, 5.40425)
+theme_override_fonts/font = ExtResource("3_t74k8")
+text = "Main menu"
+
+[node name="closebtn2" type="TextureButton" parent="."]
+offset_left = 936.0
+offset_top = 670.0
+offset_right = 1196.0
+offset_bottom = 846.0
+scale = Vector2(1.27486, 0.947753)
+texture_normal = SubResource("AtlasTexture_rvx2n")
+
+[node name="Label" type="Label" parent="closebtn2"]
+layout_mode = 0
+offset_left = 40.0044
+offset_top = 22.1576
+offset_right = 99.0044
+offset_bottom = 46.1576
+scale = Vector2(3.1514, 5.42744)
+theme_override_fonts/font = ExtResource("3_t74k8")
+text = "Restart"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1028.0
+offset_top = 340.0
+offset_right = 1113.0
+offset_bottom = 364.0
+scale = Vector2(2.16362, 5.40425)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t74k8")
+text = "Score"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 909.0
+offset_top = 435.0
+offset_right = 994.0
+offset_bottom = 459.0
+scale = Vector2(4.92477, 8.4444)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_t74k8")
+text = "1000
+"
+horizontal_alignment = 1

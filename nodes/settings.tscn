@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1e274xa73v5q"]
+
+[ext_resource type="Texture2D" uid="uid://dbxpkuu7xfw4y" path="res://assets/UI/LargeBackground.png" id="1_d1dtm"]
+[ext_resource type="Texture2D" uid="uid://dbflv46q4n8uu" path="res://assets/UI/DialogueTitle.png" id="2_n71nw"]
+[ext_resource type="FontFile" uid="uid://c4jm3r4ebenno" path="res://PermanentMarker-Regular.ttf" id="3_voeox"]
+[ext_resource type="Texture2D" uid="uid://coilopg4dqxnn" path="res://assets/UI/RedButton.png" id="4_pkylv"]
+[ext_resource type="Texture2D" uid="uid://ipdjtcclaavd" path="res://assets/UI/BlueButton.png" id="5_i8hib"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4js3"]
+atlas = ExtResource("4_pkylv")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26r1s"]
+atlas = ExtResource("5_i8hib")
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LargeBackground" type="Sprite2D" parent="."]
+position = Vector2(1113, 646)
+scale = Vector2(0.35877, 0.656242)
+texture = ExtResource("1_d1dtm")
+
+[node name="DialogueTitle" type="Sprite2D" parent="."]
+position = Vector2(1129, 269)
+scale = Vector2(0.744754, 1.09143)
+texture = ExtResource("2_n71nw")
+
+[node name="pause" type="Label" parent="."]
+offset_left = 908.0
+offset_top = 172.0
+offset_right = 999.0
+offset_bottom = 198.0
+rotation = 0.0470527
+scale = Vector2(4.71628, 6.15829)
+theme_override_fonts/font = ExtResource("3_voeox")
+theme_override_font_sizes/font_size = 17
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="closebtn" type="TextureButton" parent="."]
+offset_left = 912.0
+offset_top = 806.0
+offset_right = 1172.0
+offset_bottom = 982.0
+scale = Vector2(1.52681, 1.05821)
+texture_normal = SubResource("AtlasTexture_c4js3")
+
+[node name="Label" type="Label" parent="closebtn"]
+layout_mode = 0
+offset_left = 40.7888
+offset_top = 23.2128
+offset_right = 125.789
+offset_bottom = 47.2128
+scale = Vector2(2.16362, 5.40425)
+theme_override_fonts/font = ExtResource("3_voeox")
+text = "Main menu"
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 967.0
+offset_top = 529.0
+offset_right = 991.0
+offset_bottom = 553.0
+scale = Vector2(3.83333, 3.6)
+
+[node name="Label" type="Label" parent="CheckBox"]
+offset_left = 24.7826
+offset_top = -4.16667
+offset_right = 68.7826
+offset_bottom = 19.8333
+scale = Vector2(1.05126, 1.40463)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_voeox")
+text = "Mute"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 1068.0
+offset_top = 440.0
+offset_right = 1230.0
+offset_bottom = 456.0
+scale = Vector2(1.46442, 3.74256)
+
+[node name="Label" type="Label" parent="HSlider"]
+offset_left = -104.479
+offset_top = -4.27515
+offset_right = -60.4786
+offset_bottom = 19.7248
+scale = Vector2(2.39346, 0.996252)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_voeox")
+text = "BGM"
+
+[node name="closebtn2" type="TextureButton" parent="."]
+offset_left = 936.0
+offset_top = 670.0
+offset_right = 1196.0
+offset_bottom = 846.0
+scale = Vector2(1.27486, 0.947753)
+texture_normal = SubResource("AtlasTexture_26r1s")
+
+[node name="Label" type="Label" parent="closebtn2"]
+layout_mode = 0
+offset_left = 41.5732
+offset_top = 17.9371
+offset_right = 98.5732
+offset_bottom = 41.9371
+scale = Vector2(3.1514, 5.42744)
+theme_override_fonts/font = ExtResource("3_voeox")
+text = "Resume"
