@@ -173,6 +173,7 @@ func _reload_scene():
 func booster1() -> void:
 	if Booster_1_Count <= 0:
 		return
+	$"../Wizard".Fire2()
 	Add_Health()
 	# effects
 	Booster_1_Count -= 1
@@ -180,7 +181,7 @@ func booster1() -> void:
 func booster2() -> void:
 	if Booster_2_Count <= 0:
 		return
-
+	$"../Wizard".Fire2()
 	var enemies = get_tree().get_nodes_in_group("enemy") + get_tree().get_nodes_in_group("smallmobs")
 	for enemy in enemies:
 		if not is_instance_valid(enemy):
@@ -194,8 +195,9 @@ func booster2() -> void:
 func booster3() -> void:
 	if Booster_3_Count <= 0:
 		return
-	
-	# animation effect of explosion
+	$"../Wizard".Fire2()
+	$"../ExplosionEffect".modulate = Color(1,1,1,1)
+	$"../ExplosionEffect".play("start")
 	var enemies = get_tree().get_nodes_in_group("enemy") + get_tree().get_nodes_in_group("smallmobs")
 	for enemy in enemies:
 		if not is_instance_valid(enemy):
@@ -204,6 +206,8 @@ func booster3() -> void:
 			enemy.Dead()
 		await get_tree().create_timer(0.2).timeout
 	Booster_3_Count -= 1
+	$"../ExplosionEffect".modulate = Color(1,1,1,0)
+	$"../ExplosionEffect".play("default")
 	
 
 func get_random_word(length: int) -> String:

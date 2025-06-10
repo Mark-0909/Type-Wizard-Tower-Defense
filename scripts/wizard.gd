@@ -47,3 +47,9 @@ func Fire(enemy: Node2D):
 	await get_tree().create_timer(1.0).timeout
 
 	_change_state(State.IDLE)
+
+func Fire2() -> void:
+	$AnimatedSprite2D.play("attack")
+	await get_tree().create_timer(1).timeout
+	$AnimatedSprite2D.play("default")
+	_change_state(State.IDLE)

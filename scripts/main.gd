@@ -59,6 +59,7 @@ func _ready() -> void:
 	]
 	start_boss_cycle()
 	$Castle.modulate = Color(1,1,1,0)
+	$ExplosionEffect.modulate = Color(1,1,1,0)
 
 func _process(delta: float) -> void:
 	if not stop_spawning:
