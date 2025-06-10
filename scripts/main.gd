@@ -88,7 +88,7 @@ func _process(delta: float) -> void:
 func spawn_enemy() -> void:
 	var word_length = randi_range(4, 11)
 	var word_list = game_manager.word_pool.get(word_length, [])
-	if word_list.size() == 0:
+	if word_list.is_empty():
 		return
 
 	var word = word_list.pick_random()
@@ -103,12 +103,16 @@ func spawn_enemy() -> void:
 		return
 
 	var index := randi() % available_areas.size()
+
+	# Ensure enemy does not spawn in the same area consecutively
+	while index == last_spawn_position and available_areas.size() > 1:
+		index = randi() % available_areas.size()
+
 	var area = available_areas[index]
 	last_spawn_position = index 	# Update last spawn position
 
 	enemy.global_position = area.global_position
 	add_child(enemy)
-
 
 
 func get_valid_spawn_areas() -> Array:
