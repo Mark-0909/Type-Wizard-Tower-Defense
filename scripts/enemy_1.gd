@@ -1,7 +1,7 @@
 extends Node2D
 
 var word: String = ""
-var velocity: float = 100.0
+var velocity: float = 50.0
 var delta_data: float = 0.0
 var is_moving: bool = true
 var _is_on_aim: bool = false
@@ -66,6 +66,14 @@ func Dead():
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.play("death")
 	await get_tree().create_timer(0.8).timeout
+	
+	if boss1_applied:
+		Boss1_End()
+	elif boss3_applied:
+		Boss3_End()
+	elif boss4_applied:
+		Boss4_End()
+		
 	queue_free()
 	spawn_booster()
 
@@ -74,7 +82,7 @@ func attack():
 		return
 
 	$AnimatedSprite2D.play("attack")
-	game_manager.Minus_Health(2)
+	game_manager.Minus_Health(1)
 	_can_attack = false
 	attack_cooldown_timer()
 

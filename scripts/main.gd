@@ -17,7 +17,7 @@ var letter_offset := 0
 var letter_spacing := 150
 var letter_scale := Vector2(1, 1)
 var last_spawn_position = 0
-var velocity: float = 100.0
+var velocity: float = 50.0
 
 # Enemies
 const ENEMY_1 = preload("res://nodes/enemy1.tscn")
@@ -269,10 +269,9 @@ func _on_boss_died() -> void:
 var enemy_types_by_length := {
 	4: ENEMY_1,
 	5: ENEMY_2,
-	6: ENEMY_2,
-	7: ENEMY_3,
-	8: ENEMY_4,
-	9: ENEMY_5,
-	10: ENEMY_6,
-	11: ENEMY_7
+	6: ENEMY_3,
+	7: ENEMY_4,
+	8: ENEMY_5,
+	9: ENEMY_6,
+	10: ENEMY_7
 }

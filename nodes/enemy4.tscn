@@ -442,6 +442,7 @@ text = "TORMENTOR"
 horizontal_alignment = 1
 
 [node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
+visible = false
 position = Vector2(0.435638, 9.58563)
 scale = Vector2(1.148, 0.692655)
 sprite_frames = SubResource("SpriteFrames_kknwe")
@@ -449,6 +450,6 @@ animation = &"33"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.3069, -24.6488)
-scale = Vector2(0.559764, 1.02818)
+position = Vector2(1.74254, -33.3215)
+scale = Vector2(0.559764, 0.817825)
 shape = SubResource("CircleShape2D_hg4es")

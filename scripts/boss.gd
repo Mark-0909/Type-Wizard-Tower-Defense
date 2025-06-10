@@ -157,18 +157,25 @@ func check_input(input_word: String) -> void:
 		print("Incorrect word.")
 
 # BOSS EFFECTS
-func Boss1(is_in_effect: bool):
-	print("mantis in effect")
+func Boss1(is_in_effect: bool) -> void:
+	print("mantis in effect:", is_in_effect)
 	var targets := []
+	
 	for node in get_tree().get_nodes_in_group("smallmobs"):
 		if is_instance_valid(node) and node not in targets:
 			targets.append(node)
+	
 	for target in targets:
-		if is_in_effect and target.has_method("Boss_1") and not target.has_method("boss1_applied"):
-			target.Boss_1()
-		elif not is_in_effect and target.has_method("Boss1_End"):
-			target.Boss1_End()
+		if is_instance_valid(target):
+			if is_in_effect and target.has_method("Boss_1") and not target.has_meta("boss1_applied"):
+				target.Boss_1()
+				target.set_meta("boss1_applied", true)
+			elif not is_in_effect and target.has_method("Boss1_End") and target.has_meta("boss1_applied"):
+				target.Boss1_End()
+				target.set_meta("boss1_applied", false)
 		
+		await get_tree().create_timer(0.05).timeout
+
 
 func Boss2(is_in_effect: bool):
 	print("Boss2 (Plant) effect in effect:", is_in_effect)

@@ -120,7 +120,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _process(delta: float) -> void:
-	$"../Infos/health_indicator".text = str(Health_Points)
+	pass
 
 
 
@@ -155,12 +155,25 @@ func Add_Health() -> void:
 	Health_Points += 10
 	if Health_Points > 100:
 		Health_Points = 100
+		
 func Minus_Health(point: int) -> void:
 	Health_Points -= point
 
+	# Flash all castle nodes red
+	for castle_node in get_tree().get_nodes_in_group("castle"):
+		if is_instance_valid(castle_node):
+			castle_node.modulate = Color(1, 0, 0)  # Red tint
+
+	await get_tree().create_timer(0.2).timeout
+
+	# Revert to normal
+	for castle_node in get_tree().get_nodes_in_group("castle"):
+		if is_instance_valid(castle_node):
+			castle_node.modulate = Color(1, 1, 1)  # Normal color
+
 	if Health_Points <= 0:
-		# Delay the reload to prevent issues for other scripts still running
 		call_deferred("_reload_scene")
+
 
 func _reload_scene():
 	await get_tree().create_timer(0.1).timeout  # small delay
