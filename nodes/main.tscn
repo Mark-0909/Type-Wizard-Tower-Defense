@@ -1048,6 +1048,8 @@ scale = Vector2(22.3475, 1.09717)
 position = Vector2(4, 532)
 scale = Vector2(2.08486, 1.97713)
 
+[node name="effects" type="Node" parent="."]
+
 [node name="Infos" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -1062,5 +1064,11 @@ offset_right = -1061.13
 offset_bottom = -542.005
 scale = Vector2(4.98479, 5.17406)
 text = "100"
+
+[node name="castlenodes" type="Node" parent="."]
+
+[node name="outsidecastle" type="Node" parent="."]
+
+[node name="enemies" type="Node" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
