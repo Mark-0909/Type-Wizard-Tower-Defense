@@ -226,7 +226,13 @@ func check_enemy_matches() -> void:
 
 func clear_typed_letters():
 	for letter_dict in typed_letters:
-		letter_dict.node.queue_free()
+		var letter_node = letter_dict.node
+		if letter_node:
+			var tween = letter_node.create_tween()
+			tween.tween_property(letter_node, "modulate:a", 0.0, 0.02)  # Fade out in 0.5 seconds
+			await tween.finished
+			letter_node.queue_free()  # Remove node after animation
+	
 	typed_letters.clear()
 	letter_offset = 0
 

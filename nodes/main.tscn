@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://c7mav1xrwribp"]
+[gd_scene load_steps=101 format=4 uid="uid://c7mav1xrwribp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_k30ce"]
 [ext_resource type="PackedScene" uid="uid://do2p23ai45wr1" path="res://nodes/castle.tscn" id="1_v1n8b"]
@@ -61,6 +61,9 @@
 [ext_resource type="Texture2D" uid="uid://by0wqjcycbaqi" path="res://assets/heath bar/h4.png" id="58_fkjvf"]
 [ext_resource type="Texture2D" uid="uid://b3sfit2rvmr3e" path="res://assets/heath bar/h3.png" id="59_25igd"]
 [ext_resource type="Texture2D" uid="uid://cgq4ujn7p8jqt" path="res://assets/heath bar/h2.png" id="60_nakts"]
+[ext_resource type="Texture2D" uid="uid://bd4fblfoes4m4" path="res://assets/boostersanimation/booster1.png" id="62_ymmw7"]
+[ext_resource type="Texture2D" uid="uid://r6gqhu35naap" path="res://assets/boostersanimation/booster2.png" id="63_uv5rq"]
+[ext_resource type="Texture2D" uid="uid://d16hhksu5p3dl" path="res://assets/boostersanimation/booster3.png" id="64_6mqec"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0hs7"]
 texture = ExtResource("3_grs72")
@@ -1947,13 +1950,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -270.246
+offset_top = 151.805
+offset_right = -230.246
+offset_bottom = 191.805
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(46.2789, 3.87434)
+scale = Vector2(14.0773, 3.55625)
 size_flags_horizontal = 4
 alignment = 1
 
@@ -2080,5 +2083,67 @@ offset_bottom = 10.1157
 scale = Vector2(0.673842, 0.531069)
 theme_override_colors/font_color = Color(0.299547, 0.299547, 0.299547, 1)
 text = "100"
+
+[node name="boosters" type="Node" parent="CanvasLayer"]
+
+[node name="Booster1" type="Sprite2D" parent="CanvasLayer/boosters"]
+position = Vector2(1588, 1160)
+scale = Vector2(3.07023, 2.96437)
+texture = ExtResource("62_ymmw7")
+
+[node name="key" type="Label" parent="CanvasLayer/boosters/Booster1"]
+offset_left = -28.9881
+offset_top = 8.77079
+offset_right = 11.0119
+offset_bottom = 31.7708
+text = "1"
+
+[node name="count" type="Label" parent="CanvasLayer/boosters/Booster1"]
+offset_left = 17.5883
+offset_top = 11.4695
+offset_right = 57.5883
+offset_bottom = 34.4695
+scale = Vector2(0.811894, 0.817462)
+text = "x1"
+
+[node name="Booster2" type="Sprite2D" parent="CanvasLayer/boosters"]
+position = Vector2(1822, 1159)
+scale = Vector2(3.07023, 2.96437)
+texture = ExtResource("63_uv5rq")
+
+[node name="key" type="Label" parent="CanvasLayer/boosters/Booster2"]
+offset_left = -28.9881
+offset_top = 8.77079
+offset_right = 11.0119
+offset_bottom = 31.7708
+text = "2"
+
+[node name="count" type="Label" parent="CanvasLayer/boosters/Booster2"]
+offset_left = 17.5883
+offset_top = 11.4695
+offset_right = 57.5883
+offset_bottom = 34.4695
+scale = Vector2(0.811894, 0.817462)
+text = "x1"
+
+[node name="Booster3" type="Sprite2D" parent="CanvasLayer/boosters"]
+position = Vector2(2060, 1160)
+scale = Vector2(3.07023, 2.96437)
+texture = ExtResource("64_6mqec")
+
+[node name="key" type="Label" parent="CanvasLayer/boosters/Booster3"]
+offset_left = -28.9881
+offset_top = 8.77079
+offset_right = 11.0119
+offset_bottom = 31.7708
+text = "3"
+
+[node name="count" type="Label" parent="CanvasLayer/boosters/Booster3"]
+offset_left = 17.5883
+offset_top = 11.4695
+offset_right = 57.5883
+offset_bottom = 34.4695
+scale = Vector2(0.811894, 0.817462)
+text = "x1"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
