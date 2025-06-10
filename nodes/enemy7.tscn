@@ -411,7 +411,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7l4nc"]
 radius = 51.5261
 
 [node name="golem" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
@@ -455,6 +455,6 @@ autoplay = "default"
 frame_progress = 0.565809
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.3069, -21.4535)
-scale = Vector2(0.662147, 1.28189)
-shape = SubResource("CircleShape2D_hg4es")
+position = Vector2(-3.04944, -14.6067)
+scale = Vector2(0.550936, 0.814722)
+shape = SubResource("CircleShape2D_7l4nc")

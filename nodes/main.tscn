@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://c7mav1xrwribp"]
+[gd_scene load_steps=102 format=4 uid="uid://c7mav1xrwribp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_k30ce"]
 [ext_resource type="PackedScene" uid="uid://do2p23ai45wr1" path="res://nodes/castle.tscn" id="1_v1n8b"]
@@ -64,6 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://bd4fblfoes4m4" path="res://assets/boostersanimation/booster1.png" id="62_ymmw7"]
 [ext_resource type="Texture2D" uid="uid://r6gqhu35naap" path="res://assets/boostersanimation/booster2.png" id="63_uv5rq"]
 [ext_resource type="Texture2D" uid="uid://d16hhksu5p3dl" path="res://assets/boostersanimation/booster3.png" id="64_6mqec"]
+[ext_resource type="Texture2D" uid="uid://dr1xi73fb1myu" path="res://assets/plackard.png" id="65_5o3aj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0hs7"]
 texture = ExtResource("3_grs72")
@@ -2046,7 +2047,7 @@ position = Vector2(5, 700)
 scale = Vector2(22.3475, 1.09717)
 
 [node name="Wizard" parent="." instance=ExtResource("2_25rbu")]
-position = Vector2(4, 532)
+position = Vector2(1.67855, 500.616)
 scale = Vector2(2.08486, 1.97713)
 
 [node name="effects" type="Node" parent="."]
@@ -2145,5 +2146,19 @@ offset_right = 57.5883
 offset_bottom = 34.4695
 scale = Vector2(0.811894, 0.817462)
 text = "x1"
+
+[node name="ScoreBG" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1013, 1238)
+scale = Vector2(2.98714, 3.52948)
+texture = ExtResource("65_5o3aj")
+
+[node name="Score" type="Label" parent="CanvasLayer/ScoreBG"]
+offset_left = -41.4261
+offset_top = -14.9678
+offset_right = -1.42611
+offset_bottom = 8.03219
+scale = Vector2(1.45002, 1.01533)
+text = "1000"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

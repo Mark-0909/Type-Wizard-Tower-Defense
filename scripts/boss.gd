@@ -90,6 +90,7 @@ func next_phase() -> void:
 		
 
 func die() -> void:
+	game_manager.Add_Score(20)
 	_is_dead = true
 	is_moving = false
 	velocity = 0.0

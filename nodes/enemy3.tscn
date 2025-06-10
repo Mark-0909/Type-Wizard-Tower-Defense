@@ -359,5 +359,5 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.87127, -33.7779)
-scale = Vector2(0.692991, 1.10242)
+scale = Vector2(0.550936, 0.814722)
 shape = SubResource("CircleShape2D_hg4es")

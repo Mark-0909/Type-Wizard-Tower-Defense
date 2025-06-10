@@ -405,7 +405,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xuc2q"]
 radius = 51.5261
 
 [node name="slime" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
@@ -442,7 +442,6 @@ text = "TORMENTOR"
 horizontal_alignment = 1
 
 [node name="frozen" type="AnimatedSprite2D" parent="." groups=["enemy", "smallmobs"]]
-visible = false
 position = Vector2(0.435638, 9.58563)
 scale = Vector2(1.148, 0.692655)
 sprite_frames = SubResource("SpriteFrames_kknwe")
@@ -450,6 +449,6 @@ animation = &"33"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.74254, -33.3215)
-scale = Vector2(0.559764, 0.817825)
-shape = SubResource("CircleShape2D_hg4es")
+position = Vector2(0.87127, -41.0813)
+scale = Vector2(0.550936, 0.814722)
+shape = SubResource("CircleShape2D_xuc2q")

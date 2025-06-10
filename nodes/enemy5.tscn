@@ -363,7 +363,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hg4es"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gm8sk"]
 radius = 51.5261
 
 [node name="plant1" type="CharacterBody2D" groups=["enemy", "smallmobs"]]
@@ -406,6 +406,6 @@ animation = &"22"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.04944, -12.7808)
-scale = Vector2(0.792793, 1.32718)
-shape = SubResource("CircleShape2D_hg4es")
+position = Vector2(-4.79198, -17.8019)
+scale = Vector2(0.550936, 0.814722)
+shape = SubResource("CircleShape2D_gm8sk")

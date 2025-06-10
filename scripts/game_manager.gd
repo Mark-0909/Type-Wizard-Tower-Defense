@@ -1,6 +1,7 @@
 extends Node
 
 var Health_Points = 100
+var Score = 0
 
 var Booster_1_Count = 1
 var Booster_2_Count = 1
@@ -125,6 +126,8 @@ func _process(delta: float) -> void:
 	$"../CanvasLayer/boosters/Booster1/count".text = "x" + str(Booster_1_Count)
 	$"../CanvasLayer/boosters/Booster2/count".text = "x" + str(Booster_2_Count)
 	$"../CanvasLayer/boosters/Booster3/count".text = "x" + str(Booster_3_Count)
+	
+	$"../CanvasLayer/ScoreBG/Score".text = str(Score)
 
 
 func PlayHealthbar() -> void:
@@ -150,6 +153,9 @@ func Add_Booster(type: int) -> void:
 		await get_tree().create_timer(0.4).timeout
 		$"../CanvasLayer/boosters/Booster3".modulate = Color(1, 1, 1)
 		print("Booster1: ", Booster_3_Count)
+
+func Add_Score(number: int) -> void:
+	Score += number
 
 func Minus_Booster(type: int) -> void:
 	if type == 1:
@@ -234,6 +240,7 @@ func booster2() -> void:
 			continue
 		if enemy.has_method("frozen_apply"):
 			enemy.frozen_apply()
+
 
 
 func booster3() -> void:

@@ -63,6 +63,7 @@ func Dead():
 	_is_dead = true
 	is_moving = false
 	velocity = 0.0
+	game_manager.Add_Score(word.length())
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.play("death")
 	await get_tree().create_timer(0.8).timeout
