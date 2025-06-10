@@ -145,7 +145,7 @@ script = ExtResource("1_7qftg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3.69925, -12.9154)
-scale = Vector2(4.10611, 3.40829)
+scale = Vector2(5.74865, 5.77276)
 sprite_frames = SubResource("SpriteFrames_t3iou")
 animation = &"attack"
 autoplay = "default"
@@ -157,21 +157,22 @@ target_position = Vector2(-0.435635, 6.84688)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.39235, -5.15559)
+scale = Vector2(1.32254, 1.39633)
 shape = SubResource("CircleShape2D_hg4es")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -84.5132
-offset_top = -98.1386
+offset_top = -121.418
 offset_right = -44.5132
-offset_bottom = -58.1386
+offset_bottom = -81.4179
 scale = Vector2(4.20061, 1.09567)
 texture = SubResource("AtlasTexture_nr2my")
 
 [node name="word" type="Label" parent="."]
-offset_left = -58.3751
-offset_top = -90.8352
-offset_right = 44.6249
-offset_bottom = -67.8352
+offset_left = -75.3648
+offset_top = -115.484
+offset_right = 59.6352
+offset_bottom = -92.484
 scale = Vector2(1.10938, 1.3589)
-text = "WORDSSSSSS"
+text = "ENLIGHTENMENT"
 horizontal_alignment = 1
