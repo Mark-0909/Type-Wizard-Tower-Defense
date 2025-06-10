@@ -154,46 +154,59 @@ func frozen_remove() -> void:
 	$frozen.modulate = Color(1, 1, 1, 0)  # Hide frozen overlay
 
 # === Boss Effects ===
-func Boss_1():
+func Boss_1() -> void:
 	if boss1_applied:
 		return
 	boss1_applied = true
 	fade_loop_active = true
-	start_fade_loop()
+	_start_fade_loop()
 
-func start_fade_loop() -> void:
+func _start_fade_loop() -> void:
 	if not is_instance_valid(self):
 		return
+	
+	async_fade()  # Kick off the async loop
 
-	tween = create_tween()
-	tween.set_loops()
+func async_fade() -> void:
+	await get_tree().process_frame  # Small delay to let things settle
 
 	while fade_loop_active:
+		tween = create_tween()
 		tween.tween_property(self, "modulate:a", 0.0, 0.5)
-		tween.tween_interval(1.0)
-		tween.tween_property(self, "modulate:a", 1.0, 0.5)
 		await tween.finished
 
-func Boss1_End():
+		if not fade_loop_active:
+			break
+
+		tween = create_tween()
+		tween.tween_property(self, "modulate:a", 1.0, 0.5)
+		await tween.finished
+		
+func Boss1_End() -> void:
+	if not boss1_applied:
+		return
+
 	boss1_applied = false
 	fade_loop_active = false
-	if tween:
-		tween.kill()
-	modulate.a = 1.0
 
-func Boss_3():
+	if tween:
+		tween.kill()  # Stop ongoing tween if any
+
+	modulate = Color(modulate.r, modulate.g, modulate.b, 1.0)
+
+func Boss_3() -> void:
 	if boss3_applied:
 		return
+	boss3_applied = true
 	velocity += 100.0
 	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)
-	boss3_applied = true
 
-func Boss3_End():
+func Boss3_End() -> void:
 	if not boss3_applied:
 		return
+	boss3_applied = false
 	velocity -= 100.0
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)
-	boss3_applied = false
 
 func Boss_4():
 	if boss4_applied:

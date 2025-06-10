@@ -2106,30 +2106,10 @@ offset_bottom = 34.4695
 scale = Vector2(0.811894, 0.817462)
 text = "x1"
 
-[node name="Booster2" type="Sprite2D" parent="CanvasLayer/boosters"]
-position = Vector2(1822, 1159)
+[node name="Booster3" type="Sprite2D" parent="CanvasLayer/boosters"]
+position = Vector2(2055, 1159)
 scale = Vector2(3.07023, 2.96437)
 texture = ExtResource("63_uv5rq")
-
-[node name="key" type="Label" parent="CanvasLayer/boosters/Booster2"]
-offset_left = -28.9881
-offset_top = 8.77079
-offset_right = 11.0119
-offset_bottom = 31.7708
-text = "2"
-
-[node name="count" type="Label" parent="CanvasLayer/boosters/Booster2"]
-offset_left = 17.5883
-offset_top = 11.4695
-offset_right = 57.5883
-offset_bottom = 34.4695
-scale = Vector2(0.811894, 0.817462)
-text = "x1"
-
-[node name="Booster3" type="Sprite2D" parent="CanvasLayer/boosters"]
-position = Vector2(2060, 1160)
-scale = Vector2(3.07023, 2.96437)
-texture = ExtResource("64_6mqec")
 
 [node name="key" type="Label" parent="CanvasLayer/boosters/Booster3"]
 offset_left = -28.9881
@@ -2139,6 +2119,26 @@ offset_bottom = 31.7708
 text = "3"
 
 [node name="count" type="Label" parent="CanvasLayer/boosters/Booster3"]
+offset_left = 17.5883
+offset_top = 11.4695
+offset_right = 57.5883
+offset_bottom = 34.4695
+scale = Vector2(0.811894, 0.817462)
+text = "x1"
+
+[node name="Booster2" type="Sprite2D" parent="CanvasLayer/boosters"]
+position = Vector2(1822, 1159)
+scale = Vector2(3.07023, 2.96437)
+texture = ExtResource("64_6mqec")
+
+[node name="key" type="Label" parent="CanvasLayer/boosters/Booster2"]
+offset_left = -28.9881
+offset_top = 8.77079
+offset_right = 11.0119
+offset_bottom = 31.7708
+text = "2"
+
+[node name="count" type="Label" parent="CanvasLayer/boosters/Booster2"]
 offset_left = 17.5883
 offset_top = 11.4695
 offset_right = 57.5883

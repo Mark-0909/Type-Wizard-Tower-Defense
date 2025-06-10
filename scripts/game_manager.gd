@@ -122,6 +122,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$"../CanvasLayer/Infos/healthbar/health_indicator".text = str(Health_Points)
 	PlayHealthbar()
+	$"../CanvasLayer/boosters/Booster1/count".text = "x" + str(Booster_1_Count)
+	$"../CanvasLayer/boosters/Booster2/count".text = "x" + str(Booster_2_Count)
+	$"../CanvasLayer/boosters/Booster3/count".text = "x" + str(Booster_3_Count)
 
 
 func PlayHealthbar() -> void:
@@ -131,12 +134,21 @@ func PlayHealthbar() -> void:
 func Add_Booster(type: int) -> void:
 	if type == 1:
 		Booster_1_Count += 1
+		$"../CanvasLayer/boosters/Booster1".modulate = Color(0.8, 1.8, 0.8)
+		await get_tree().create_timer(0.4).timeout
+		$"../CanvasLayer/boosters/Booster1".modulate = Color(1, 1, 1)
 		print("Booster1: ", Booster_1_Count)
 	elif type == 2:
 		Booster_2_Count += 1
+		$"../CanvasLayer/boosters/Booster2".modulate = Color(0.8, 1.8, 0.8)
+		await get_tree().create_timer(0.4).timeout
+		$"../CanvasLayer/boosters/Booster2".modulate = Color(1, 1, 1)
 		print("Booster1: ", Booster_2_Count)
 	elif type == 3:
 		Booster_3_Count += 1
+		$"../CanvasLayer/boosters/Booster3".modulate = Color(0.8, 1.8, 0.8)
+		await get_tree().create_timer(0.4).timeout
+		$"../CanvasLayer/boosters/Booster3".modulate = Color(1, 1, 1)
 		print("Booster1: ", Booster_3_Count)
 
 func Minus_Booster(type: int) -> void:
@@ -178,8 +190,11 @@ func Minus_Health(point: int) -> void:
 
 
 func _reload_scene():
-	await get_tree().create_timer(0.1).timeout  # small delay
-	get_tree().reload_current_scene()
+	call_deferred("_safe_reload")
+
+func _safe_reload():
+	if get_tree() and get_tree().current_scene:
+		get_tree().reload_current_scene()
 
 
  # booster 1 = add castle health
@@ -187,12 +202,15 @@ func _reload_scene():
  # booster 3 = explosion
 func booster1() -> void:
 	if Booster_1_Count <= 0:
-		return
+		return  # Prevent using when count is zero
+
+	Booster_1_Count -= 1  # Reduce before effect starts
+
 	$"../Wizard".Fire2()
 	
 	for castle_node in get_tree().get_nodes_in_group("castle"):
 		if is_instance_valid(castle_node):
-			castle_node.modulate = Color(0, 1, 0)  # Red tint
+			castle_node.modulate = Color(0, 1, 0)  # Green tint
 
 	await get_tree().create_timer(0.4).timeout
 
@@ -201,14 +219,14 @@ func booster1() -> void:
 		if is_instance_valid(castle_node):
 			castle_node.modulate = Color(1, 1, 1)  # Normal color
 
-	
 	Add_Health()
-	
-	Booster_1_Count -= 1
 
 func booster2() -> void:
 	if Booster_2_Count <= 0:
 		return
+
+	Booster_2_Count -= 1  # Reduce first before effect
+
 	$"../Wizard".Fire2()
 	var enemies = get_tree().get_nodes_in_group("enemy") + get_tree().get_nodes_in_group("smallmobs")
 	for enemy in enemies:
@@ -216,15 +234,18 @@ func booster2() -> void:
 			continue
 		if enemy.has_method("frozen_apply"):
 			enemy.frozen_apply()
-	Booster_2_Count -= 1
 
 
 func booster3() -> void:
 	if Booster_3_Count <= 0:
 		return
+
+	Booster_3_Count -= 1  # Reduce first before effect
+
 	$"../Wizard".Fire2()
 	$"../ExplosionEffect".modulate = Color(1,1,1,1)
 	$"../ExplosionEffect".play("start")
+
 	var enemies = get_tree().get_nodes_in_group("enemy") + get_tree().get_nodes_in_group("smallmobs")
 	for enemy in enemies:
 		if not is_instance_valid(enemy):
@@ -232,7 +253,7 @@ func booster3() -> void:
 		if enemy.has_method("Dead"):
 			enemy.Dead()
 		await get_tree().create_timer(0.2).timeout
-	Booster_3_Count -= 1
+
 	$"../ExplosionEffect".modulate = Color(1,1,1,0)
 	$"../ExplosionEffect".play("default")
 	

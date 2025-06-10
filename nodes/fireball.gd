@@ -14,10 +14,14 @@ func set_target(enemy: Node2D) -> void:
 	target = enemy
 
 func _process(delta: float) -> void:
-	if target:
+	if is_instance_valid(target):  # Ensure target is not freed
 		var direction = (target.global_position - global_position).normalized()
 		global_position += direction * speed * delta
-	
+	else:
+		is_gone = true
+		$AnimatedSprite2D.play("gone")
+		await get_tree().create_timer(0.3).timeout
+		queue_free()
 	if is_gone:
 		if $AnimatedSprite2D.animation != "gone":
 			$AnimatedSprite2D.play("gone")
@@ -27,8 +31,9 @@ func _on_body_entered(body: Node2D) -> void:
 		is_gone = true
 		$AnimatedSprite2D.play("gone")
 		await get_tree().create_timer(0.3).timeout
-		if body.has_method("Dead"):
+
+		# Ensure body is still valid before checking methods
+		if is_instance_valid(body) and body.has_method("Dead"):
 			body.Dead()
-		else:
-			pass
+		
 		queue_free()
