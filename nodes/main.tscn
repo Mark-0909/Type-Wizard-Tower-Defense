@@ -2148,7 +2148,7 @@ scale = Vector2(0.811894, 0.817462)
 text = "x1"
 
 [node name="ScoreBG" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1013, 1238)
+position = Vector2(1135, 1226)
 scale = Vector2(2.98714, 3.52948)
 texture = ExtResource("65_5o3aj")
 
