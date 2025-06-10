@@ -1,5 +1,10 @@
 extends Node2D
 
+
+var float_speed = .5  # Adjust for faster/slower movement
+var float_height = .3  # Adjust for higher/lower floating
+var time_passed = 0.0   # Tracks time for smooth animation
+
  # booster 1 = add castle health
  # booster 2 = freeze
  # booster 3 = explosion
@@ -17,10 +22,12 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
-	pass
+	time_passed += delta * float_speed
+	position.y += sin(time_passed) * float_height
 
-
+	
 func Match() -> void:
 	game_manager.Add_Booster(booster_type)
 	$AnimatedSprite2D.play("removing")

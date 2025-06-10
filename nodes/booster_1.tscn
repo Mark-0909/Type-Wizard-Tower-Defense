@@ -64,16 +64,15 @@ atlas = ExtResource("3_606a7")
 region = Rect2(176, 0, 16, 16)
 
 [node name="Booster1" type="Node2D" groups=["booster"]]
-scale = Vector2(2.8426, 2.7081)
+scale = Vector2(1.718, 1.636)
 script = ExtResource("1_cqc5t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(7.62939e-06, -9.35741)
-scale = Vector2(0.628943, 0.611414)
+position = Vector2(0.351791, 8.49304)
+scale = Vector2(1.172, 1.138)
 sprite_frames = SubResource("SpriteFrames_xg588")
-animation = &"creation"
 autoplay = "default"
-frame_progress = 0.0382646
+frame_progress = 0.505231
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -49.6025

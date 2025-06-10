@@ -54,7 +54,7 @@ func _set_word_label() -> void:
 		label.text = ""
 
 func start_attack_delay() -> void:
-	await get_tree().create_timer(8.0).timeout
+	await get_tree().create_timer(8).timeout
 	if not _is_dead:
 		is_moving = false
 		attack()

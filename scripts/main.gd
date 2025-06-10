@@ -83,6 +83,8 @@ func _process(delta: float) -> void:
 		game_manager.booster2()
 	if Input.is_action_just_pressed("health"):
 		game_manager.booster1()
+
+
 func spawn_enemy() -> void:
 	var word_length = randi_range(4, 11)
 	var word_list = game_manager.word_pool.get(word_length, [])
@@ -102,7 +104,8 @@ func spawn_enemy() -> void:
 
 	var index := randi() % available_areas.size()
 	var area = available_areas[index]
-	last_spawn_position = index
+	last_spawn_position = index 	# Update last spawn position
+
 	enemy.global_position = area.global_position
 	add_child(enemy)
 
@@ -110,10 +113,16 @@ func spawn_enemy() -> void:
 
 func get_valid_spawn_areas() -> Array:
 	var areas = spawn_areas.duplicate()
+	
+	# Exclude the last used spawn position
+	if last_spawn_position < areas.size():
+		areas.remove_at(last_spawn_position)
+
 	if boss_spawned:
 		areas.erase(spawn_area_4)
 		areas.erase(spawn_area_5)
 		areas.erase(spawn_area_6)
+
 	return areas
 
 func _unhandled_input(event: InputEvent) -> void:

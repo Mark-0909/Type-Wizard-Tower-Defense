@@ -189,8 +189,21 @@ func booster1() -> void:
 	if Booster_1_Count <= 0:
 		return
 	$"../Wizard".Fire2()
+	
+	for castle_node in get_tree().get_nodes_in_group("castle"):
+		if is_instance_valid(castle_node):
+			castle_node.modulate = Color(0, 1, 0)  # Red tint
+
+	await get_tree().create_timer(0.4).timeout
+
+	# Revert to normal
+	for castle_node in get_tree().get_nodes_in_group("castle"):
+		if is_instance_valid(castle_node):
+			castle_node.modulate = Color(1, 1, 1)  # Normal color
+
+	
 	Add_Health()
-	# effects
+	
 	Booster_1_Count -= 1
 
 func booster2() -> void:
