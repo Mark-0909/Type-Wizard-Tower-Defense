@@ -11,7 +11,9 @@ var word: String = ""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$word.text = word.to_upper()
-	# deploy animation
+	$AnimatedSprite2D.play("creation")
+	await get_tree().create_timer(0.5).timeout
+	$AnimatedSprite2D.play("default")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +23,8 @@ func _process(delta: float) -> void:
 
 func Match() -> void:
 	game_manager.Add_Booster(booster_type)
+	$AnimatedSprite2D.play("removing")
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 func get_word() -> String:

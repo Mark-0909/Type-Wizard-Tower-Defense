@@ -1,36 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3l063p5u4clu"]
+[gd_scene load_steps=10 format=3 uid="uid://b3l063p5u4clu"]
 
 [ext_resource type="Script" path="res://scripts/booster.gd" id="1_1s36d"]
-[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="2_elngj"]
+[ext_resource type="Texture2D" uid="uid://buigyyysw8t81" path="res://assets/boostersanimation/freeze1.png" id="2_xxrlt"]
 [ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="3_3ia15"]
+[ext_resource type="Texture2D" uid="uid://dmn0flf6tv3xw" path="res://assets/boostersanimation/freeze2.png" id="3_kgiir"]
+[ext_resource type="Texture2D" uid="uid://drq2wuq48iebc" path="res://assets/boostersanimation/freeze3.png" id="4_dcxwy"]
+[ext_resource type="Texture2D" uid="uid://bg1o7jq0w6gwu" path="res://assets/boostersanimation/freeze4.png" id="5_1xu6i"]
+[ext_resource type="Texture2D" uid="uid://c03hl2vktwmxh" path="res://assets/boostersanimation/freeze5.png" id="6_nvt4c"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xg588"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2iqc4"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"attack",
-"speed": 9.0
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xxrlt")
 }, {
-"frames": [],
+"duration": 1.0,
+"texture": ExtResource("3_kgiir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dcxwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1xu6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nvt4c")
+}],
 "loop": true,
-"name": &"death",
+"name": &"creation",
 "speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_elngj")
+"texture": ExtResource("6_nvt4c")
 }],
 "loop": true,
 "name": &"default",
 "speed": 9.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_nvt4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1xu6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dcxwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kgiir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xxrlt")
+}],
 "loop": true,
-"name": &"idle",
+"name": &"removing",
 "speed": 9.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqm6x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_prvq0"]
 atlas = ExtResource("3_3ia15")
 region = Rect2(176, 0, 16, 16)
 
@@ -41,31 +70,23 @@ script = ExtResource("1_1s36d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.62939e-06, -9.35741)
 scale = Vector2(0.628943, 0.611414)
-sprite_frames = SubResource("SpriteFrames_xg588")
+sprite_frames = SubResource("SpriteFrames_2iqc4")
+animation = &"creation"
 autoplay = "default"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -56.6325
-offset_top = -98.1386
-offset_right = -16.6325
-offset_bottom = -58.1386
+offset_left = -49.6025
+offset_top = -75.6988
+offset_right = -9.60247
+offset_bottom = -35.6988
 scale = Vector2(2.66203, 1.09567)
-texture = SubResource("AtlasTexture_rqm6x")
+texture = SubResource("AtlasTexture_prvq0")
 
 [node name="word" type="Label" parent="."]
-offset_left = -42.2566
-offset_top = -89.9223
-offset_right = 20.7434
-offset_bottom = -66.9223
+offset_left = -35.2266
+offset_top = -67.4825
+offset_right = 27.7734
+offset_bottom = -44.4825
 scale = Vector2(1.22348, 1.28785)
 text = "WORD"
 horizontal_alignment = 1
-
-[node name="Label" type="Label" parent="."]
-offset_left = -25.0
-offset_top = -52.0
-offset_right = 27.0
-offset_bottom = -29.0
-text = "Freeze
-
-"

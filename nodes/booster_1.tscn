@@ -1,32 +1,61 @@
-[gd_scene load_steps=6 format=3 uid="uid://5j1xsgx4xuey"]
+[gd_scene load_steps=10 format=3 uid="uid://5j1xsgx4xuey"]
 
-[ext_resource type="Texture2D" uid="uid://bipgofbcalg6w" path="res://assets/icon.svg" id="1_153aq"]
 [ext_resource type="Script" path="res://scripts/booster.gd" id="1_cqc5t"]
+[ext_resource type="Texture2D" uid="uid://bqsqqae2bsfjd" path="res://assets/boostersanimation/hart1.png" id="2_8j5q5"]
+[ext_resource type="Texture2D" uid="uid://dfdos4674o8nf" path="res://assets/boostersanimation/hart2.png" id="3_5jquj"]
 [ext_resource type="Texture2D" uid="uid://bvjs16alm5n87" path="res://assets/tilemap_packed.png" id="3_606a7"]
+[ext_resource type="Texture2D" uid="uid://be1senxitjkvp" path="res://assets/boostersanimation/hart3.png" id="4_an0lp"]
+[ext_resource type="Texture2D" uid="uid://du3c6xa45eftr" path="res://assets/boostersanimation/hart4.png" id="5_t8d1l"]
+[ext_resource type="Texture2D" uid="uid://dnsvv67i7742k" path="res://assets/boostersanimation/hart5.png" id="6_qetax"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xg588"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"attack",
-"speed": 9.0
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8j5q5")
 }, {
-"frames": [],
+"duration": 1.0,
+"texture": ExtResource("3_5jquj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_an0lp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t8d1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qetax")
+}],
 "loop": true,
-"name": &"death",
+"name": &"creation",
 "speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_153aq")
+"texture": ExtResource("6_qetax")
 }],
 "loop": true,
 "name": &"default",
 "speed": 9.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qetax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t8d1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_an0lp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5jquj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8j5q5")
+}],
 "loop": true,
-"name": &"idle",
+"name": &"removing",
 "speed": 9.0
 }]
 
@@ -42,29 +71,23 @@ script = ExtResource("1_cqc5t")
 position = Vector2(7.62939e-06, -9.35741)
 scale = Vector2(0.628943, 0.611414)
 sprite_frames = SubResource("SpriteFrames_xg588")
+animation = &"creation"
 autoplay = "default"
+frame_progress = 0.0382646
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -56.6325
-offset_top = -98.1386
-offset_right = -16.6325
-offset_bottom = -58.1386
+offset_left = -49.6025
+offset_top = -75.6988
+offset_right = -9.60247
+offset_bottom = -35.6988
 scale = Vector2(2.66203, 1.09567)
 texture = SubResource("AtlasTexture_rqm6x")
 
 [node name="word" type="Label" parent="."]
-offset_left = -42.2566
-offset_top = -89.9223
-offset_right = 20.7434
-offset_bottom = -66.9223
+offset_left = -35.2266
+offset_top = -67.4825
+offset_right = 27.7734
+offset_bottom = -44.4825
 scale = Vector2(1.22348, 1.28785)
 text = "WORD"
 horizontal_alignment = 1
-
-[node name="Label" type="Label" parent="."]
-offset_left = -25.0
-offset_top = -52.0
-offset_right = 27.0
-offset_bottom = -29.0
-text = "Health
-"
