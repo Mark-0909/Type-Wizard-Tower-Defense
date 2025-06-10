@@ -206,7 +206,8 @@ func Boss3(is_in_effect: bool):
 		if is_instance_valid(node) and node not in targets:
 			targets.append(node)
 	for target in targets:
-		if is_in_effect and target.has_method("Boss_3") and not target.has_method("boss3_applied"):
+		if is_in_effect and target.has_method("Boss_3") and not target.boss3_applied:
+
 			target.Boss_3()
 		elif not is_in_effect and target.has_method("Boss3_End"):
 			target.Boss3_End()
@@ -219,7 +220,7 @@ func Boss4(is_in_effect: bool):
 		if is_instance_valid(node) and node not in targets:
 			targets.append(node)
 	for target in targets:
-		if is_in_effect and target.has_method("Boss_4") and not target.has_method("boss4_applied"):
+		if is_in_effect and target.has_method("Boss_4") and not target.boss4_applied:
 			target.Boss_4()
 		elif not is_in_effect and target.has_method("Boss4_End"):
 			target.Boss4_End()

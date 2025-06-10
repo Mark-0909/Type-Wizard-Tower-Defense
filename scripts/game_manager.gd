@@ -117,15 +117,17 @@ var letter_scenes = {
 }
 
 func _ready() -> void:
-	pass # Replace with function body.
+	$"../CanvasLayer/Infos/healthbar".play("100")
 
 func _process(delta: float) -> void:
-	pass
+	$"../CanvasLayer/Infos/healthbar/health_indicator".text = str(Health_Points)
+	PlayHealthbar()
 
 
+func PlayHealthbar() -> void:
+	var health_animation = str(Health_Points)  # Convert health points to string
+	$"../CanvasLayer/Infos/healthbar".play(health_animation)
 
-
-# Adding number of booster
 func Add_Booster(type: int) -> void:
 	if type == 1:
 		Booster_1_Count += 1
@@ -201,7 +203,6 @@ func booster2() -> void:
 			continue
 		if enemy.has_method("frozen_apply"):
 			enemy.frozen_apply()
-
 	Booster_2_Count -= 1
 
 

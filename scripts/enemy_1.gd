@@ -148,7 +148,9 @@ func frozen_remove() -> void:
 
 	$AnimatedSprite2D.play("default")
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
-	$frozen.play("default")  # Stop freeze animation
+	$frozen.play("default")  
+	if boss3_applied:
+		$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)
 	$frozen.modulate = Color(1, 1, 1, 0)  # Hide frozen overlay
 
 # === Boss Effects ===
