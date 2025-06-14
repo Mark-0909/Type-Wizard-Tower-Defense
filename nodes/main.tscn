@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=4 uid="uid://c7mav1xrwribp"]
+[gd_scene load_steps=108 format=4 uid="uid://c7mav1xrwribp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_k30ce"]
 [ext_resource type="PackedScene" uid="uid://do2p23ai45wr1" path="res://nodes/castle.tscn" id="1_v1n8b"]
@@ -61,10 +61,15 @@
 [ext_resource type="Texture2D" uid="uid://by0wqjcycbaqi" path="res://assets/heath bar/h4.png" id="58_fkjvf"]
 [ext_resource type="Texture2D" uid="uid://b3sfit2rvmr3e" path="res://assets/heath bar/h3.png" id="59_25igd"]
 [ext_resource type="Texture2D" uid="uid://cgq4ujn7p8jqt" path="res://assets/heath bar/h2.png" id="60_nakts"]
+[ext_resource type="Texture2D" uid="uid://jggkcr0rrtbj" path="res://assets/UI/pause.png" id="62_ldtma"]
 [ext_resource type="Texture2D" uid="uid://bd4fblfoes4m4" path="res://assets/boostersanimation/booster1.png" id="62_ymmw7"]
 [ext_resource type="Texture2D" uid="uid://r6gqhu35naap" path="res://assets/boostersanimation/booster2.png" id="63_uv5rq"]
 [ext_resource type="Texture2D" uid="uid://d16hhksu5p3dl" path="res://assets/boostersanimation/booster3.png" id="64_6mqec"]
 [ext_resource type="Texture2D" uid="uid://dr1xi73fb1myu" path="res://assets/plackard.png" id="65_5o3aj"]
+[ext_resource type="AudioStream" uid="uid://duukl216ybcck" path="res://assets/music/The Game Show Theme Music.mp3" id="67_ukhlv"]
+[ext_resource type="AudioStream" uid="uid://cvr87twc3qwe5" path="res://assets/music/Game Over sound effect.mp3" id="68_418bo"]
+[ext_resource type="AudioStream" uid="uid://djgcx2d5rnjyg" path="res://assets/music/Audio/select_004.ogg" id="68_6252w"]
+[ext_resource type="AudioStream" uid="uid://14nhl5nftlfy" path="res://assets/music/Audio/tick_004.ogg" id="69_xc7i3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0hs7"]
 texture = ExtResource("3_grs72")
@@ -1940,9 +1945,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lyte"]
+atlas = ExtResource("62_ldtma")
+
 [node name="main" type="Node2D"]
-position = Vector2(-4, 0)
-scale = Vector2(1.78726, 2.34511)
+position = Vector2(-4, 363)
+scale = Vector2(1.957, 2.568)
 script = ExtResource("1_k30ce")
 
 [node name="Typingcontainer" type="HBoxContainer" parent="."]
@@ -1951,10 +1959,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -270.246
-offset_top = 151.805
-offset_right = -230.246
-offset_bottom = 191.805
+offset_left = -400.613
+offset_top = -15.5763
+offset_right = -360.613
+offset_bottom = 24.4237
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(14.0773, 3.55625)
@@ -2064,10 +2072,10 @@ frame_progress = 0.286426
 [node name="Infos" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -2254.0
-offset_top = -288.0
-offset_right = -2214.0
-offset_bottom = -248.0
+offset_left = -2064.0
+offset_top = -118.0
+offset_right = -2024.0
+offset_bottom = -78.0
 scale = Vector2(1.17834, 1.72987)
 
 [node name="healthbar" type="AnimatedSprite2D" parent="CanvasLayer/Infos"]
@@ -2085,10 +2093,19 @@ scale = Vector2(0.673842, 0.531069)
 theme_override_colors/font_color = Color(0.299547, 0.299547, 0.299547, 1)
 text = "100"
 
+[node name="pause" type="TextureButton" parent="CanvasLayer/Infos"]
+layout_mode = 0
+offset_left = 3773.95
+offset_top = 78.6186
+offset_right = 3869.95
+offset_bottom = 174.619
+scale = Vector2(1.38212, 0.845583)
+texture_normal = SubResource("AtlasTexture_1lyte")
+
 [node name="boosters" type="Node" parent="CanvasLayer"]
 
 [node name="Booster1" type="Sprite2D" parent="CanvasLayer/boosters"]
-position = Vector2(1588, 1160)
+position = Vector2(1778, 1330)
 scale = Vector2(3.07023, 2.96437)
 texture = ExtResource("62_ymmw7")
 
@@ -2108,7 +2125,7 @@ scale = Vector2(0.811894, 0.817462)
 text = "x1"
 
 [node name="Booster3" type="Sprite2D" parent="CanvasLayer/boosters"]
-position = Vector2(2055, 1159)
+position = Vector2(2245, 1329)
 scale = Vector2(3.07023, 2.96437)
 texture = ExtResource("63_uv5rq")
 
@@ -2128,7 +2145,7 @@ scale = Vector2(0.811894, 0.817462)
 text = "x1"
 
 [node name="Booster2" type="Sprite2D" parent="CanvasLayer/boosters"]
-position = Vector2(1822, 1159)
+position = Vector2(2012, 1329)
 scale = Vector2(3.07023, 2.96437)
 texture = ExtResource("64_6mqec")
 
@@ -2148,7 +2165,7 @@ scale = Vector2(0.811894, 0.817462)
 text = "x1"
 
 [node name="ScoreBG" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1135, 1226)
+position = Vector2(1325, 1396)
 scale = Vector2(2.98714, 3.52948)
 texture = ExtResource("65_5o3aj")
 
@@ -2161,4 +2178,25 @@ scale = Vector2(1.45002, 1.01533)
 text = "1000"
 horizontal_alignment = 1
 
+[node name="Node" type="Node" parent="."]
+
+[node name="BG" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("67_ukhlv")
+volume_db = -8.432
+autoplay = true
+parameters/looping = true
+
+[node name="gameover" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("68_418bo")
+volume_db = -8.432
+
+[node name="click" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("68_6252w")
+volume_db = -8.18
+
+[node name="hover" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("69_xc7i3")
+volume_db = -8.18
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Infos/pause" to="." method="_on_pause_pressed"]

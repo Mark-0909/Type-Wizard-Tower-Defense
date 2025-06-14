@@ -774,7 +774,7 @@ position = Vector2(-355.121, 217.913)
 scale = Vector2(4.47238, 3.71313)
 sprite_frames = SubResource("SpriteFrames_567vo")
 autoplay = "default"
-frame_progress = 0.403108
+frame_progress = 0.513483
 
 [node name="TextureRect" type="TextureRect" parent="enemy"]
 offset_left = -434.406
@@ -802,7 +802,7 @@ position = Vector2(-6.09889, -1.82583)
 scale = Vector2(5.57067, 5.21438)
 sprite_frames = SubResource("SpriteFrames_4my8h")
 autoplay = "default"
-frame_progress = 0.0125529
+frame_progress = 0.122928
 
 [node name="TextureRect" type="TextureRect" parent="Boss"]
 offset_left = -84.5132
@@ -891,7 +891,7 @@ scale = Vector2(1.172, 1.138)
 sprite_frames = SubResource("SpriteFrames_hti3b")
 animation = &"creation"
 autoplay = "default"
-frame_progress = 0.0841007
+frame_progress = 0.194475
 
 [node name="TextureRect" type="TextureRect" parent="Booster"]
 offset_left = 946.786
@@ -920,7 +920,7 @@ scale = Vector2(1.172, 1.138)
 sprite_frames = SubResource("SpriteFrames_dsvxo")
 animation = &"creation"
 autoplay = "default"
-frame_progress = 0.786676
+frame_progress = 0.897051
 
 [node name="TextureRect" type="TextureRect" parent="Booster2"]
 offset_left = -49.6025
@@ -949,7 +949,7 @@ scale = Vector2(1.17245, 1.06263)
 sprite_frames = SubResource("SpriteFrames_0foc5")
 animation = &"creation"
 autoplay = "default"
-frame_progress = 0.1301
+frame_progress = 0.240475
 
 [node name="TextureRect" type="TextureRect" parent="Booster3"]
 offset_left = 941.823

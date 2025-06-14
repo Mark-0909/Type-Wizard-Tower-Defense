@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr8ajdtw8nots"]
+[gd_scene load_steps=9 format=3 uid="uid://cr8ajdtw8nots"]
 
 [ext_resource type="Texture2D" uid="uid://dbxpkuu7xfw4y" path="res://assets/UI/LargeBackground.png" id="1_dmb0h"]
+[ext_resource type="Script" path="res://nodes/pause.gd" id="1_qc5ov"]
 [ext_resource type="Texture2D" uid="uid://dbflv46q4n8uu" path="res://assets/UI/DialogueTitle.png" id="2_j4dlm"]
 [ext_resource type="FontFile" uid="uid://c4jm3r4ebenno" path="res://PermanentMarker-Regular.ttf" id="3_xchy3"]
 [ext_resource type="Texture2D" uid="uid://coilopg4dqxnn" path="res://assets/UI/RedButton.png" id="4_fme0s"]
@@ -19,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qc5ov")
 
 [node name="LargeBackground" type="Sprite2D" parent="."]
 position = Vector2(1113, 646)
@@ -31,6 +33,7 @@ scale = Vector2(0.744754, 1.09143)
 texture = ExtResource("2_j4dlm")
 
 [node name="pause" type="Label" parent="."]
+layout_mode = 0
 offset_left = 908.0
 offset_top = 172.0
 offset_right = 999.0
@@ -42,7 +45,8 @@ theme_override_font_sizes/font_size = 17
 text = "Pause"
 horizontal_alignment = 1
 
-[node name="closebtn" type="TextureButton" parent="."]
+[node name="mainmenu" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 912.0
 offset_top = 806.0
 offset_right = 1172.0
@@ -50,7 +54,7 @@ offset_bottom = 982.0
 scale = Vector2(1.52681, 1.05821)
 texture_normal = SubResource("AtlasTexture_c4js3")
 
-[node name="Label" type="Label" parent="closebtn"]
+[node name="Label" type="Label" parent="mainmenu"]
 layout_mode = 0
 offset_left = 40.7888
 offset_top = 23.2128
@@ -67,14 +71,8 @@ offset_top = 529.0
 offset_right = 991.0
 offset_bottom = 553.0
 scale = Vector2(3.83333, 3.6)
-
-[node name="Label" type="Label" parent="CheckBox"]
-offset_left = 24.7826
-offset_top = -4.16667
-offset_right = 68.7826
-offset_bottom = 19.8333
-scale = Vector2(1.05126, 1.40463)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_xchy3")
 text = "Mute"
 
@@ -87,16 +85,18 @@ offset_bottom = 456.0
 scale = Vector2(1.46442, 3.74256)
 
 [node name="Label" type="Label" parent="HSlider"]
-offset_left = -104.479
-offset_top = -4.27515
-offset_right = -60.4786
-offset_bottom = 19.7248
-scale = Vector2(2.39346, 0.996252)
+layout_mode = 0
+offset_left = -83.3094
+offset_top = -6.14553
+offset_right = -43.3094
+offset_bottom = 17.8545
+scale = Vector2(1.9619, 1.04499)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_xchy3")
 text = "BGM"
 
-[node name="closebtn2" type="TextureButton" parent="."]
+[node name="resume" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 936.0
 offset_top = 670.0
 offset_right = 1196.0
@@ -104,7 +104,7 @@ offset_bottom = 846.0
 scale = Vector2(1.27486, 0.947753)
 texture_normal = SubResource("AtlasTexture_26r1s")
 
-[node name="Label" type="Label" parent="closebtn2"]
+[node name="Label" type="Label" parent="resume"]
 layout_mode = 0
 offset_left = 41.5732
 offset_top = 17.9371

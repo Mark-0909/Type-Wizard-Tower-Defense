@@ -1,6 +1,6 @@
 extends Node
 
-var Health_Points = 100
+var Health_Points = 1
 var Score = 0
 
 var Booster_1_Count = 1
@@ -118,11 +118,10 @@ var letter_scenes = {
 }
 
 func _ready() -> void:
-	$"../CanvasLayer/Infos/healthbar".play("100")
+	pass # Replace with function body.
 
 func _process(delta: float) -> void:
 	$"../CanvasLayer/Infos/healthbar/health_indicator".text = str(Health_Points)
-	PlayHealthbar()
 	$"../CanvasLayer/boosters/Booster1/count".text = "x" + str(Booster_1_Count)
 	$"../CanvasLayer/boosters/Booster2/count".text = "x" + str(Booster_2_Count)
 	$"../CanvasLayer/boosters/Booster3/count".text = "x" + str(Booster_3_Count)
@@ -133,27 +132,21 @@ func _process(delta: float) -> void:
 func PlayHealthbar() -> void:
 	var health_animation = str(Health_Points)  # Convert health points to string
 	$"../CanvasLayer/Infos/healthbar".play(health_animation)
+# Adding number of booster
+
 
 func Add_Booster(type: int) -> void:
 	if type == 1:
 		Booster_1_Count += 1
-		$"../CanvasLayer/boosters/Booster1".modulate = Color(0.8, 1.8, 0.8)
-		await get_tree().create_timer(0.4).timeout
-		$"../CanvasLayer/boosters/Booster1".modulate = Color(1, 1, 1)
 		print("Booster1: ", Booster_1_Count)
 	elif type == 2:
 		Booster_2_Count += 1
-		$"../CanvasLayer/boosters/Booster2".modulate = Color(0.8, 1.8, 0.8)
-		await get_tree().create_timer(0.4).timeout
-		$"../CanvasLayer/boosters/Booster2".modulate = Color(1, 1, 1)
 		print("Booster1: ", Booster_2_Count)
 	elif type == 3:
 		Booster_3_Count += 1
-		$"../CanvasLayer/boosters/Booster3".modulate = Color(0.8, 1.8, 0.8)
-		await get_tree().create_timer(0.4).timeout
-		$"../CanvasLayer/boosters/Booster3".modulate = Color(1, 1, 1)
 		print("Booster1: ", Booster_3_Count)
-
+		
+		
 func Add_Score(number: int) -> void:
 	Score += number
 
@@ -176,34 +169,35 @@ func Add_Health() -> void:
 	if Health_Points > 100:
 		Health_Points = 100
 		
+const Gameover = preload("res://nodes/gameover.tscn")
+
+
 func Minus_Health(point: int) -> void:
 	Health_Points -= point
 
-	# Flash all castle nodes red
-	for castle_node in get_tree().get_nodes_in_group("castle"):
-		if is_instance_valid(castle_node):
-			castle_node.modulate = Color(1, 0, 0)  # Red tint
-
-	await get_tree().create_timer(0.2).timeout
-
-	# Revert to normal
-	for castle_node in get_tree().get_nodes_in_group("castle"):
-		if is_instance_valid(castle_node):
-			castle_node.modulate = Color(1, 1, 1)  # Normal color
-
 	if Health_Points <= 0:
-		call_deferred("_reload_scene")
+		call_deferred("_show_gameover_screen")
 
+func _show_gameover_screen():
+	await get_tree().create_timer(0.1).timeout  # small delay
 
-func _reload_scene():
-	call_deferred("_safe_reload")
+	var canvas_layer := CanvasLayer.new()
+	add_child(canvas_layer)
 
-func _safe_reload():
-	if get_tree() and get_tree().current_scene:
-		get_tree().reload_current_scene()
+	var gameover_instance = Gameover.instantiate()
+	gameover_instance.score = Score
+	
+	canvas_layer.add_child(gameover_instance)
+	get_tree().paused = true
+	
+	get_tree().current_scene = gameover_instance
+
 
 
  # booster 1 = add castle health
+ # booster 2 = freeze
+ # booster 3 = explosion
+# booster 1 = add castle health
  # booster 2 = freeze
  # booster 3 = explosion
 func booster1() -> void:
@@ -267,6 +261,7 @@ func booster3() -> void:
 
 func get_random_word(length: int) -> String:
 	return word_pool[length].pick_random()
+	
 	
 	
 	

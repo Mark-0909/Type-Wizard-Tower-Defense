@@ -17,7 +17,7 @@ var letter_offset := 0
 var letter_spacing := 150
 var letter_scale := Vector2(1, 1)
 var last_spawn_position = 0
-var velocity: float = 50.0
+var velocity: float = 100.0
 
 # Enemies
 const ENEMY_1 = preload("res://nodes/enemy1.tscn")
@@ -83,12 +83,10 @@ func _process(delta: float) -> void:
 		game_manager.booster2()
 	if Input.is_action_just_pressed("health"):
 		game_manager.booster1()
-
-
 func spawn_enemy() -> void:
 	var word_length = randi_range(4, 11)
 	var word_list = game_manager.word_pool.get(word_length, [])
-	if word_list.is_empty():
+	if word_list.size() == 0:
 		return
 
 	var word = word_list.pick_random()
@@ -103,30 +101,19 @@ func spawn_enemy() -> void:
 		return
 
 	var index := randi() % available_areas.size()
-
-	# Ensure enemy does not spawn in the same area consecutively
-	while index == last_spawn_position and available_areas.size() > 1:
-		index = randi() % available_areas.size()
-
 	var area = available_areas[index]
-	last_spawn_position = index 	# Update last spawn position
-
+	last_spawn_position = index
 	enemy.global_position = area.global_position
 	add_child(enemy)
 
 
+
 func get_valid_spawn_areas() -> Array:
 	var areas = spawn_areas.duplicate()
-	
-	# Exclude the last used spawn position
-	if last_spawn_position < areas.size():
-		areas.remove_at(last_spawn_position)
-
 	if boss_spawned:
 		areas.erase(spawn_area_4)
 		areas.erase(spawn_area_5)
 		areas.erase(spawn_area_6)
-
 	return areas
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -137,6 +124,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			last_letter_dict.node.queue_free()
 			letter_offset -= letter_spacing
 			_print_typed_letters()
+			return
+
+		# Prevent adding more than 11 letters
+		if typed_letters.size() >= 11:
 			return
 
 		if game_manager.letter_scenes.has(key):
@@ -164,6 +155,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_print_typed_letters()
 			check_enemy_matches()
 			check_booster_matches()
+
 
 func _print_typed_letters() -> void:
 	var typed_text := ""
@@ -230,13 +222,7 @@ func check_enemy_matches() -> void:
 
 func clear_typed_letters():
 	for letter_dict in typed_letters:
-		var letter_node = letter_dict.node
-		if letter_node:
-			var tween = letter_node.create_tween()
-			tween.tween_property(letter_node, "modulate:a", 0.0, 0.02)  # Fade out in 0.5 seconds
-			await tween.finished
-			letter_node.queue_free()  # Remove node after animation
-	
+		letter_dict.node.queue_free()
 	typed_letters.clear()
 	letter_offset = 0
 
@@ -288,9 +274,10 @@ func _on_boss_died() -> void:
 var enemy_types_by_length := {
 	4: ENEMY_1,
 	5: ENEMY_2,
-	6: ENEMY_3,
-	7: ENEMY_4,
-	8: ENEMY_5,
-	9: ENEMY_6,
-	10: ENEMY_7
+	6: ENEMY_2,
+	7: ENEMY_3,
+	8: ENEMY_4,
+	9: ENEMY_5,
+	10: ENEMY_6,
+	11: ENEMY_7
 }

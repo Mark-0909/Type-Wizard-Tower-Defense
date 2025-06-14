@@ -54,7 +54,7 @@ func _set_word_label() -> void:
 		label.text = ""
 
 func start_attack_delay() -> void:
-	await get_tree().create_timer(8).timeout
+	await get_tree().create_timer(8.0).timeout
 	if not _is_dead:
 		is_moving = false
 		attack()
@@ -90,7 +90,6 @@ func next_phase() -> void:
 		
 
 func die() -> void:
-	game_manager.Add_Score(20)
 	_is_dead = true
 	is_moving = false
 	velocity = 0.0
@@ -158,18 +157,18 @@ func check_input(input_word: String) -> void:
 		print("Incorrect word.")
 
 # BOSS EFFECTS
-func Boss1(is_in_effect: bool) -> void:
-	print("mantis in effect:", is_in_effect)
-
-	for enemy in get_tree().get_nodes_in_group("smallmobs"):
-		if not is_instance_valid(enemy):
-			continue
-
-		if is_in_effect and enemy.has_method("Boss_1") and not enemy.boss1_applied:
-			enemy.Boss_1()
-		elif not is_in_effect and enemy.has_method("Boss1_End") and enemy.boss1_applied:
-			enemy.Boss1_End()
-
+func Boss1(is_in_effect: bool):
+	print("mantis in effect")
+	var targets := []
+	for node in get_tree().get_nodes_in_group("smallmobs"):
+		if is_instance_valid(node) and node not in targets:
+			targets.append(node)
+	for target in targets:
+		if is_in_effect and target.has_method("Boss_1") and not target.has_method("boss1_applied"):
+			target.Boss_1()
+		elif not is_in_effect and target.has_method("Boss1_End"):
+			target.Boss1_End()
+		
 
 func Boss2(is_in_effect: bool):
 	print("Boss2 (Plant) effect in effect:", is_in_effect)
@@ -200,8 +199,7 @@ func Boss3(is_in_effect: bool):
 		if is_instance_valid(node) and node not in targets:
 			targets.append(node)
 	for target in targets:
-		if is_in_effect and target.has_method("Boss_3") and not target.boss3_applied:
-
+		if is_in_effect and target.has_method("Boss_3") and not target.has_method("boss3_applied"):
 			target.Boss_3()
 		elif not is_in_effect and target.has_method("Boss3_End"):
 			target.Boss3_End()
@@ -214,7 +212,7 @@ func Boss4(is_in_effect: bool):
 		if is_instance_valid(node) and node not in targets:
 			targets.append(node)
 	for target in targets:
-		if is_in_effect and target.has_method("Boss_4") and not target.boss4_applied:
+		if is_in_effect and target.has_method("Boss_4") and not target.has_method("boss4_applied"):
 			target.Boss_4()
 		elif not is_in_effect and target.has_method("Boss4_End"):
 			target.Boss4_End()

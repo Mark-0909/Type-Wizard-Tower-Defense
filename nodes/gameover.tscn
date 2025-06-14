@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://i2a6tsmi37hw"]
+[gd_scene load_steps=11 format=3 uid="uid://i2a6tsmi37hw"]
 
+[ext_resource type="Script" path="res://nodes/gameover.gd" id="1_37aqu"]
 [ext_resource type="Texture2D" uid="uid://dbxpkuu7xfw4y" path="res://assets/UI/LargeBackground.png" id="1_t4s6g"]
 [ext_resource type="Texture2D" uid="uid://b0fmsjqjd8lvd" path="res://assets/UI/RedTitle.png" id="2_8c6ef"]
 [ext_resource type="FontFile" uid="uid://c4jm3r4ebenno" path="res://PermanentMarker-Regular.ttf" id="3_t74k8"]
 [ext_resource type="Texture2D" uid="uid://coilopg4dqxnn" path="res://assets/UI/RedButton.png" id="4_aq13m"]
 [ext_resource type="Texture2D" uid="uid://ipdjtcclaavd" path="res://assets/UI/BlueButton.png" id="5_i5ql8"]
+[ext_resource type="AudioStream" uid="uid://djgcx2d5rnjyg" path="res://assets/music/Audio/select_004.ogg" id="7_7ov7k"]
+[ext_resource type="AudioStream" uid="uid://14nhl5nftlfy" path="res://assets/music/Audio/tick_004.ogg" id="8_5i50d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ox14c"]
 atlas = ExtResource("4_aq13m")
@@ -13,24 +16,31 @@ atlas = ExtResource("4_aq13m")
 atlas = ExtResource("5_i5ql8")
 
 [node name="Gameover" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.15448, 1.16253)
+script = ExtResource("1_37aqu")
 
 [node name="LargeBackground" type="Sprite2D" parent="."]
+process_mode = 3
 position = Vector2(1113, 646)
 scale = Vector2(0.35877, 0.656242)
 texture = ExtResource("1_t4s6g")
 
 [node name="DialogueTitle" type="Sprite2D" parent="."]
+process_mode = 3
 position = Vector2(1116, 254)
 scale = Vector2(0.744754, 1.09143)
 texture = ExtResource("2_8c6ef")
 
 [node name="pause" type="Label" parent="."]
+process_mode = 3
+layout_mode = 0
 offset_left = 949.0
 offset_top = 198.0
 offset_right = 1040.0
@@ -42,7 +52,9 @@ theme_override_font_sizes/font_size = 17
 text = "Game Over"
 horizontal_alignment = 1
 
-[node name="closebtn" type="TextureButton" parent="."]
+[node name="mainmenu" type="TextureButton" parent="."]
+process_mode = 3
+layout_mode = 0
 offset_left = 912.0
 offset_top = 806.0
 offset_right = 1172.0
@@ -50,7 +62,8 @@ offset_bottom = 982.0
 scale = Vector2(1.52681, 1.05821)
 texture_normal = SubResource("AtlasTexture_ox14c")
 
-[node name="Label" type="Label" parent="closebtn"]
+[node name="Label" type="Label" parent="mainmenu"]
+process_mode = 3
 layout_mode = 0
 offset_left = 40.7888
 offset_top = 23.2128
@@ -60,7 +73,9 @@ scale = Vector2(2.16362, 5.40425)
 theme_override_fonts/font = ExtResource("3_t74k8")
 text = "Main menu"
 
-[node name="closebtn2" type="TextureButton" parent="."]
+[node name="restart" type="TextureButton" parent="."]
+process_mode = 3
+layout_mode = 0
 offset_left = 936.0
 offset_top = 670.0
 offset_right = 1196.0
@@ -68,7 +83,8 @@ offset_bottom = 846.0
 scale = Vector2(1.27486, 0.947753)
 texture_normal = SubResource("AtlasTexture_rvx2n")
 
-[node name="Label" type="Label" parent="closebtn2"]
+[node name="Label" type="Label" parent="restart"]
+process_mode = 3
 layout_mode = 0
 offset_left = 40.0044
 offset_top = 22.1576
@@ -79,6 +95,8 @@ theme_override_fonts/font = ExtResource("3_t74k8")
 text = "Restart"
 
 [node name="Label" type="Label" parent="."]
+process_mode = 3
+layout_mode = 0
 offset_left = 1028.0
 offset_top = 340.0
 offset_right = 1113.0
@@ -89,7 +107,9 @@ theme_override_fonts/font = ExtResource("3_t74k8")
 text = "Score"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="score" type="Label" parent="."]
+process_mode = 3
+layout_mode = 0
 offset_left = 909.0
 offset_top = 435.0
 offset_right = 994.0
@@ -100,3 +120,20 @@ theme_override_fonts/font = ExtResource("3_t74k8")
 text = "1000
 "
 horizontal_alignment = 1
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_7ov7k")
+volume_db = -8.18
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_5i50d")
+volume_db = -8.18
+
+[connection signal="mouse_entered" from="mainmenu" to="." method="_on_mainmenu_mouse_entered"]
+[connection signal="mouse_exited" from="mainmenu" to="." method="_on_mainmenu_mouse_exited"]
+[connection signal="pressed" from="mainmenu" to="." method="_on_mainmenu_pressed"]
+[connection signal="mouse_entered" from="restart" to="." method="_on_restart_mouse_entered"]
+[connection signal="mouse_exited" from="restart" to="." method="_on_restart_mouse_exited"]
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: float = 1500.0
+@export var speed: float = 2000.0
 var target: Node2D = null
 var is_gone: bool = false
 

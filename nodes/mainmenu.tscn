@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2xp5c2vok0go"]
+
+[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_f8c67"]
+[ext_resource type="Texture2D" uid="uid://ipdjtcclaavd" path="res://assets/UI/BlueButton.png" id="2_16y12"]
+[ext_resource type="Texture2D" uid="uid://dvp128or4jdgx" path="res://assets/typewizardbg2.png" id="2_pcn83"]
+[ext_resource type="FontFile" uid="uid://c4jm3r4ebenno" path="res://PermanentMarker-Regular.ttf" id="3_elt4y"]
+[ext_resource type="Texture2D" uid="uid://coilopg4dqxnn" path="res://assets/UI/RedButton.png" id="4_3ejcq"]
+[ext_resource type="AudioStream" uid="uid://duukl216ybcck" path="res://assets/music/The Game Show Theme Music.mp3" id="6_enl0c"]
+[ext_resource type="AudioStream" uid="uid://djgcx2d5rnjyg" path="res://assets/music/Audio/select_004.ogg" id="7_4nupn"]
+[ext_resource type="AudioStream" uid="uid://14nhl5nftlfy" path="res://assets/music/Audio/tick_004.ogg" id="8_32ukw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30gab"]
+atlas = ExtResource("2_16y12")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eahh"]
+atlas = ExtResource("4_3ejcq")
+
+[node name="Mainmenu" type="Node2D"]
+scale = Vector2(1.14557, 1.14759)
+script = ExtResource("1_f8c67")
+
+[node name="Typewizardbg" type="Sprite2D" parent="."]
+position = Vector2(1181, 698)
+scale = Vector2(1.53594, 1.36245)
+texture = ExtResource("2_pcn83")
+
+[node name="start" type="TextureButton" parent="."]
+offset_left = 188.0
+offset_top = 431.0
+offset_right = 448.0
+offset_bottom = 607.0
+scale = Vector2(1.87268, 1.52576)
+texture_normal = SubResource("AtlasTexture_30gab")
+
+[node name="Label" type="Label" parent="start"]
+layout_mode = 0
+offset_left = 49.5376
+offset_top = 21.6841
+offset_right = 106.538
+offset_bottom = 45.6841
+scale = Vector2(3.1514, 5.42744)
+theme_override_fonts/font = ExtResource("3_elt4y")
+text = "START"
+
+[node name="mechanics" type="TextureButton" parent="."]
+offset_left = 194.0
+offset_top = 658.0
+offset_right = 454.0
+offset_bottom = 834.0
+scale = Vector2(1.88925, 1.58926)
+texture_normal = SubResource("AtlasTexture_2eahh")
+
+[node name="Label" type="Label" parent="mechanics"]
+layout_mode = 0
+offset_left = 40.7888
+offset_top = 23.2128
+offset_right = 125.789
+offset_bottom = 47.2128
+scale = Vector2(2.16362, 5.40425)
+theme_override_fonts/font = ExtResource("3_elt4y")
+text = "Mechanics"
+
+[node name="settings" type="TextureButton" parent="."]
+offset_left = 214.0
+offset_top = 888.0
+offset_right = 474.0
+offset_bottom = 1064.0
+scale = Vector2(1.85313, 1.53451)
+texture_normal = SubResource("AtlasTexture_30gab")
+
+[node name="Label" type="Label" parent="settings"]
+layout_mode = 0
+offset_left = 40.7888
+offset_top = 23.2128
+offset_right = 125.789
+offset_bottom = 47.2128
+scale = Vector2(2.16362, 5.40425)
+theme_override_fonts/font = ExtResource("3_elt4y")
+text = "SETTINGS"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_enl0c")
+volume_db = -8.432
+autoplay = true
+parameters/looping = true
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_4nupn")
+volume_db = -8.18
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_32ukw")
+volume_db = -8.18
+
+[connection signal="mouse_entered" from="start" to="." method="_on_start_mouse_entered"]
+[connection signal="mouse_exited" from="start" to="." method="_on_start_mouse_exited"]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="mechanics" to="." method="_on_mechanics_mouse_entered"]
+[connection signal="mouse_exited" from="mechanics" to="." method="_on_mechanics_mouse_exited"]
+[connection signal="pressed" from="mechanics" to="." method="_on_mechanics_pressed"]
+[connection signal="mouse_entered" from="settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="mouse_exited" from="settings" to="." method="_on_settings_mouse_exited"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
