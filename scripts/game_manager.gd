@@ -7,7 +7,6 @@ var Booster_1_Count = 1
 var Booster_2_Count = 1
 var Booster_3_Count = 1
 
-
 var word_pool = {
 	4: [
 		"fire", "wind", "dark", "gate", "mist", "soul", "burn", "claw", "doom", "howl",
