@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=4 uid="uid://c7mav1xrwribp"]
+[gd_scene load_steps=109 format=4 uid="uid://c7mav1xrwribp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_k30ce"]
 [ext_resource type="PackedScene" uid="uid://do2p23ai45wr1" path="res://nodes/castle.tscn" id="1_v1n8b"]
@@ -1948,6 +1948,8 @@ animations = [{
 [sub_resource type="AtlasTexture" id="AtlasTexture_1lyte"]
 atlas = ExtResource("62_ldtma")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6g0ou"]
+
 [node name="main" type="Node2D"]
 position = Vector2(-4, 363)
 scale = Vector2(1.957, 2.568)
@@ -2198,5 +2200,12 @@ volume_db = -8.18
 stream = ExtResource("69_xc7i3")
 volume_db = -8.18
 
+[node name="bossStop" type="Area2D" parent="."]
+position = Vector2(0, -142.913)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bossStop"]
+shape = SubResource("WorldBoundaryShape2D_6g0ou")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Infos/pause" to="." method="_on_pause_pressed"]
+[connection signal="body_entered" from="bossStop" to="." method="_on_boss_stop_body_entered"]

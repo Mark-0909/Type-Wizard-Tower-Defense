@@ -24,7 +24,6 @@ signal boss_died
 
 func _ready() -> void:
 	raycast.enabled = true
-	start_attack_delay()
 	_set_word_label()
 	
 
@@ -54,7 +53,6 @@ func _set_word_label() -> void:
 		label.text = ""
 
 func start_attack_delay() -> void:
-	await get_tree().create_timer(8.0).timeout
 	if not _is_dead:
 		is_moving = false
 		attack()

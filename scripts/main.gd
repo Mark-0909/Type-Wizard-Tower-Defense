@@ -284,4 +284,6 @@ var enemy_types_by_length := {
 
 
 func _on_boss_stop_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	if body.is_in_group("boss1") or body.is_in_group("boss2") or body.is_in_group("boss3") or body.is_in_group("boss4"):
+		if body.has_method("start_attack_delay"):
+			body.start_attack_delay()
