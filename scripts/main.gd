@@ -281,3 +281,7 @@ var enemy_types_by_length := {
 	10: ENEMY_6,
 	11: ENEMY_7
 }
+
+
+func _on_boss_stop_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
