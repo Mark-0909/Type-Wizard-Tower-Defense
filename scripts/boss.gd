@@ -80,8 +80,7 @@ func next_phase() -> void:
 		print("Boss hit! Lives left: ", words.size() - current_word_index)
 		sprite.play("hurt")
 		_is_on_aim = false
-		is_moving = false  # Boss stops moving permanently
-		# optionally remove _set_word_label() if boss no longer changes label
+		is_moving = false 
 		attack()  
 		
 		_set_word_label()
@@ -114,7 +113,7 @@ func spawn_booster() -> void:
 	
 	var chance = randi() % 100
 	if chance >= 50:
-		return  # 90% chance to skip spawning, 25% chance to proceed
+		return  
 	
 	var word_length = 4
 	var word_list = game_manager.word_pool.get(word_length, [])
@@ -130,9 +129,9 @@ func spawn_booster() -> void:
 
 	booster.word = word
 	booster.game_manager = game_manager
-	booster.booster_type = booster_index + 1  # index 0 = type 1, index 1 = type 2, etc.
+	booster.booster_type = booster_index + 1  
 
-	get_parent().add_child(booster)  # Adds booster to the world scene
+	get_parent().add_child(booster)  
 	booster.global_position = global_position  # Spawns at enemy's position
 
 func is_on_aim() -> bool:
@@ -143,7 +142,6 @@ func get_word() -> String:
 		return words[current_word_index].to_upper()
 	return ""
 
-# 🆕 NEW: Call this function from outside to check if the player typed the correct word
 func check_input(input_word: String) -> void:
 	if _is_dead:
 		return
