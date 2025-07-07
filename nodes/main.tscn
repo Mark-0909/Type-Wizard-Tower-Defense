@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=4 uid="uid://c7mav1xrwribp"]
+[gd_scene load_steps=116 format=4 uid="uid://c7mav1xrwribp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_k30ce"]
 [ext_resource type="PackedScene" uid="uid://do2p23ai45wr1" path="res://nodes/castle.tscn" id="1_v1n8b"]
@@ -63,9 +63,14 @@
 [ext_resource type="Texture2D" uid="uid://cgq4ujn7p8jqt" path="res://assets/heath bar/h2.png" id="60_nakts"]
 [ext_resource type="Texture2D" uid="uid://jggkcr0rrtbj" path="res://assets/UI/pause.png" id="62_ldtma"]
 [ext_resource type="Texture2D" uid="uid://bd4fblfoes4m4" path="res://assets/boostersanimation/booster1.png" id="62_ymmw7"]
+[ext_resource type="Texture2D" uid="uid://dbxpkuu7xfw4y" path="res://assets/UI/LargeBackground.png" id="63_p6wk1"]
 [ext_resource type="Texture2D" uid="uid://r6gqhu35naap" path="res://assets/boostersanimation/booster2.png" id="63_uv5rq"]
+[ext_resource type="Texture2D" uid="uid://dbflv46q4n8uu" path="res://assets/UI/DialogueTitle.png" id="64_0lsy5"]
 [ext_resource type="Texture2D" uid="uid://d16hhksu5p3dl" path="res://assets/boostersanimation/booster3.png" id="64_6mqec"]
 [ext_resource type="Texture2D" uid="uid://dr1xi73fb1myu" path="res://assets/plackard.png" id="65_5o3aj"]
+[ext_resource type="FontFile" uid="uid://c4jm3r4ebenno" path="res://PermanentMarker-Regular.ttf" id="65_t1k64"]
+[ext_resource type="Texture2D" uid="uid://coilopg4dqxnn" path="res://assets/UI/RedButton.png" id="66_bfshr"]
+[ext_resource type="Texture2D" uid="uid://ipdjtcclaavd" path="res://assets/UI/BlueButton.png" id="67_05l0q"]
 [ext_resource type="AudioStream" uid="uid://duukl216ybcck" path="res://assets/music/The Game Show Theme Music.mp3" id="67_ukhlv"]
 [ext_resource type="AudioStream" uid="uid://cvr87twc3qwe5" path="res://assets/music/Game Over sound effect.mp3" id="68_418bo"]
 [ext_resource type="AudioStream" uid="uid://djgcx2d5rnjyg" path="res://assets/music/Audio/select_004.ogg" id="68_6252w"]
@@ -1948,6 +1953,12 @@ animations = [{
 [sub_resource type="AtlasTexture" id="AtlasTexture_1lyte"]
 atlas = ExtResource("62_ldtma")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo3ee"]
+atlas = ExtResource("66_bfshr")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5gk8"]
+atlas = ExtResource("67_05l0q")
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6g0ou"]
 
 [node name="main" type="Node2D"]
@@ -2103,6 +2114,101 @@ offset_right = 3869.95
 offset_bottom = 174.619
 scale = Vector2(1.38212, 0.845583)
 texture_normal = SubResource("AtlasTexture_1lyte")
+
+[node name="pauseUi" type="Control" parent="CanvasLayer/Infos"]
+anchors_preset = 0
+offset_left = 59.4056
+offset_top = 145.098
+offset_right = 99.4056
+offset_bottom = 185.098
+scale = Vector2(0.986742, 0.614432)
+
+[node name="LargeBackground" type="Sprite2D" parent="CanvasLayer/Infos/pauseUi"]
+position = Vector2(2843.8, 560.937)
+scale = Vector2(0.35877, 0.656242)
+texture = ExtResource("63_p6wk1")
+
+[node name="DialogueTitle" type="Sprite2D" parent="CanvasLayer/Infos/pauseUi"]
+position = Vector2(2859.8, 183.937)
+scale = Vector2(0.744754, 1.09143)
+texture = ExtResource("64_0lsy5")
+
+[node name="pause" type="Label" parent="CanvasLayer/Infos/pauseUi"]
+offset_left = 2638.78
+offset_top = 86.7132
+offset_right = 2729.78
+offset_bottom = 112.713
+rotation = 0.0470527
+scale = Vector2(4.71628, 6.15829)
+theme_override_fonts/font = ExtResource("65_t1k64")
+theme_override_font_sizes/font_size = 17
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="mainmenu" type="TextureButton" parent="CanvasLayer/Infos/pauseUi"]
+offset_left = 2642.8
+offset_top = 720.937
+offset_right = 2902.8
+offset_bottom = 896.937
+scale = Vector2(1.52681, 1.05821)
+texture_normal = SubResource("AtlasTexture_yo3ee")
+
+[node name="Label" type="Label" parent="CanvasLayer/Infos/pauseUi/mainmenu"]
+layout_mode = 0
+offset_left = 40.7888
+offset_top = 23.2128
+offset_right = 125.789
+offset_bottom = 47.2128
+scale = Vector2(2.16362, 5.40425)
+theme_override_fonts/font = ExtResource("65_t1k64")
+text = "Main menu"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Infos/pauseUi"]
+offset_left = 2697.8
+offset_top = 443.937
+offset_right = 2766.8
+offset_bottom = 475.937
+scale = Vector2(3.83333, 3.6)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("65_t1k64")
+text = "Mute"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Infos/pauseUi"]
+offset_left = 2798.8
+offset_top = 354.937
+offset_right = 2960.8
+offset_bottom = 370.937
+scale = Vector2(1.46442, 3.74256)
+
+[node name="Label" type="Label" parent="CanvasLayer/Infos/pauseUi/HSlider"]
+layout_mode = 0
+offset_left = -83.3094
+offset_top = -6.14553
+offset_right = -43.3094
+offset_bottom = 17.8545
+scale = Vector2(1.9619, 1.04499)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("65_t1k64")
+text = "BGM"
+
+[node name="resume" type="TextureButton" parent="CanvasLayer/Infos/pauseUi"]
+offset_left = 2666.8
+offset_top = 584.937
+offset_right = 2926.8
+offset_bottom = 760.937
+scale = Vector2(1.27486, 0.947753)
+texture_normal = SubResource("AtlasTexture_p5gk8")
+
+[node name="Label" type="Label" parent="CanvasLayer/Infos/pauseUi/resume"]
+layout_mode = 0
+offset_left = 41.5732
+offset_top = 17.9371
+offset_right = 98.5732
+offset_bottom = 41.9371
+scale = Vector2(3.1514, 5.42744)
+theme_override_fonts/font = ExtResource("65_t1k64")
+text = "Resume"
 
 [node name="boosters" type="Node" parent="CanvasLayer"]
 

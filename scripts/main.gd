@@ -57,6 +57,7 @@ func _ready() -> void:
 		spawn_area_4, spawn_area_5, spawn_area_6,
 		spawn_area_7, spawn_area_8, spawn_area_9
 	]
+	$CanvasLayer/Infos/pauseUi.visible = false
 	start_boss_cycle()
 	$Castle.modulate = Color(1,1,1,0)
 	$ExplosionEffect.modulate = Color(1,1,1,0)
@@ -287,3 +288,8 @@ func _on_boss_stop_body_entered(body: Node2D) -> void:
 	if body.is_in_group("boss1") or body.is_in_group("boss2") or body.is_in_group("boss3") or body.is_in_group("boss4"):
 		if body.has_method("start_attack_delay"):
 			body.start_attack_delay()
+
+
+func _on_pause_pressed() -> void:
+	$CanvasLayer/Infos/pauseUi.visible = true
+	get_tree().paused = true

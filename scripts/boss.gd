@@ -201,7 +201,6 @@ func Boss3(is_in_effect: bool):
 			target.Boss3_End()
 
 
-
 func Boss4(is_in_effect: bool):
 	var targets := []
 	for node in get_tree().get_nodes_in_group("smallmobs"):
