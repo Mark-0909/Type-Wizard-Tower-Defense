@@ -2146,11 +2146,12 @@ text = "Pause"
 horizontal_alignment = 1
 
 [node name="mainmenu" type="TextureButton" parent="CanvasLayer/Infos/pauseUi"]
-offset_left = 2642.8
-offset_top = 720.937
-offset_right = 2902.8
-offset_bottom = 896.937
-scale = Vector2(1.52681, 1.05821)
+process_mode = 3
+offset_left = 2673.91
+offset_top = 747.963
+offset_right = 2933.91
+offset_bottom = 923.963
+scale = Vector2(1.29973, 0.712214)
 texture_normal = SubResource("AtlasTexture_yo3ee")
 
 [node name="Label" type="Label" parent="CanvasLayer/Infos/pauseUi/mainmenu"]
@@ -2193,11 +2194,12 @@ theme_override_fonts/font = ExtResource("65_t1k64")
 text = "BGM"
 
 [node name="resume" type="TextureButton" parent="CanvasLayer/Infos/pauseUi"]
-offset_left = 2666.8
-offset_top = 584.937
-offset_right = 2926.8
-offset_bottom = 760.937
-scale = Vector2(1.27486, 0.947753)
+process_mode = 3
+offset_left = 2698.85
+offset_top = 527.808
+offset_right = 2958.85
+offset_bottom = 703.808
+scale = Vector2(1.05545, 0.798362)
 texture_normal = SubResource("AtlasTexture_p5gk8")
 
 [node name="Label" type="Label" parent="CanvasLayer/Infos/pauseUi/resume"]
@@ -2209,6 +2211,25 @@ offset_bottom = 41.9371
 scale = Vector2(3.1514, 5.42744)
 theme_override_fonts/font = ExtResource("65_t1k64")
 text = "Resume"
+
+[node name="restart" type="TextureButton" parent="CanvasLayer/Infos/pauseUi"]
+process_mode = 3
+offset_left = 2691.11
+offset_top = 646.353
+offset_right = 2951.11
+offset_bottom = 822.353
+scale = Vector2(1.16332, 0.668069)
+texture_normal = SubResource("AtlasTexture_p5gk8")
+
+[node name="Label" type="Label" parent="CanvasLayer/Infos/pauseUi/restart"]
+layout_mode = 0
+offset_left = 41.5732
+offset_top = 17.9371
+offset_right = 98.5732
+offset_bottom = 41.9371
+scale = Vector2(3.1514, 5.42744)
+theme_override_fonts/font = ExtResource("65_t1k64")
+text = "Restart"
 
 [node name="boosters" type="Node" parent="CanvasLayer"]
 
@@ -2314,4 +2335,6 @@ shape = SubResource("WorldBoundaryShape2D_6g0ou")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Infos/pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="CanvasLayer/Infos/pauseUi/mainmenu" to="." method="_on_mainmenu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Infos/pauseUi/resume" to="." method="_on_resume_pressed"]
 [connection signal="body_entered" from="bossStop" to="." method="_on_boss_stop_body_entered"]

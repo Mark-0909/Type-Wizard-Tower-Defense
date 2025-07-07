@@ -63,6 +63,8 @@ func _ready() -> void:
 	$ExplosionEffect.modulate = Color(1,1,1,0)
 
 func _process(delta: float) -> void:
+	print("New scene is: ", get_tree().current_scene.name)
+
 	if not stop_spawning:
 		spawn_timer -= delta
 		if spawn_timer <= 0:
@@ -293,3 +295,13 @@ func _on_boss_stop_body_entered(body: Node2D) -> void:
 func _on_pause_pressed() -> void:
 	$CanvasLayer/Infos/pauseUi.visible = true
 	get_tree().paused = true
+	
+func _on_resume_pressed() -> void:
+	$CanvasLayer/Infos/pauseUi.visible = false
+	get_tree().paused = false
+
+const MAINMENU = preload("res://nodes/mainmenu.tscn")
+const MAIN = preload("res://nodes/main.tscn")
+
+func _on_mainmenu_pressed() -> void:
+	get_tree().change_scene_to_file("res://nodes/mainmenu.tscn")

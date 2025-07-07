@@ -11,7 +11,8 @@ func _ready() -> void:
 	await fade_in()
 
 func _process(delta: float) -> void:
-	pass
+	print("New scene is: ", get_tree().current_scene.name)
+
 
 func fade_out() -> void:
 	for i in range(20):
