@@ -304,4 +304,5 @@ const MAINMENU = preload("res://nodes/mainmenu.tscn")
 const MAIN = preload("res://nodes/main.tscn")
 
 func _on_mainmenu_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://nodes/mainmenu.tscn")

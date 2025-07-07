@@ -9,6 +9,7 @@ var on_mute = false
 func _ready() -> void:
 	modulate.a = 0.0
 	await fade_in()
+	
 
 func _process(delta: float) -> void:
 	print("New scene is: ", get_tree().current_scene.name)
