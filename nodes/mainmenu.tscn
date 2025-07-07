@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2xp5c2vok0go"]
+[gd_scene load_steps=12 format=3 uid="uid://c2xp5c2vok0go"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_f8c67"]
 [ext_resource type="Texture2D" uid="uid://ipdjtcclaavd" path="res://assets/UI/BlueButton.png" id="2_16y12"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://duukl216ybcck" path="res://assets/music/The Game Show Theme Music.mp3" id="6_enl0c"]
 [ext_resource type="AudioStream" uid="uid://djgcx2d5rnjyg" path="res://assets/music/Audio/select_004.ogg" id="7_4nupn"]
 [ext_resource type="AudioStream" uid="uid://14nhl5nftlfy" path="res://assets/music/Audio/tick_004.ogg" id="8_32ukw"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="9_ek1dl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_30gab"]
 atlas = ExtResource("2_16y12")
@@ -93,6 +94,9 @@ volume_db = -8.18
 [node name="hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_32ukw")
 volume_db = -8.18
+
+[node name="gamemanager" type="Node" parent="."]
+script = ExtResource("9_ek1dl")
 
 [connection signal="mouse_entered" from="start" to="." method="_on_start_mouse_entered"]
 [connection signal="mouse_exited" from="start" to="." method="_on_start_mouse_exited"]

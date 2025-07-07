@@ -11,6 +11,7 @@ extends Node2D
 @onready var spawn_area_8: Marker2D = $"spawn area/Marker2D8"
 @onready var spawn_area_9: Marker2D = $"spawn area/Marker2D9"
 
+
 var spawn_areas: Array[Marker2D] = []
 var typed_letters: Array = []
 var letter_offset := 0
@@ -50,13 +51,21 @@ var stop_spawning := false
 
 @onready var game_manager: Node = $GameManager
 @onready var typing_container: Control = $Typingcontainer
-
+var volume = 50.0
+@onready var bg: AudioStreamPlayer = $Node/BG
 func _ready() -> void:
 	spawn_areas = [
 		spawn_area_1, spawn_area_2, spawn_area_3,
 		spawn_area_4, spawn_area_5, spawn_area_6,
 		spawn_area_7, spawn_area_8, spawn_area_9
 	]
+	
+	if bg:
+		var linear_volume = db_to_linear(bg.volume_db)
+		$CanvasLayer/Infos/pauseUi/Volume.value = clamp(linear_volume * 100.0, 0.0, 100.0)
+	else:
+		$CanvasLayer/Infos/pauseUi/Volume.value = volume 
+		
 	$CanvasLayer/Infos/pauseUi.visible = false
 	start_boss_cycle()
 	$Castle.modulate = Color(1,1,1,0)
@@ -64,6 +73,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	print("New scene is: ", get_tree().current_scene.name)
+	print("Volume: ", volume)
 
 	if not stop_spawning:
 		spawn_timer -= delta
@@ -86,6 +96,8 @@ func _process(delta: float) -> void:
 		game_manager.booster2()
 	if Input.is_action_just_pressed("health"):
 		game_manager.booster1()
+		
+		
 func spawn_enemy() -> void:
 	var word_length = randi_range(4, 11)
 	var word_list = game_manager.word_pool.get(word_length, [])
@@ -306,3 +318,15 @@ const MAIN = preload("res://nodes/main.tscn")
 func _on_mainmenu_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://nodes/mainmenu.tscn")
+
+
+func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://nodes/main.tscn")
+
+
+func _on_volume_value_changed(value: float) -> void:
+	if bg:
+		var normalized = clamp(value / 100.0, 0.001, 1.0)
+		bg.volume_db = linear_to_db(normalized)
+	game_manager.volume = value

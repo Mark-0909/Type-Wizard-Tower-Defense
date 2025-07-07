@@ -1,6 +1,8 @@
 extends Control
 
 var music_player: AudioStreamPlayer = null
+var game_manager: Node = null
+
 
 func _ready() -> void:
 	if music_player:
@@ -14,7 +16,7 @@ func _ready() -> void:
 	await fade_in()
 
 func _process(delta: float) -> void:
-	pass
+	print("Volume: ", game_manager.volume)
 
 func fade_in() -> void:
 	for i in range(15):
@@ -36,6 +38,9 @@ func _on_volume_value_changed(value: float) -> void:
 		var normalized = clamp(value / 100.0, 0.001, 1.0)
 		music_player.volume_db = linear_to_db(normalized)
 		
+	if game_manager:
+		game_manager.volume = value
+
 
 
 

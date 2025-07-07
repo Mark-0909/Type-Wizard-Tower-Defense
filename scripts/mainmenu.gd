@@ -4,6 +4,8 @@ const CONTROLS = preload("res://nodes/controls.tscn")
 const MAIN = preload("res://nodes/main.tscn")
 const SETTINGS = preload("res://nodes/settings.tscn")
 
+
+
 var on_mute = false
 
 func _ready() -> void:
@@ -38,6 +40,7 @@ func _on_start_pressed() -> void:
 	if MAIN:
 		var new_scene = MAIN.instantiate()
 		get_tree().root.add_child(new_scene)
+		new_scene.volume = $gamemanager.volume
 		get_tree().current_scene.queue_free()
 		get_tree().current_scene = new_scene
 	else:
@@ -54,8 +57,9 @@ func _on_settings_pressed() -> void:
 	$click.play()
 	var settings = SETTINGS.instantiate()
 	settings.music_player = $BG  # Ensure $BG is an AudioStreamPlayer node
+	settings.game_manager = $gamemanager
 	add_child(settings)
-
+	
 # HOVER SCALE HANDLERS
 
 
