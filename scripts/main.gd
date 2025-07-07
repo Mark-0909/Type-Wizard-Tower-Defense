@@ -55,12 +55,17 @@ var stop_spawning := false
 var volume: float = 50.0
 @onready var bg: AudioStreamPlayer = $Node/BG
 @onready var volume_slider: HSlider = $CanvasLayer/Infos/pauseUi/Volume
+var on_mute = false
 func _ready() -> void:
 	spawn_areas = [
 		spawn_area_1, spawn_area_2, spawn_area_3,
 		spawn_area_4, spawn_area_5, spawn_area_6,
 		spawn_area_7, spawn_area_8, spawn_area_9
 	]
+	if on_mute:
+		AudioServer.set_bus_mute(0, on_mute)
+		$CanvasLayer/Infos/pauseUi/CheckBox.button_pressed = on_mute
+
 	
 	if bg and volume_slider:
 		# Convert dB to linear, then map to 0–100 scale
@@ -337,3 +342,4 @@ func _on_volume_value_changed(value: float) -> void:
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(0, toggled_on)
+	$CanvasLayer/Infos/pauseUi/CheckBox.button_pressed = toggled_on

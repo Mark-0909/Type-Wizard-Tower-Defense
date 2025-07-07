@@ -41,6 +41,7 @@ func _on_start_pressed() -> void:
 		var new_scene = MAIN.instantiate()
 		get_tree().root.add_child(new_scene)
 		new_scene.volume = $gamemanager.volume
+		new_scene.on_mute = $gamemanager.on_mute
 		get_tree().current_scene.queue_free()
 		get_tree().current_scene = new_scene
 	else:

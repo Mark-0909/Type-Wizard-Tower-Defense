@@ -32,6 +32,7 @@ func _on_closebtn_2_pressed() -> void:
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(0, toggled_on)
+	game_manager.on_mute = true
 
 func _on_volume_value_changed(value: float) -> void:
 	if music_player:
