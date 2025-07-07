@@ -2318,6 +2318,7 @@ horizontal_alignment = 1
 [node name="Node" type="Node" parent="."]
 
 [node name="BG" type="AudioStreamPlayer" parent="Node"]
+process_mode = 3
 stream = ExtResource("67_ukhlv")
 volume_db = -8.432
 autoplay = true
@@ -2344,6 +2345,7 @@ shape = SubResource("WorldBoundaryShape2D_6g0ou")
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Infos/pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="CanvasLayer/Infos/pauseUi/mainmenu" to="." method="_on_mainmenu_pressed"]
+[connection signal="toggled" from="CanvasLayer/Infos/pauseUi/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="value_changed" from="CanvasLayer/Infos/pauseUi/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Infos/pauseUi/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Infos/pauseUi/restart" to="." method="_on_restart_pressed"]

@@ -51,8 +51,10 @@ var stop_spawning := false
 
 @onready var game_manager: Node = $GameManager
 @onready var typing_container: Control = $Typingcontainer
-var volume = 50.0
+
+var volume: float = 50.0
 @onready var bg: AudioStreamPlayer = $Node/BG
+@onready var volume_slider: HSlider = $CanvasLayer/Infos/pauseUi/Volume
 func _ready() -> void:
 	spawn_areas = [
 		spawn_area_1, spawn_area_2, spawn_area_3,
@@ -60,12 +62,14 @@ func _ready() -> void:
 		spawn_area_7, spawn_area_8, spawn_area_9
 	]
 	
-	if bg:
+	if bg and volume_slider:
+		# Convert dB to linear, then map to 0–100 scale
 		var linear_volume = db_to_linear(bg.volume_db)
-		$CanvasLayer/Infos/pauseUi/Volume.value = clamp(linear_volume * 100.0, 0.0, 100.0)
+		volume_slider.value = clamp(linear_volume * 100.0, 0.0, 100.0)
 	else:
-		$CanvasLayer/Infos/pauseUi/Volume.value = volume 
-		
+		# Fallback to default
+		volume_slider.value = volume
+	volume_slider.value = volume
 	$CanvasLayer/Infos/pauseUi.visible = false
 	start_boss_cycle()
 	$Castle.modulate = Color(1,1,1,0)
@@ -326,7 +330,10 @@ func _on_restart_pressed() -> void:
 
 
 func _on_volume_value_changed(value: float) -> void:
-	if bg:
-		var normalized = clamp(value / 100.0, 0.001, 1.0)
-		bg.volume_db = linear_to_db(normalized)
-	game_manager.volume = value
+	var normalized = clamp(value / 100.0, 0.001, 1.0)
+	bg.volume_db = linear_to_db(normalized)
+	volume = value
+
+
+func _on_check_box_toggled(toggled_on: bool) -> void:
+	AudioServer.set_bus_mute(0, toggled_on)
