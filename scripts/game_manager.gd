@@ -183,6 +183,7 @@ func _show_gameover_screen():
 	await get_tree().create_timer(0.1).timeout  # small delay
 	get_tree().paused = true
 	$"../CanvasLayer/Infos/GameOver".visible = true
+	$"../CanvasLayer/Infos/GameOver/score".text = str(Score)
 
 
 
