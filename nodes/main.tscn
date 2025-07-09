@@ -2268,6 +2268,7 @@ texture = ExtResource("68_2oqg2")
 
 [node name="pause" type="Label" parent="CanvasLayer/Infos/GameOver"]
 process_mode = 3
+layout_mode = 0
 offset_left = 949.0
 offset_top = 198.0
 offset_right = 1040.0
@@ -2281,6 +2282,7 @@ horizontal_alignment = 1
 
 [node name="mainmenu" type="TextureButton" parent="CanvasLayer/Infos/GameOver"]
 process_mode = 3
+layout_mode = 0
 offset_left = 912.0
 offset_top = 806.0
 offset_right = 1172.0
@@ -2301,6 +2303,7 @@ text = "Main menu"
 
 [node name="restart" type="TextureButton" parent="CanvasLayer/Infos/GameOver"]
 process_mode = 3
+layout_mode = 0
 offset_left = 936.0
 offset_top = 670.0
 offset_right = 1196.0
@@ -2321,6 +2324,7 @@ text = "Restart"
 
 [node name="Label" type="Label" parent="CanvasLayer/Infos/GameOver"]
 process_mode = 3
+layout_mode = 0
 offset_left = 1028.0
 offset_top = 340.0
 offset_right = 1113.0
@@ -2333,6 +2337,7 @@ horizontal_alignment = 1
 
 [node name="score" type="Label" parent="CanvasLayer/Infos/GameOver"]
 process_mode = 3
+layout_mode = 0
 offset_left = 909.0
 offset_top = 435.0
 offset_right = 994.0
