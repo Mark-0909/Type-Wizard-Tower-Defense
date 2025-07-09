@@ -343,3 +343,58 @@ func _on_volume_value_changed(value: float) -> void:
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(0, toggled_on)
 	$CanvasLayer/Infos/pauseUi/CheckBox.button_pressed = toggled_on
+	
+
+func _on_resume_mouse_entered() -> void:
+	$CanvasLayer/Infos/pauseUi/resume.scale += Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+func _on_resume_mouse_exited() -> void:
+	$CanvasLayer/Infos/pauseUi/resume.scale -= Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+func _on_restart_mouse_entered() -> void:
+	$CanvasLayer/Infos/pauseUi/restart.scale += Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+	
+func _on_restart_mouse_exited() -> void:
+	$CanvasLayer/Infos/pauseUi/restart.scale -= Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+func _on_mainmenu_mouse_entered() -> void:
+	$CanvasLayer/Infos/pauseUi/mainmenu.scale += Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+func _on_mainmenu_mouse_exited() -> void:
+	$CanvasLayer/Infos/pauseUi/mainmenu.scale -= Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+
+func _on_mainmenu2_mouse_entered() -> void:
+	$CanvasLayer/Infos/GameOver/mainmenu.scale += Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+
+func _on_mainmenu2_mouse_exited() -> void:
+	$CanvasLayer/Infos/GameOver/mainmenu.scale -= Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+
+func _on_restart2_mouse_entered() -> void:
+	$CanvasLayer/Infos/GameOver/restart.scale += Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+
+func _on_restart2_mouse_exited() -> void:
+	$CanvasLayer/Infos/GameOver/restart.scale -= Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+
+func _on_pause_mouse_entered() -> void:
+	$CanvasLayer/Infos/pause.scale += Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
+
+
+func _on_pause_mouse_exited() -> void:
+	$CanvasLayer/Infos/pause.scale -= Vector2(.1, .1)
+	$CanvasLayer/Infos/GameOver/hover.play()
