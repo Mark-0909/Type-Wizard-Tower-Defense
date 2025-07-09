@@ -76,6 +76,7 @@ func _ready() -> void:
 		volume_slider.value = volume
 	volume_slider.value = volume
 	$CanvasLayer/Infos/pauseUi.visible = false
+	$CanvasLayer/Infos/GameOver.visible = false
 	start_boss_cycle()
 	$Castle.modulate = Color(1,1,1,0)
 	$ExplosionEffect.modulate = Color(1,1,1,0)
@@ -338,7 +339,6 @@ func _on_volume_value_changed(value: float) -> void:
 	var normalized = clamp(value / 100.0, 0.001, 1.0)
 	bg.volume_db = linear_to_db(normalized)
 	volume = value
-
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(0, toggled_on)

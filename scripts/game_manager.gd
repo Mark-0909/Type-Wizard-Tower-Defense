@@ -1,6 +1,6 @@
 extends Node
 
-var Health_Points = 100
+var Health_Points = 5
 var Score = 0
 
 var Booster_1_Count = 1
@@ -181,17 +181,8 @@ func Minus_Health(point: int) -> void:
 
 func _show_gameover_screen():
 	await get_tree().create_timer(0.1).timeout  # small delay
-
-	var canvas_layer := CanvasLayer.new()
-	add_child(canvas_layer)
-
-	var gameover_instance = Gameover.instantiate()
-	gameover_instance.score = Score
-	
-	canvas_layer.add_child(gameover_instance)
 	get_tree().paused = true
-	
-	get_tree().current_scene = gameover_instance
+	$"../CanvasLayer/Infos/GameOver".visible = true
 
 
 
