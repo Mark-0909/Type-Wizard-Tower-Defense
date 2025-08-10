@@ -1,7 +1,9 @@
 # 🧙‍♂️ Type Wizard: Tower Defense  
 
-![Game Screenshot](https://github.com/user-attachments/assets/3bdd2398-a6c1-46b1-889a-21702dba57dc)  
-![Main Menu](https://github.com/user-attachments/assets/0c8cac3e-5ff0-46f2-aaba-cbc3410bf756)  
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3bdd2398-a6c1-46b1-889a-21702dba57dc" alt="Game Screenshot" width="48%">
+  <img src="https://github.com/user-attachments/assets/0c8cac3e-5ff0-46f2-aaba-cbc3410bf756" alt="Main Menu" width="48%">
+</p>
 
 **Type Wizard: Tower Defense** is a fast-paced typing tower defense game built with **Godot Script**.  
 Your mission? **Defend your castle** by quickly typing the words above incoming enemies to eliminate them before they breach your defenses.  
