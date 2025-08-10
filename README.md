@@ -2,12 +2,25 @@
 
 ## 🎮 Game Images
 
-A quick peek at the game visuals — from tense moments in battle to the calm before the storm.
+<p align="center">A quick peek at the game visuals — from tense moments in battle to the calm before the storm.</p>
 
-| Gameplay                                                                                                     | Main Menu                                                                                                   |
-| :----------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
-| Defend your castle by typing the words above enemies before they reach your gates.                          | The main hub where you can start the game, prepare for battle, and review your strategy.                    |
-| <img src="https://github.com/user-attachments/assets/3bdd2398-a6c1-46b1-889a-21702dba57dc" alt="Gameplay" width="420"> | <img src="https://github.com/user-attachments/assets/0c8cac3e-5ff0-46f2-aaba-cbc3410bf756" alt="Main Menu" width="420"> |
+<table align="center">
+<tr>
+<th align="center">Gameplay</th>
+<th align="center">Main Menu</th>
+</tr>
+<tr>
+<td align="center">Defend your castle by typing the words above enemies before they reach your gates.</td>
+<td align="center">The main hub where you can start the game, prepare for battle, and review your strategy.</td>
+</tr>
+<tr>
+<td align="center"><img src="https://github.com/user-attachments/assets/3bdd2398-a6c1-46b1-889a-21702dba57dc" alt="Gameplay" width="420"></td>
+<td align="center"><img src="https://github.com/user-attachments/assets/0c8cac3e-5ff0-46f2-aaba-cbc3410bf756" alt="Main Menu" width="420"></td>
+</tr>
+</table>
+
+---
+
 
 ---
 
