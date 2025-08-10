@@ -14,8 +14,8 @@
 <td align="center">Defend your castle by typing the words above enemies before they reach your gates.</td>
 </tr>
 <tr>
-<td align="center"><img src="https://github.com/user-attachments/assets/0c8cac3e-5ff0-46f2-aaba-cbc3410bf756" alt="Main Menu" width="420"></td>
 <td align="center"><img src="https://github.com/user-attachments/assets/3bdd2398-a6c1-46b1-889a-21702dba57dc" alt="Gameplay" width="420"></td>
+<td align="center"><img src="https://github.com/user-attachments/assets/0c8cac3e-5ff0-46f2-aaba-cbc3410bf756" alt="Main Menu" width="420"></td>
 </tr>
 </table>
 
