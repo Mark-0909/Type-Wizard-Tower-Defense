@@ -1,7 +1,7 @@
 # 🧙‍♂️ Type Wizard: Tower Defense  
 
 <p align="center">
-  <a href="https://YOUR-USERNAME.itch.io/YOUR-GAME-NAME">
+  <a href="[https://YOUR-USERNAME.itch.io/YOUR-GAME-NAME](https://mark-orcullo.itch.io/type-wizard-tower-defense)">
     <img src="https://img.shields.io/badge/Play%20on-itch.io-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=white" alt="Play on itch.io" />
   </a>
 </p>
