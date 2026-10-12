@@ -1,5 +1,21 @@
 # 🧙‍♂️ Type Wizard: Tower Defense  
 
+<p align="center">
+  <a href="https://YOUR-USERNAME.itch.io/YOUR-GAME-NAME">
+    <img src="https://img.shields.io/badge/Play%20on-itch.io-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=white" alt="Play on itch.io" />
+  </a>
+</p>
+
+---
+
+## 🕹️ Play Online / Download
+
+You can play the latest build directly in your browser or download it on **itch.io**:
+
+👉 **[Play Type Wizard: Tower Defense on itch.io](https://mark-orcullo.itch.io/type-wizard-tower-defense)**
+
+---
+
 ## 🎮 Game Images
 
 <p align="center">A quick peek at the game visuals — from tense moments in battle to the calm before the storm.</p>
@@ -20,10 +36,6 @@
 </table>
 
 ---
-
-
----
-
 
 **Type Wizard: Tower Defense** is a fast-paced typing tower defense game built with **Godot Script**.  
 Your mission? **Defend your castle** by quickly typing the words above incoming enemies to eliminate them before they breach your defenses.  
@@ -62,5 +74,5 @@ Sharpen your reflexes, improve your typing skills, and make tactical use of boos
 ## 🚀 Installation & Setup  
 1. **Clone this repository**  
    ```bash
-   git clone https://github.com/Mark-0909/Type-Wizard-Tower-Defense.git
+   git clone [https://github.com/Mark-0909/Type-Wizard-Tower-Defense.git](https://github.com/Mark-0909/Type-Wizard-Tower-Defense.git)
    cd Type-Wizard-Tower-Defense
